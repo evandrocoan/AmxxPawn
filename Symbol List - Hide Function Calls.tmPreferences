@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
     <key>scope</key>
-    <string>source.c++.11 meta.function.c++ meta.block.c++ meta.function-call.c++ entity.name.function.c++</string>
+    <string>source.AmxxPawn meta.function.AmxxPawn meta.block.AmxxPawn meta.function-call.AmxxPawn entity.name.function.AmxxPawn</string>
     <key>settings</key>
     <dict>
         <key>showInSymbolList</key>

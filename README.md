@@ -1,4 +1,4 @@
-sublime-cpp11
+Sublime AMXX Pawn
 =============
 
-Replacement self-contained C++11 syntax definition for Sublime Text
+Replacement self-contained AmxxPawn syntax definition for Sublime Text
