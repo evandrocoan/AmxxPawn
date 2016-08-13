@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
+<plist version="2.0">
 <dict>
+	<key>author</key>
+	<string>Jason Kozak/Addons zz</string>
 	<key>comment</key>
 	<string>Incomplete AmxxPawn tmLanguage</string>
 	<key>fileTypes</key>
@@ -878,6 +880,31 @@
 					<string>^// =(\s*.*?)\s*=\s*$\n?</string>
 					<key>name</key>
 					<string>comment.line.banner.AmxxPawn</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>///</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.doccomment.AmxxPawn</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>$\n?</string>
+					<key>name</key>
+					<string>doccomment.line.double-slash.AmxxPawn</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>(?&gt;\\\s*\n)</string>
+							<key>name</key>
+							<string>punctuation.separator.continuation.AmxxPawn</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
