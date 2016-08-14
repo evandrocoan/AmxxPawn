@@ -262,7 +262,7 @@
 			<key>end</key>
 			<string>((.*\\\n)*.*[^\\]\n)|\n</string>
 			<key>name</key>
-			<string>preprocessor.macro.meta</string>
+			<string>preprocessor.meta.macro</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -297,7 +297,7 @@
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>preprocessor.diagnostic.meta</string>
+			<string>meta.preprocessor.diagnostic</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -322,7 +322,7 @@
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>preprocessor.include.meta</string>
+			<string>meta.preprocessor.include</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -469,7 +469,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>name.function.entity</string>
+					<string>entity.name.function</string>
 				</dict>
 				<key>4</key>
 				<dict>
@@ -480,7 +480,7 @@
 			<key>end</key>
 			<string>(?&lt;=\})|(?=#)|(;)</string>
 			<key>name</key>
-			<string>function.meta</string>
+			<string>meta.function</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -591,7 +591,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>name.function.entity</string>
+					<string>entity.name.function</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -610,7 +610,7 @@
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>function.destructor.meta</string>
+			<string>meta.function.destructor</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -633,7 +633,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>name.function.meta</string>
+					<string>meta.name.function</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -652,7 +652,7 @@
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>function.destructor.prototype.meta</string>
+			<string>meta.function.destructor.prototype</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -678,7 +678,7 @@
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
-			<string>angle-brackets.meta</string>
+			<string>meta.angle-brackets</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -698,7 +698,7 @@
 			<key>end</key>
 			<string>\}</string>
 			<key>name</key>
-			<string>block.meta</string>
+			<string>meta.block</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -759,7 +759,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>name.function.entity</string>
+							<string>entity.name.function</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -803,7 +803,7 @@
 			)
 			 \s*(\()</string>
 					<key>name</key>
-					<string>initialization.meta</string>
+					<string>meta.initialization</string>
 				</dict>
 				<dict>
 					<key>include</key>
