@@ -4,6 +4,10 @@
 <dict>
 	<key>author</key>
 	<string>Jason Kozak/Addons zz</string>
+	<key>scopeName</key>
+	<string>source</string>
+	<key>uuid</key>
+	<string>26251B18-6B1D-11D9-AFDB-000D93589AF6</string>
 	<key>comment</key>
 	<string>Incomplete AmxxPawn tmLanguage</string>
 	<key>fileTypes</key>
@@ -42,7 +46,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.raw.AmxxPawn</string>
+					<string>punctuation.definition.string.begin.raw</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -52,11 +56,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.raw.AmxxPawn</string>
+					<string>punctuation.definition.string.end.raw</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.raw.AmxxPawn</string>
+			<string>string.quoted.raw</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -69,7 +73,7 @@
 			<key>match</key>
 			<string>\b(constexpr|auto)\b</string>
 			<key>name</key>
-			<string>storage.modifier.AmxxPawn</string>
+			<string>storage.modifier</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -91,19 +95,19 @@
 			<key>match</key>
 			<string>\b(break|case|continue|default|do|else|for|goto|if|_Pragma|return|switch|while)\b</string>
 			<key>name</key>
-			<string>keyword.control.AmxxPawn</string>
+			<string>keyword.control</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(asm|__asm__|auto|bool||char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void|size_t|int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|char16_t|char32_t)\b</string>
 			<key>name</key>
-			<string>storage.type.AmxxPawn</string>
+			<string>storage.type</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(const|constexpr|extern|register|static|volatile|inline)\b</string>
 			<key>name</key>
-			<string>storage.modifier.AmxxPawn</string>
+			<string>storage.modifier</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -111,25 +115,25 @@
 			<key>match</key>
 			<string>\bk[A-Z]\w*\b</string>
 			<key>name</key>
-			<string>constant.other.variable.mac-classic.AmxxPawn</string>
+			<string>constant.other.variable.mac-classic</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\bg[A-Z]\w*\b</string>
 			<key>name</key>
-			<string>variable.other.readwrite.global.mac-classic.AmxxPawn</string>
+			<string>variable.other.readwrite.global.mac-classic</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\bs[A-Z]\w*\b</string>
 			<key>name</key>
-			<string>variable.other.readwrite.static.mac-classic.AmxxPawn</string>
+			<string>variable.other.readwrite.static.mac-classic</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(nullptr|NULL|true|false)\b</string>
 			<key>name</key>
-			<string>constant.language.AmxxPawn</string>
+			<string>constant.language</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -139,7 +143,7 @@
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b</string>
 			<key>name</key>
-			<string>constant.numeric.AmxxPawn</string>
+			<string>constant.numeric</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -149,7 +153,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.AmxxPawn</string>
+					<string>punctuation.definition.string.begin</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -159,11 +163,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.AmxxPawn</string>
+					<string>punctuation.definition.string.end</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.double.AmxxPawn</string>
+			<string>string.quoted.double</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -184,7 +188,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.AmxxPawn</string>
+					<string>punctuation.definition.string.begin</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -194,11 +198,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.AmxxPawn</string>
+					<string>punctuation.definition.string.end</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.single.AmxxPawn</string>
+			<string>string.quoted.single</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -211,11 +215,11 @@
 			<key>begin</key>
 			<string>(?x)
         		^\s*\#\s*(define)\s+             # define
-        		((?:[a-zA-Z_][a-zA-Z0-9_]*))  # macro name
+        		((?:[a-zA-Z_][a-zA-Z0-9_]*))     # macro name
         		(?:                              # and optionally:
         		    (\()                         # an open parenthesis
         		        (
-        		            \s* [a-zA-Z_][a-zA-Z0-9_]* \s*       # first argument
+        		            \s* [a-zA-Z_][a-zA-Z0-9_]* \s*           # first argument
         		            (?:(,) \s* [a-zA-Z_][a-zA-Z0-9_]* \s*)*  # additional arguments
         		            (?:\.\.\.)?          # varargs ellipsis?
         		        )
@@ -227,45 +231,45 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.define.c</string>
+					<string>preprocessor.control.define</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.preprocessor.c</string>
+					<string>entity.preprocessor.control.name.function</string>
 				</dict>
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.c</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>variable.parameter.preprocessor.c</string>
+					<string>variable.parameter.preprocessor</string>
 				</dict>
 				<key>6</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.separator.parameters.c</string>
+					<string>punctuation.separator.parameters</string>
 				</dict>
 				<key>8</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.c</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor.macro.c</string>
+			<string>preprocessor.macro.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
-					<string>punctuation.separator.continuation.c</string>
+					<string>punctuation.separator.continuation</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -287,20 +291,20 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.error.AmxxPawn</string>
+					<string>error.control</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>meta.preprocessor.diagnostic.AmxxPawn</string>
+			<string>preprocessor.diagnostic.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
-					<string>punctuation.separator.continuation.AmxxPawn</string>
+					<string>punctuation.separator.continuation</string>
 				</dict>
 			</array>
 		</dict>
@@ -312,20 +316,20 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.include.AmxxPawn</string>
+					<string>preprocessor.control.include.import</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor.c.include</string>
+			<string>preprocessor.include.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
-					<string>punctuation.separator.continuation.AmxxPawn</string>
+					<string>punctuation.separator.continuation</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -335,7 +339,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.begin.AmxxPawn</string>
+							<string>punctuation.definition.string.begin</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -345,11 +349,11 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.end.AmxxPawn</string>
+							<string>punctuation.definition.string.end</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.double.include.AmxxPawn</string>
+					<string>string.quoted.double.include</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -359,7 +363,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.begin.AmxxPawn</string>
+							<string>punctuation.definition.string.begin</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -369,11 +373,11 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.end.AmxxPawn</string>
+							<string>punctuation.definition.string.end</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.other.lt-gt.include.AmxxPawn</string>
+					<string>preprocessor.include.less-greater-than-symbol</string>
 				</dict>
 			</array>
 		</dict>
@@ -389,20 +393,20 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.AmxxPawn</string>
+					<string>preprocessor.control</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor.AmxxPawn</string>
+			<string>meta.preprocessor</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
-					<string>punctuation.separator.continuation.AmxxPawn</string>
+					<string>punctuation.separator.continuation</string>
 				</dict>
 			</array>
 		</dict>
@@ -410,31 +414,31 @@
 			<key>match</key>
 			<string>\b(u_char|u_short|u_int|u_long|ushort|uint|u_quad_t|quad_t|qaddr_t|caddr_t|daddr_t|dev_t|fixpt_t|blkcnt_t|blksize_t|gid_t|in_addr_t|in_port_t|ino_t|key_t|mode_t|nlink_t|id_t|pid_t|off_t|segsz_t|swblk_t|uid_t|id_t|clock_t|size_t|ssize_t|time_t|useconds_t|suseconds_t)\b</string>
 			<key>name</key>
-			<string>support.type.sys-types.AmxxPawn</string>
+			<string>support.type.sys-types</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(pthread_attr_t|pthread_cond_t|pthread_condattr_t|pthread_mutex_t|pthread_mutexattr_t|pthread_once_t|pthread_rwlock_t|pthread_rwlockattr_t|pthread_t|pthread_key_t)\b</string>
 			<key>name</key>
-			<string>support.type.pthread.AmxxPawn</string>
+			<string>support.type.pthread</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|int_least8_t|int_least16_t|int_least32_t|int_least64_t|uint_least8_t|uint_least16_t|uint_least32_t|uint_least64_t|int_fast8_t|int_fast16_t|int_fast32_t|int_fast64_t|uint_fast8_t|uint_fast16_t|uint_fast32_t|uint_fast64_t|intptr_t|uintptr_t|intmax_t|intmax_t|uintmax_t|uintmax_t)\b</string>
 			<key>name</key>
-			<string>support.type.stdint.AmxxPawn</string>
+			<string>support.type.stdint</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(noErr|kNilOptions|kInvalidID|kVariableLengthArray)\b</string>
 			<key>name</key>
-			<string>support.constant.mac-classic.AmxxPawn</string>
+			<string>support.constant.mac-classic</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(AbsoluteTime|Boolean|Byte|ByteCount|ByteOffset|BytePtr|CompTimeValue|ConstLogicalAddress|ConstStrFileNameParam|ConstStringPtr|Duration|Fixed|FixedPtr|Float32|Float32Point|Float64|Float80|Float96|FourCharCode|Fract|FractPtr|Handle|ItemCount|LogicalAddress|OptionBits|OSErr|OSStatus|OSType|OSTypePtr|PhysicalAddress|ProcessSerialNumber|ProcessSerialNumberPtr|ProcHandle|Ptr|ResType|ResTypePtr|ShortFixed|ShortFixedPtr|SignedByte|SInt16|SInt32|SInt64|SInt8|Size|StrFileName|StringHandle|StringPtr|TimeBase|TimeRecord|TimeScale|TimeValue|TimeValue64|UInt16|UInt32|UInt64|UInt8|UniChar|UniCharCount|UniCharCountPtr|UniCharPtr|UnicodeScalarValue|UniversalProcHandle|UniversalProcPtr|UnsignedFixed|UnsignedFixedPtr|UnsignedWide|UTF16Char|UTF32Char|UTF8Char)\b</string>
 			<key>name</key>
-			<string>support.type.mac-classic.AmxxPawn</string>
+			<string>support.type.mac-classic</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -443,16 +447,16 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			(?:  ^                                 # begin-of-line
+			(?:  ^                                                                      # begin-of-line
 			  |
-				 (?: (?= \s )           (?&lt;!else|new|return) (?&lt;=\w)      #  or word + space before name
+				 (?: (?= \s )           (?&lt;!else|new|return) (?&lt;=\w)              #  or word + space before name
 				   | (?= \s*[A-Za-z_] ) (?&lt;!&amp;&amp;)       (?&lt;=[*&amp;&gt;])   #  or type modifier before name
 				 )
 			)
 			(\s*) (?!(while|for|do|if|else|switch|catch|enumerate|return|r?iterate|sizeof|alignof)\s*\()
 			(
-				(?: [~A-Za-z_]\w*+ | :: | &lt;(\w+,?\s*)++&gt; )++ |                  # actual name
-				(?: (?&lt;=operator) (?: [-*&amp;&lt;&gt;=+!]+ | \(\) | \[\] ) )  # if it is a AmxxPawn operator
+				(?: [~A-Za-z_]\w*+ | :: | &lt;(\w+,?\s*)++&gt; )++ |                    # actual name
+				(?: (?&lt;=operator) (?: [-*&amp;&lt;&gt;=+!]+ | \(\) | \[\] ) )        # if it is a AmxxPawn operator
 			)
 			 \s*(?=\()</string>
 			<key>beginCaptures</key>
@@ -460,23 +464,23 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.whitespace.function.leading.AmxxPawn</string>
+					<string>punctuation.whitespace.function.leading</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.AmxxPawn</string>
+					<string>name.function.entity</string>
 				</dict>
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.AmxxPawn</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?&lt;=\})|(?=#)|(;)</string>
 			<key>name</key>
-			<string>meta.function.AmxxPawn</string>
+			<string>function.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -491,7 +495,7 @@
 					<key>match</key>
 					<string>\b(const|override|final|noexcept)\b</string>
 					<key>name</key>
-					<string>storage.modifier.AmxxPawn</string>
+					<string>storage.modifier</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -503,25 +507,25 @@
 			<key>match</key>
 			<string>\b(friend|explicit|virtual)\b</string>
 			<key>name</key>
-			<string>storage.modifier.AmxxPawn</string>
+			<string>storage.modifier</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(private:|protected:|public:)</string>
 			<key>name</key>
-			<string>storage.modifier.AmxxPawn</string>
+			<string>storage.modifier</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(catch|operator|try|throw|using)\b</string>
 			<key>name</key>
-			<string>keyword.control.AmxxPawn</string>
+			<string>keyword.control</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\bdelete\b(\s*\[\])?|\bnew\b(?!])</string>
 			<key>name</key>
-			<string>keyword.control.AmxxPawn</string>
+			<string>keyword.control</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -529,25 +533,25 @@
 			<key>match</key>
 			<string>\b(f|m)[A-Z]\w*\b</string>
 			<key>name</key>
-			<string>variable.other.readwrite.member.AmxxPawn</string>
+			<string>variable.other.readwrite.member</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(this)\b</string>
 			<key>name</key>
-			<string>variable.language.AmxxPawn</string>
+			<string>variable.language</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\btemplate(&lt;[\s\w,]*&gt;)?</string>
 			<key>name</key>
-			<string>storage.type.template.AmxxPawn</string>
+			<string>storage.type.template</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(const_cast|dynamic_cast|reinterpret_cast|static_cast)\b\s*</string>
 			<key>name</key>
-			<string>keyword.operator.cast.AmxxPawn</string>
+			<string>operator.cast.keyword</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -559,19 +563,19 @@
 				#| \b[\|&amp;]{1,2}\b
 				#| \s+[&gt;&lt;]{2}\s+) -->
 			<key>name</key>
-			<string>keyword.operator.AmxxPawn</string>
+			<string>operator.keyword</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(class|wchar_t)\b</string>
 			<key>name</key>
-			<string>storage.type.AmxxPawn</string>
+			<string>storage.type</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\b(export|mutable|typename)\b</string>
 			<key>name</key>
-			<string>storage.modifier.AmxxPawn</string>
+			<string>storage.modifier</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -587,12 +591,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.AmxxPawn</string>
+					<string>name.function.entity</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.AmxxPawn</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -602,11 +606,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.AmxxPawn</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.function.destructor.AmxxPawn</string>
+			<string>function.destructor.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -629,12 +633,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.AmxxPawn</string>
+					<string>name.function.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.AmxxPawn</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -644,11 +648,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.parameters.AmxxPawn</string>
+					<string>punctuation.definition.parameters</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.function.destructor.prototype.AmxxPawn</string>
+			<string>function.destructor.prototype.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -665,7 +669,7 @@
 			<key>match</key>
 			<string>\.[a-zA-Z_]\w*\b(?!\s*\()|\->[a-zA-Z_]\w*\b(?!\s*\()</string>
 			<key>name</key>
-			<string>variable.other.dot-access.AmxxPawn</string>
+			<string>variable.other.dot-access</string>
 		</dict>
 		<key>angle_brackets</key>
 		<dict>
@@ -674,7 +678,7 @@
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
-			<string>meta.angle-brackets.AmxxPawn</string>
+			<string>angle-brackets.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -694,7 +698,7 @@
 			<key>end</key>
 			<string>\}</string>
 			<key>name</key>
-			<string>meta.block.AmxxPawn</string>
+			<string>block.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -733,12 +737,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.whitespace.support.function.leading.AmxxPawn</string>
+							<string>punctuation.whitespace.support.function.leading</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>support.function.C99.AmxxPawn</string>
+							<string>support.function.C99</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -750,17 +754,17 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.whitespace.function-call.leading.AmxxPawn</string>
+							<string>punctuation.whitespace.function-call.leading</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.AmxxPawn</string>
+							<string>name.function.entity</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.AmxxPawn</string>
+							<string>punctuation.definition.parameters</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -778,12 +782,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.AmxxPawn</string>
+							<string>variable.other</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.AmxxPawn</string>
+							<string>punctuation.definition.parameters</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -799,7 +803,7 @@
 			)
 			 \s*(\()</string>
 					<key>name</key>
-					<string>meta.initialization.AmxxPawn</string>
+					<string>initialization.meta</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -821,13 +825,13 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.toc-list.banner.block.AmxxPawn</string>
+							<string>meta.toc-list.banner.block</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>^/\* =(\s*.*?)\s*= \*/$\n?</string>
 					<key>name</key>
-					<string>comment.block.AmxxPawn</string>
+					<string>comment.block</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -837,13 +841,13 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.comment.AmxxPawn</string>
+							<string>punctuation.definition.comment</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>\*/</string>
 					<key>name</key>
-					<string>doccomment.block.AmxxPawn</string>
+					<string>doccomment.block</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -853,19 +857,19 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.comment.AmxxPawn</string>
+							<string>punctuation.definition.comment</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>\*/</string>
 					<key>name</key>
-					<string>comment.block.AmxxPawn</string>
+					<string>comment.block</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>\*/.*\n</string>
 					<key>name</key>
-					<string>invalid.illegal.stray-comment-end.AmxxPawn</string>
+					<string>invalid.illegal.stray-comment-end</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -873,13 +877,13 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.toc-list.banner.line.AmxxPawn</string>
+							<string>meta.toc-list.banner.line</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>^// =(\s*.*?)\s*=\s*$\n?</string>
 					<key>name</key>
-					<string>comment.line.banner.AmxxPawn</string>
+					<string>comment.line.banner</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -889,20 +893,20 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.doccomment.AmxxPawn</string>
+							<string>punctuation.definition.doccomment</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
-					<string>doccomment.line.double-slash.AmxxPawn</string>
+					<string>doccomment.line.double-slash</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>(?&gt;\\\s*\n)</string>
 							<key>name</key>
-							<string>punctuation.separator.continuation.AmxxPawn</string>
+							<string>punctuation.separator.continuation</string>
 						</dict>
 					</array>
 				</dict>
@@ -914,20 +918,20 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.comment.AmxxPawn</string>
+							<string>punctuation.definition.comment</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
-					<string>comment.line.double-slash.AmxxPawn</string>
+					<string>comment.line.double-slash</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>(?&gt;\\\s*\n)</string>
 							<key>name</key>
-							<string>punctuation.separator.continuation.AmxxPawn</string>
+							<string>punctuation.separator.continuation</string>
 						</dict>
 					</array>
 				</dict>
@@ -960,7 +964,7 @@
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
-			<string>meta.parens.AmxxPawn</string>
+			<string>meta.parens</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -976,17 +980,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.pragma.AmxxPawn</string>
+					<string>control.import.preprocessor.pragma</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>meta.toc-list.pragma-mark.AmxxPawn</string>
+					<string>meta.toc-list.pragma-mark</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1003,17 +1007,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.if.AmxxPawn</string>
+					<string>control.import.preprocessor.if</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.preprocessor.AmxxPawn</string>
+					<string>constant.numeric.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1028,12 +1032,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor.AmxxPawn</string>
+							<string>meta.preprocessor</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.import.else.AmxxPawn</string>
+							<string>control.import.preprocessor.else</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1076,17 +1080,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.if.AmxxPawn</string>
+					<string>control.import.preprocessor.if</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.preprocessor.AmxxPawn</string>
+					<string>constant.numeric.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1101,12 +1105,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor.AmxxPawn</string>
+							<string>meta.preprocessor</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.import.else.AmxxPawn</string>
+							<string>control.import.preprocessor.else</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1149,17 +1153,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.if.AmxxPawn</string>
+					<string>control.import.preprocessor.if</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.preprocessor.AmxxPawn</string>
+					<string>constant.numeric.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1174,12 +1178,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor.AmxxPawn</string>
+							<string>meta.preprocessor</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.import.else.AmxxPawn</string>
+							<string>control.import.preprocessor.else</string>
 						</dict>
 					</dict>
 					<key>contentName</key>
@@ -1222,17 +1226,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.if.AmxxPawn</string>
+					<string>control.import.preprocessor.if</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.preprocessor.AmxxPawn</string>
+					<string>constant.numeric.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1247,12 +1251,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor.AmxxPawn</string>
+							<string>meta.preprocessor</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.import.else.AmxxPawn</string>
+							<string>control.import.preprocessor.else</string>
 						</dict>
 					</dict>
 					<key>contentName</key>
@@ -1295,12 +1299,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.AmxxPawn</string>
+					<string>control.import.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1322,12 +1326,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor.AmxxPawn</string>
+					<string>meta.preprocessor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.import.AmxxPawn</string>
+					<string>control.import.preprocessor</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1345,7 +1349,7 @@
 			<key>match</key>
 			<string>\b(sizeof|alignof)\b</string>
 			<key>name</key>
-			<string>keyword.operator.function.AmxxPawn</string>
+			<string>keyword.operator.function</string>
 		</dict>
 		<key>string_escaped_char</key>
 		<dict>
@@ -1355,13 +1359,13 @@
 					<key>match</key>
 					<string>\\(\\|[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
 					<key>name</key>
-					<string>constant.character.escape.AmxxPawn</string>
+					<string>constant.character.escape</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
-					<string>invalid.illegal.unknown-escape.AmxxPawn</string>
+					<string>invalid.illegal.unknown-escape</string>
 				</dict>
 			</array>
 		</dict>
@@ -1381,13 +1385,13 @@
 							[diouxXDOUeEfFgGaACcSspn%]           # conversion type
 						</string>
 					<key>name</key>
-					<string>constant.other.placeholder.AmxxPawn</string>
+					<string>constant.other.placeholder</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>%</string>
 					<key>name</key>
-					<string>invalid.illegal.placeholder.AmxxPawn</string>
+					<string>invalid.illegal.placeholder</string>
 				</dict>
 			</array>
 		</dict>
@@ -1407,12 +1411,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.AmxxPawn</string>
+							<string>entity.name.function</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.AmxxPawn</string>
+							<string>punctuation.definition.parameters</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1422,11 +1426,11 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.AmxxPawn</string>
+							<string>punctuation.definition.parameters</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.function.constructor.AmxxPawn</string>
+					<string>meta.function.constructor</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1447,13 +1451,13 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.AmxxPawn</string>
+							<string>punctuation.definition.parameters</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>(?=\{)</string>
 					<key>name</key>
-					<string>meta.function.constructor.initializer-list.AmxxPawn</string>
+					<string>meta.function.constructor.initializer-list</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1476,18 +1480,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.namespace.AmxxPawn</string>
+							<string>keyword.control.namespace</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.section.namespace.AmxxPawn, entity.name.type.namespace.AmxxPawn</string>
+							<string>entity.name.section.namespace, entity.name.type.namespace</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=\w)</string>
 					<key>name</key>
-					<string>meta.namespace-block.AmxxPawn</string>
+					<string>meta.namespace-block</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1521,16 +1525,16 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.type.AmxxPawn</string>
+							<string>storage.type</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.type.class.AmxxPawn</string>
+							<string>entity.name.type.class</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.typedef-declaration.AmxxPawn</string>
+					<string>meta.typedef-declaration</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -1540,18 +1544,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.type.AmxxPawn</string>
+							<string>storage.type</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.type.class.AmxxPawn</string>
+							<string>entity.name.type.class</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]))</string>
 					<key>name</key>
-					<string>meta.class-struct-block.AmxxPawn</string>
+					<string>meta.class-struct-block</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1566,7 +1570,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.definition.scope.AmxxPawn</string>
+									<string>punctuation.definition.scope</string>
 								</dict>
 							</dict>
 							<key>end</key>
@@ -1576,12 +1580,12 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.definition.invalid.AmxxPawn</string>
+									<string>punctuation.definition.invalid</string>
 								</dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>invalid.illegal.you-forgot-semicolon.AmxxPawn</string>
+									<string>invalid.illegal.you-forgot-semicolon</string>
 								</dict>
 							</dict>
 							<key>patterns</key>
@@ -1614,13 +1618,13 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.AmxxPawn</string>
+							<string>storage.modifier</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=\w)</string>
 					<key>name</key>
-					<string>meta.extern-block.AmxxPawn</string>
+					<string>meta.extern-block</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1649,9 +1653,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>scopeName</key>
-	<string>source.AmxxPawn</string>
-	<key>uuid</key>
-	<string>26251B18-6B1D-11D9-AFDB-000D93589AF6</string>
 </dict>
 </plist>
