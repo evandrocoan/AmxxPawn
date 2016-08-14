@@ -1357,7 +1357,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\\(\\|[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
+					<string>\\(\\|[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8}|[a-z])</string>
 					<key>name</key>
 					<string>constant.character.escape</string>
 				</dict>
@@ -1382,7 +1382,7 @@
 							((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
 							(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
 							(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
-							[diouxXDOUeEfFgGaACcSspn%]           # conversion type
+							[diouxXDOUeEfFgGLaACcSspn%]          # conversion type
 						</string>
 					<key>name</key>
 					<string>constant.other.placeholder</string>
