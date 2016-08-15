@@ -1,12 +1,31 @@
 %YAML 1.2
 ---
 name: AmxxPawn
-file_extensions: [sma, inc]
+    
+file_extensions:
+  - sma
+  - inc
+  - bbcode
+  
 scope: source.AmxxPawn
-contexts:
-
+  
+  ########################################################
+  
+  
+  
+  # "Global Variables"
+variables:
+    identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
+    path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
+  
+  ########################################################
+  
+  
+  
   # "AmxxPawn Syntax"
   # Author: Destro-/Addons zz
+contexts:
+  
   main:
     - include: pawn_string
     - include: pawn_character
@@ -16,14 +35,15 @@ contexts:
     - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
-
+    
     - include: parens
     - include: check_brackets
-
+    
     # Constants
     - include: Packages/amxmodx/const.sublime-syntax
-  
+    
   ########################################################
+  
   
   
   # "PAWN Comments"
@@ -73,8 +93,9 @@ contexts:
         - meta_scope: comment.line.pawn
         - match: $
           pop: true
-  
+    
   ########################################################
+  
   
   
   # "Pawn Directives"
@@ -119,12 +140,12 @@ contexts:
     - match: '[^\n]*'
       scope: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
       pop: true
-
-
-
+   
   ########################################################
-
-   # "PAWN String"
+  
+  
+  
+  # "PAWN String"
   pawn_string:
     - match: '"'
       scope: punctuation.definition.string.begin.pawn
@@ -137,13 +158,13 @@ contexts:
         pop: true
       - include: string_escaped_char
       - include: string_placeholder
-
+    
   string_escaped_char:
     - match: \^(\^|[abefnprtv\'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})
       scope: constant.character.escape.pawn
     - match: \^.
       scope: invalid.illegal.unknown-escape.pawn
-
+    
   string_placeholder:
     - match: |-
         (?x)%
@@ -151,19 +172,22 @@ contexts:
             (\.((-?\d+)|\*(-?\d+\$)?)?)?    # precision
             [cbdiufXxasLNn%]                # conversion type
       scope: constant.other.placeholder.pawn
-
+    
   pawn_character:
     - match: ('[\^]?.')|('.(.+'))
       captures:
         1: string.quoted.single.pawn
         2: invalid.illegal.invalid-character.pawn
+    
   ########################################################
-
+  
+  
+  
   # "PAWN Function"
   pawn_function:
     - include: function_definition
     - include: function_call
-
+    
   function_definition:
     - match: ^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*(\()
       captures:
@@ -186,7 +210,7 @@ contexts:
           scope: function.parens.pawn
         - include: main
         - include: function_block
-
+    
   function_block:
     - match: '\{'
       scope: punctuation.definition.group.start
@@ -198,8 +222,7 @@ contexts:
         - include: main
         - include: function_call
     - include: main
-
-
+    
   function_call:
     - match: \s*([A-Za-z_][\w_]*)[\s]*(\()
       captures:
@@ -210,10 +233,11 @@ contexts:
           scope: function.parens.pawn
           pop: true
         - include: main
-      
-
+    
   ########################################################
-
+  
+  
+  
   # "PAWN Numbers"
   pawn_numbers:
     - match: '(\d+)(\.{2})(\d+)'
@@ -221,28 +245,31 @@ contexts:
         1: constant.numeric.int.pawn
         2: keyword.operator.switch-range.pawn
         3: constant.numeric.int.pawn
-
+    
     - match: ([-]?0x[\da-f]+)
       scope: constant.numeric.hex.pawn
 
     - match: \b(\d+\.\d+)\b
       scope: constant.numeric.float.pawn
-
+    
     - match: \b(\d+)\b
       scope: constant.numeric.int.pawn
+    
   ########################################################
-
+  
+  
+  
   # "PAWN Keywords"
   pawn_post_keywords:
     - match: '(?<!\?)\b[A-Za-z_]\w*\:'
       scope: storage.modifier.tag.pawn
-
+    
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.pawn
-
+    
     - match: (\[|\]|)
       scope: keyword.brackets.pawn
-
+    
   pawn_keywords:
     - match: \s*(case (.*):)\s+
       captures:
@@ -281,9 +308,11 @@ contexts:
 
     - match: (\,)
       scope: keyword.coma.pawn
+    
   ########################################################
-
-
+  
+  
+  
   # "Check Brackets Closed"
   parens:
     - match: \(
@@ -294,8 +323,13 @@ contexts:
           scope: parens.pawn
           pop: true
         - include: main
-
+    
   check_brackets:
     - match: \)
       scope: invalid.illegal.stray-bracket-end
+    
   ########################################################
+  
+  
+  
+  
