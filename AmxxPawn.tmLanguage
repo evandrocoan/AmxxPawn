@@ -297,7 +297,7 @@
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>meta.preprocessor.diagnostic</string>
+			<string>preprocessor.meta.diagnostic</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -322,7 +322,7 @@
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor.include</string>
+			<string>preprocessor.meta.include</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -399,7 +399,7 @@
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
-			<string>meta.preprocessor</string>
+			<string>preprocessor.meta</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -774,7 +774,7 @@
 			)
 			 \s*(\()</string>
 					<key>name</key>
-					<string>meta.function-call.AmxxPawn</string>
+					<string>meta.function-call</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -980,7 +980,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1007,7 +1007,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1032,7 +1032,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor</string>
+							<string>preprocessor.meta</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1080,7 +1080,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1105,7 +1105,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor</string>
+							<string>preprocessor.meta</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1153,7 +1153,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1178,7 +1178,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor</string>
+							<string>preprocessor.meta</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1226,7 +1226,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1251,7 +1251,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.preprocessor</string>
+							<string>preprocessor.meta</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1299,7 +1299,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1326,7 +1326,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.preprocessor</string>
+					<string>preprocessor.meta</string>
 				</dict>
 				<key>2</key>
 				<dict>
