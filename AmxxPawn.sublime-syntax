@@ -1,11 +1,12 @@
 %YAML 1.2
 ---
-name: AMXX-Pawn
+name: AmxxPawn
 file_extensions: [sma, inc]
-scope: source.sma
+scope: source.AmxxPawn
 contexts:
 
-  # "AMXX-Pawn Syntax"
+  # "AmxxPawn Syntax"
+  # Author: Destro-/Addons zz
   main:
     - include: pawn_string
     - include: pawn_character
@@ -21,15 +22,25 @@ contexts:
 
     # Constants
     - include: Packages/amxmodx/const.sublime-syntax
-
+  
   ########################################################
-
+  
+  
   # "PAWN Comments"
   pawn_coment:
     - match: ^/\* =(\s*.*?)\s*= \*/$\n?
       scope: comment.block.pawn
       captures:
         1: meta.toc-list.banner.block.pawn
+    
+    - match: /\*\*
+      scope: punctuation.definition.comment.pawn
+      push:
+        - meta_scope: doccomment.block.pawn
+        - match: \*/
+          scope: punctuation.definition.comment.pawn
+          pop: true
+    
     - match: /\*
       scope: punctuation.definition.comment.pawn
       push:
@@ -37,12 +48,15 @@ contexts:
         - match: \*/
           scope: punctuation.definition.comment.pawn
           pop: true
+    
     - match: \*/
       scope: invalid.illegal.stray-comment-end.pawn
+    
     - match: ^// =(\s*.*?)\s*=\s*$\n?
       scope: comment.line.banner.pawn
       captures:
         1: meta.toc-list.banner.line.pawn
+    
     - match: //
       scope: punctuation.definition.comment.pawn
       push:
@@ -52,14 +66,17 @@ contexts:
             1: punctuation.separator.continuation.pawn
         - match: \n
           pop: true
+    
     - match: '//'
       scope: punctuation.definition.comment.pawn
       push:
         - meta_scope: comment.line.pawn
         - match: $
           pop: true
+  
   ########################################################
-
+  
+  
   # "Pawn Directives"
   pawn_directives:
     - match: ^\s*#
