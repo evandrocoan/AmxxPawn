@@ -1,42 +1,12 @@
 %YAML 1.2
 ---
-# "AmxxPawn Syntax"
-# Author: ppalex7/Destro-/Addons zz
-# 
-# https://github.com/ppalex7/SourcePawnCompletions
-# https://forums.alliedmods.net/showthread.php?t=284385
-# 
-# Note that due to the YAML syntax, tab characters are not allowed within .sublime-syntax files.
-
-
-# This defines the name shown for the syntax in the menu. It's optional, and will be
-# derived from the file name if not used.
 name: AmxxPawn
-
-# A list of strings, defining what file extensions this syntax should be used for.
-file_extensions:
-  - bbcode
-  - inc
-  - sma
-
-# The default scope assigned to all text in the file.
+file_extensions: [sma, inc]
 scope: source.AmxxPawn
-
-# When a file is opened without a recognized extension, the first line of the file
-# contents will be tested against this regex, to see if the syntax should be applied.
-first_line_match: '(?i:amxx\-?pawn)'
-
-# "Global Variables"
-variables:
-  identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
-  path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
-  
-# For most languages, you'll need more than one context. For example, in C, we don't
-# want a for word in the middle of a string to be highlighted as a keyword.
 contexts:
-  
-  # The context name main special: Every syntax must define a main context, as it will be
-  # used at the start of the file.
+
+  # "AmxxPawn Syntax"
+  # Author: Destro-/Addons zz
   main:
     - include: pawn_string
     - include: pawn_character
@@ -46,263 +16,286 @@ contexts:
     - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
-    
-  # Constants
-  #- include: Packages/amxmodx/const.sublime-syntax
-  # TODO: Create a parser to find the constants on the amxx include/scripting folder.
+
+    - include: parens
+    - include: check_brackets
+
+    # Constants
+    - include: Packages/amxmodx/const.sublime-syntax
   
   ########################################################
-  
   
   
   # "PAWN Comments"
   pawn_coment:
-    
-    # The regex used to match against the text. YAML allows many strings to be written without
-    # quotes, which can help make the regex clearer, but it's important to understand when you
-    # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
-    # likely need to quote it. Regexes are only ever run against a single line of text at a time.
-    # The match key is a regex, using the Ruby syntax.
-    - match: /\*\*
-      # The scope assigned to the matched text.
-      scope: punctuation.definition.comment.AmxxPawn
-      # The contexts to push onto the stack. This may be either a single context name, a list
-      # of context names, or an inline, anonymous context.
-      push:
-        # This assigns the given scope to all text within this context, including the
-        # patterns that push the context onto the stack and pop it off.
-        - meta_scope: doccomment.block.AmxxPawn
-        - match: \*/
-          scope: punctuation.definition.comment.AmxxPawn
-          # Pops the current context off the stack. The only accepted value for this key is true.
-          pop: true
-          
-    - match: /\*
-      scope: punctuation.definition.comment.AmxxPawn
-      
-      push:
-        - meta_scope: comment.block.AmxxPawn
-        - match: \*/
-          scope: punctuation.definition.comment.AmxxPawn
-          pop: true
-          
-    - match: \*/
-      scope: invalid.illegal.stray-comment-end.AmxxPawn
-      
-    - match: ^// =(\s*.*?)\s*=\s*$\n?
-      scope: comment.line.banner.AmxxPawn
-      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
+    - match: ^/\* =(\s*.*?)\s*= \*/$\n?
+      scope: comment.block.pawn
       captures:
-        1: meta.toc-list.banner.line.AmxxPawn
-        
-    - match: //
-      scope: punctuation.definition.comment.AmxxPawn
+        1: meta.toc-list.banner.block.pawn
+    
+    - match: /\*\*
+      scope: punctuation.definition.comment.pawn
       push:
-        - meta_scope: comment.line.double-slash.AmxxPawn
+        - meta_scope: doccomment.block.pawn
+        - match: \*/
+          scope: punctuation.definition.comment.pawn
+          pop: true
+    
+    - match: /\*
+      scope: punctuation.definition.comment.pawn
+      push:
+        - meta_scope: comment.block.pawn
+        - match: \*/
+          scope: punctuation.definition.comment.pawn
+          pop: true
+    
+    - match: \*/
+      scope: invalid.illegal.stray-comment-end.pawn
+    
+    - match: ^// =(\s*.*?)\s*=\s*$\n?
+      scope: comment.line.banner.pawn
+      captures:
+        1: meta.toc-list.banner.line.pawn
+    
+    - match: //
+      scope: punctuation.definition.comment.pawn
+      push:
+        - meta_scope: comment.line.double-slash.pawn
         - match: '(\\)$\n'
           captures:
-            1: punctuation.separator.continuation.AmxxPawn
+            1: punctuation.separator.continuation.pawn
         - match: \n
           pop: true
-          
+    
     - match: '//'
-      scope: punctuation.definition.comment.AmxxPawn
+      scope: punctuation.definition.comment.pawn
       push:
-        - meta_scope: comment.line.AmxxPawn
+        - meta_scope: comment.line.pawn
         - match: $
           pop: true
-          
-  ########################################################
   
+  ########################################################
   
   
   # "Pawn Directives"
   pawn_directives:
-    # Colored %0, %1, %2, ... for lines which does not continue using \
-    - match: '^\s*\#'
+    - match: ^\s*#
+      scope: keyword.other.preprocessor.pawn
       push:
-        - meta_scope: preprocessor.AmxxPawn
-        - match: '%\d'
-          scope: constant.numeric.AmxxPawn
-        - match: '[^\\]\n'
-          pop: true
-          
-    # Colored %0, %1, %2, ... for lines which does continue using \
-    - match: '^\s*\#.*(%\d|(\\\n))'
-      push:
-        - meta_scope: preprocessor.AmxxPawn
-        - match: '%\d'
-          scope: constant.numeric.AmxxPawn
-        - match: '((.*\\\n)*.*[^\\]\n)'
-          pop: true
-          
+        - include: directive_include
+        - include: directive_define
+        - include: directive_others
+        - include: directive_invalid
+    - match: '%\d' # Colored %1 %2...
+      scope: keyword.other.preprocessor.group.pawn
+    
+
+  directive_include:
+    - match: (include)\s+((["][\t ]*[\w\-\/]*\.(inc|sma)?[\t ]*["])|([<][\t ]*[\w\-\/]*[\t ]*[>])|([^\s]*))
+      captures:
+        1: keyword.other.preprocessor.include.pawn
+        3: include_path.pawn
+        4: include_path.pawn
+        5: include_path.pawn
+        6: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
+      pop: true
+
+  directive_define:
+    - match: (define)\s+(([a-zA-Z_][^\s]*)|([^\s]*))
+      captures:
+        1: keyword.other.preprocessor.define.pawn
+        3: entity.name.constant.preprocessor
+        4: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
+      pop: true
+
+  directive_others:
+    - match: (if|elseif|else|endif|endinput|undef|endscript|error|file|line|tryinclude|emit|pragma|assert)\s*(.*)
+      captures:
+        1: keyword.other.preprocessor.define.pawn
+        2: entity.name.constant.preprocessor
+      pop: true
+
+  directive_invalid:
+    - match: '[^\n]*'
+      scope: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
+      pop: true
+
+
+
   ########################################################
-  
-  
-  
-  # "PAWN String"
+
+   # "PAWN String"
   pawn_string:
     - match: '"'
-      scope: punctuation.definition.string.begin.AmxxPawn
+      scope: punctuation.definition.string.begin.pawn
       push:
-      - meta_scope: string.quoted.double.AmxxPawn
+      - meta_scope: string.quoted.double.pawn
       - match: '(")|(?<=^|[^\\])\s*(\n)'
         captures:
-          1: punctuation.definition.string.end.AmxxPawn
-          2: invalid.illegal.unexpected-end-of-line.AmxxPawn
+          1: punctuation.definition.string.end.pawn
+          2: invalid.illegal.unexpected-end-of-line.pawn
         pop: true
-        # Frequently it's convenient to include the contents of one context within another.
-        # For example, you may define several different contexts for parsing the C language,
-        # and almost all of them can include comments. Rather than copying the relevant match
-        # patterns into each of these contexts, you can include them.
       - include: string_escaped_char
       - include: string_placeholder
-      
+
   string_escaped_char:
     - match: \^(\^|[abefnprtv\'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})
-      scope: constant.character.escape.AmxxPawn
+      scope: constant.character.escape.pawn
     - match: \^.
-      scope: invalid.illegal.unknown-escape.AmxxPawn
-      
+      scope: invalid.illegal.unknown-escape.pawn
+
   string_placeholder:
     - match: |-
         (?x)%
             ((-?\d+)|\*(-?\d+\$)?)?         # minimum field width
             (\.((-?\d+)|\*(-?\d+\$)?)?)?    # precision
             [cbdiufXxasLNn%]                # conversion type
-      scope: constant.other.placeholder.AmxxPawn
-      
+      scope: constant.other.placeholder.pawn
+
   pawn_character:
     - match: ('[\^]?.')|('.(.+'))
       captures:
-        1: string.quoted.single.AmxxPawn
-        2: invalid.illegal.invalid-character.AmxxPawn
-        
+        1: string.quoted.single.pawn
+        2: invalid.illegal.invalid-character.pawn
   ########################################################
-  
-  
-  
+
   # "PAWN Function"
   pawn_function:
     - include: function_definition
     - include: function_call
-    - include: function_block
-    
-  # We cannot include the whole main context here, otherwise we would re-include this own context
-  # creating an infinity context include loop. Then we need to include all main contexts except
-  # this own context.
-  pawn_function_includes:
-    - include: pawn_string
-    - include: pawn_character
-    - include: pawn_coment
-    - include: pawn_directives
-    - include: pawn_numbers
-    - include: pawn_keywords
-    - include: pawn_post_keywords
-    
+
   function_definition:
-    - match: '^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
+    - match: ^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*(\()
       captures:
-        1: storage.type.function.AmxxPawn
-        2: storage.modifier.tag.AmxxPawn
-        3: function.definition.AmxxPawn
-        
-  function_block:
-    - match: '{'
+        1: storage.type.function.pawn
+        2: storage.modifier.tag.pawn
+        3: support.function.definition.pawn
+        4: function.parens.pawn
       push:
-        - match: '}'
-          pop: true
+        - match: \)
+          scope: function.parens.pawn
+        - include: main
         - include: function_block
-    - include: pawn_function_includes
-    
-  function_call:
-    - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
+    - match: '^[ ;]*([A-Za-z_]\w*:)?([A-Za-z_][\w_]*)[\s]*(\()'
       captures:
-        1: function.call.AmxxPawn
-        2: keyword.brackets.AmxxPawn
-    - include: pawn_function_includes
-  
+        1: storage.modifier.tag.pawn
+        2: support.function.definition.pawn
+        3: function.parens.pawn
+      push:
+        - match: \)
+          scope: function.parens.pawn
+        - include: main
+        - include: function_block
+
+  function_block:
+    - match: '\{'
+      scope: punctuation.definition.group.start
+      push:
+        - meta_scope: meta.block.pawn
+        - match: '\}'
+          scope: punctuation.definition.group.end
+          pop: true
+        - include: main
+        - include: function_call
+    - include: main
+
+
+  function_call:
+    - match: \s*([A-Za-z_][\w_]*)[\s]*(\()
+      captures:
+        1: support.function.call.pawn
+        2: function.parens.pawn
+      push:
+        - match: \)
+          scope: function.parens.pawn
+          pop: true
+        - include: main
+      
+
   ########################################################
-  
-  
-  
+
   # "PAWN Numbers"
   pawn_numbers:
     - match: '(\d+)(\.{2})(\d+)'
       captures:
-        1: constant.numeric.int.AmxxPawn
-        2: keyword.operator.switch-range.AmxxPawn
-        3: constant.numeric.int.AmxxPawn
-        
+        1: constant.numeric.int.pawn
+        2: keyword.operator.switch-range.pawn
+        3: constant.numeric.int.pawn
+
     - match: ([-]?0x[\da-f]+)
-      scope: constant.numeric.hex.AmxxPawn
-      
+      scope: constant.numeric.hex.pawn
+
     - match: \b(\d+\.\d+)\b
-      scope: constant.numeric.float.AmxxPawn
-      
+      scope: constant.numeric.float.pawn
+
     - match: \b(\d+)\b
-      scope: constant.numeric.int.AmxxPawn
-      
+      scope: constant.numeric.int.pawn
   ########################################################
-  
-  
-  
+
   # "PAWN Keywords"
   pawn_post_keywords:
     - match: '(?<!\?)\b[A-Za-z_]\w*\:'
-      scope: storage.modifier.tag.AmxxPawn
-      
+      scope: storage.modifier.tag.pawn
+
     - match: \s*\b(public|stock|native|forward)\b
-      scope: storage.type.function.AmxxPawn
-      
-    - match: '\{|\}|\(|\)|\[|\]'
-      scope: keyword.brackets.AmxxPawn
-      
+      scope: storage.type.function.pawn
+
+    - match: (\[|\]|)
+      scope: keyword.brackets.pawn
+
   pawn_keywords:
     - match: \s*(case (.*):)\s+
       captures:
-        1: keyword.control.AmxxPawn
-        2: storage.type.vars.AmxxPawn
-        
-    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new)\b
-      scope: keyword.control.AmxxPawn
-      
-    - match: \s*\b(new)\b
-      scope: keyword.AmxxPawn
-      
-    - match: \s*\b(Float|enum|char|const|static)\b
-      scope: storage.type.vars.AmxxPawn
-      
+        1: keyword.control.pawn
+        2: storage.type.vars.pawn
+
+    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while)\b
+      scope: keyword.control.pawn
+
+    - match: \s*\b(Float|new|enum|char|const|static)\b
+      scope: storage.type.vars.pawn
+
     - match: (any\:\.\.\.)
-      scope: storage.modifier.tag.AmxxPawn
-      
+      scope: storage.modifier.tag.pawn
+
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
-      scope: keyword.operator.assignment.AmxxPawn
-      
+      scope: keyword.operator.assignment.pawn
+
     - match: (==|!=|<=|>=|<>|<|>)
-      scope: keyword.operator.comparison.AmxxPawn
-      
+      scope: keyword.operator.comparison.pawn
+
     - match: (\-\-|\+\+)
-      scope: keyword.operator.increment-decrement.AmxxPawn
-      
+      scope: keyword.operator.increment-decrement.pawn
+
     - match: (\?|:)
-      scope: keyword.operator.ternary.AmxxPawn
-      
+      scope: keyword.operator.ternary.pawn
+
     - match: (\-|\+|\*|\/|%)
-      scope: keyword.operator.arithmetic.AmxxPawn
-      
+      scope: keyword.operator.arithmetic.pawn
+
     - match: (!|&&|\|\|)
-      scope: keyword.operator.logical.AmxxPawn
-      
+      scope: keyword.operator.logical.pawn
+
     - match: (~|&|\||\^|<<|>>)
-      scope: keyword.operator.bitwise.AmxxPawn
-      
+      scope: keyword.operator.bitwise.pawn
+
     - match: (\,)
-      scope: keyword.other.AmxxPawn
-      
+      scope: keyword.coma.pawn
   ########################################################
-  
-  
-  
-  
-  
+
+
+  # "Check Brackets Closed"
+  parens:
+    - match: \(
+      scope: parens.pawn
+      push:
+        - meta_scope: meta.group.c
+        - match: \)
+          scope: parens.pawn
+          pop: true
+        - include: main
+
+  check_brackets:
+    - match: \)
+      scope: invalid.illegal.stray-bracket-end
+  ########################################################
