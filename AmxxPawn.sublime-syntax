@@ -2,7 +2,7 @@
 ---
 # "AmxxPawn Syntax"
 # Author: Destro-/Addons zz
-
+# Note that due to the YAML syntax, tab characters are not allowed within .sublime-syntax files.
 
 
 # This defines the name shown for the syntax in the menu. It's optional, and will be
@@ -21,24 +21,18 @@ scope: source.AmxxPawn
 # When a file is opened without a recognized extension, the first line of the file
 # contents will be tested against this regex, to see if the syntax should be applied.
 first_line_match: '(?i:amxx\-?pawn)'
-  
-  ########################################################
-  
-  
-  
+
 # "Global Variables"
 variables:
-    identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
-    path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
-  
-  ########################################################
-  
-  
-  
+  identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
+  path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
+
 # For most languages, you'll need more than one context. For example, in C, we don't
 # want a for word in the middle of a string to be highlighted as a keyword.
 contexts:
   
+  # The context name main special: Every syntax must define a main context, as it will be
+  # used at the start of the file.
   main:
     - include: pawn_string
     - include: pawn_character
@@ -54,7 +48,7 @@ contexts:
     
     # Constants
     #- include: Packages/amxmodx/const.sublime-syntax
-    # TODO, create a parser to find the constants on the amxx include/scripting folder.
+    # TODO: Create a parser to find the constants on the amxx include/scripting folder.
     
   ########################################################
   
@@ -62,35 +56,49 @@ contexts:
   
   # "PAWN Comments"
   pawn_coment:
+    
+    # The regex used to match against the text. YAML allows many strings to be written without
+    # quotes, which can help make the regex clearer, but it's important to understand when you
+    # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
+    # likely need to quote it. Regexes are only ever run against a single line of text at a time.
+    # The match key is a regex, using the Ruby syntax.
     - match: ^/\* =(\s*.*?)\s*= \*/$\n?
+      # The scope assigned to the matched text.
       scope: comment.block.pawn
+      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         1: meta.toc-list.banner.block.pawn
-    
+        
     - match: /\*\*
       scope: punctuation.definition.comment.pawn
+      # The contexts to push onto the stack. This may be either a single context name, a list
+      # of context names, or an inline, anonymous context.
       push:
+        # This assigns the given scope to all text within this context, including the
+        # patterns that push the context onto the stack and pop it off.
         - meta_scope: doccomment.block.pawn
         - match: \*/
           scope: punctuation.definition.comment.pawn
+          # Pops the current context off the stack. The only accepted value for this key is true.
           pop: true
-    
+          
     - match: /\*
       scope: punctuation.definition.comment.pawn
+      
       push:
         - meta_scope: comment.block.pawn
         - match: \*/
           scope: punctuation.definition.comment.pawn
           pop: true
-    
+          
     - match: \*/
       scope: invalid.illegal.stray-comment-end.pawn
-    
+      
     - match: ^// =(\s*.*?)\s*=\s*$\n?
       scope: comment.line.banner.pawn
       captures:
         1: meta.toc-list.banner.line.pawn
-    
+      
     - match: //
       scope: punctuation.definition.comment.pawn
       push:
@@ -100,14 +108,14 @@ contexts:
             1: punctuation.separator.continuation.pawn
         - match: \n
           pop: true
-    
+          
     - match: '//'
       scope: punctuation.definition.comment.pawn
       push:
         - meta_scope: comment.line.pawn
         - match: $
           pop: true
-    
+          
   ########################################################
   
   
@@ -117,14 +125,19 @@ contexts:
     - match: ^\s*#
       scope: keyword.other.preprocessor.pawn
       push:
+        # Frequently it's convenient to include the contents of one context within another.
+        # For example, you may define several different contexts for parsing the C language,
+        # and almost all of them can include comments. Rather than copying the relevant match
+        # patterns into each of these contexts, you can include them.
         - include: directive_include
         - include: directive_define
         - include: directive_others
         - include: directive_invalid
-    - match: '%\d' # Colored %1 %2...
+        
+    # Colored %1 %2...
+    - match: '%\d'
       scope: keyword.other.preprocessor.group.pawn
-    
-
+      
   directive_include:
     - match: (include)\s+((["][\t ]*[\w\-\/]*\.(inc|sma)?[\t ]*["])|([<][\t ]*[\w\-\/]*[\t ]*[>])|([^\s]*))
       captures:
@@ -134,7 +147,7 @@ contexts:
         5: include_path.pawn
         6: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
       pop: true
-
+      
   directive_define:
     - match: (define)\s+(([a-zA-Z_][^\s]*)|([^\s]*))
       captures:
@@ -142,19 +155,19 @@ contexts:
         3: entity.name.constant.preprocessor
         4: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
       pop: true
-
+      
   directive_others:
     - match: (if|elseif|else|endif|endinput|undef|endscript|error|file|line|tryinclude|emit|pragma|assert)\s*(.*)
       captures:
         1: keyword.other.preprocessor.define.pawn
         2: entity.name.constant.preprocessor
       pop: true
-
+      
   directive_invalid:
     - match: '[^\n]*'
       scope: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
       pop: true
-   
+      
   ########################################################
   
   
@@ -172,7 +185,7 @@ contexts:
         pop: true
       - include: string_escaped_char
       - include: string_placeholder
-    
+      
   string_escaped_char:
     - match: \^(\^|[abefnprtv\'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})
       scope: constant.character.escape.pawn
@@ -186,13 +199,13 @@ contexts:
             (\.((-?\d+)|\*(-?\d+\$)?)?)?    # precision
             [cbdiufXxasLNn%]                # conversion type
       scope: constant.other.placeholder.pawn
-    
+      
   pawn_character:
     - match: ('[\^]?.')|('.(.+'))
       captures:
         1: string.quoted.single.pawn
         2: invalid.illegal.invalid-character.pawn
-    
+        
   ########################################################
   
   
@@ -224,7 +237,7 @@ contexts:
           scope: function.parens.pawn
         - include: main
         - include: function_block
-    
+        
   function_block:
     - match: '\{'
       scope: punctuation.definition.group.start
@@ -247,7 +260,7 @@ contexts:
           scope: function.parens.pawn
           pop: true
         - include: main
-    
+        
   ########################################################
   
   
@@ -259,16 +272,16 @@ contexts:
         1: constant.numeric.int.pawn
         2: keyword.operator.switch-range.pawn
         3: constant.numeric.int.pawn
-    
+        
     - match: ([-]?0x[\da-f]+)
       scope: constant.numeric.hex.pawn
-
+      
     - match: \b(\d+\.\d+)\b
       scope: constant.numeric.float.pawn
-    
+      
     - match: \b(\d+)\b
       scope: constant.numeric.int.pawn
-    
+      
   ########################################################
   
   
@@ -277,52 +290,52 @@ contexts:
   pawn_post_keywords:
     - match: '(?<!\?)\b[A-Za-z_]\w*\:'
       scope: storage.modifier.tag.pawn
-    
+      
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.pawn
-    
+      
     - match: (\[|\]|)
       scope: keyword.brackets.pawn
-    
+      
   pawn_keywords:
     - match: \s*(case (.*):)\s+
       captures:
         1: keyword.control.pawn
         2: storage.type.vars.pawn
-
+        
     - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while)\b
       scope: keyword.control.pawn
-
+      
     - match: \s*\b(Float|new|enum|char|const|static)\b
       scope: storage.type.vars.pawn
-
+      
     - match: (any\:\.\.\.)
       scope: storage.modifier.tag.pawn
 
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
       scope: keyword.operator.assignment.pawn
-
+      
     - match: (==|!=|<=|>=|<>|<|>)
       scope: keyword.operator.comparison.pawn
-
+      
     - match: (\-\-|\+\+)
       scope: keyword.operator.increment-decrement.pawn
-
+      
     - match: (\?|:)
       scope: keyword.operator.ternary.pawn
-
+      
     - match: (\-|\+|\*|\/|%)
       scope: keyword.operator.arithmetic.pawn
-
+      
     - match: (!|&&|\|\|)
       scope: keyword.operator.logical.pawn
-
+      
     - match: (~|&|\||\^|<<|>>)
       scope: keyword.operator.bitwise.pawn
-
+      
     - match: (\,)
       scope: keyword.coma.pawn
-    
+      
   ########################################################
   
   
@@ -337,12 +350,13 @@ contexts:
           scope: parens.pawn
           pop: true
         - include: main
-    
+        
   check_brackets:
     - match: \)
       scope: invalid.illegal.stray-bracket-end
-    
+      
   ########################################################
+  
   
   
   
