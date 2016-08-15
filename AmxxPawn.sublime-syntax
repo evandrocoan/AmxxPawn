@@ -1,19 +1,32 @@
 %YAML 1.2
 ---
+# "AmxxPawn Syntax"
+# Author: Destro-/Addons zz
+
+
+
+# This defines the name shown for the syntax in the menu. It's optional, and will be
+# derived from the file name if not used.
 name: AmxxPawn
-    
+
+# A list of strings, defining what file extensions this syntax should be used for.
 file_extensions:
   - sma
   - inc
   - bbcode
   
+# The default scope assigned to all text in the file.
 scope: source.AmxxPawn
+
+# When a file is opened without a recognized extension, the first line of the file
+# contents will be tested against this regex, to see if the syntax should be applied.
+first_line_match: '(?i:amxx\-?pawn)'
   
   ########################################################
   
   
   
-  # "Global Variables"
+# "Global Variables"
 variables:
     identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
     path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
@@ -22,8 +35,8 @@ variables:
   
   
   
-  # "AmxxPawn Syntax"
-  # Author: Destro-/Addons zz
+# For most languages, you'll need more than one context. For example, in C, we don't
+# want a for word in the middle of a string to be highlighted as a keyword.
 contexts:
   
   main:
@@ -40,7 +53,8 @@ contexts:
     - include: check_brackets
     
     # Constants
-    - include: Packages/amxmodx/const.sublime-syntax
+    #- include: Packages/amxmodx/const.sublime-syntax
+    # TODO, create a parser to find the constants on the amxx include/scripting folder.
     
   ########################################################
   
