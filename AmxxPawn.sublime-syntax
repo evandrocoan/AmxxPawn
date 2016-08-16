@@ -62,14 +62,8 @@ contexts:
     # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
     # likely need to quote it. Regexes are only ever run against a single line of text at a time.
     # The match key is a regex, using the Ruby syntax.
-    - match: ^/\* =(\s*.*?)\s*= \*/$\n?
-      # The scope assigned to the matched text.
-      scope: comment.block.pawn
-      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
-      captures:
-        1: meta.toc-list.banner.block.pawn
-        
     - match: /\*\*
+      # The scope assigned to the matched text.
       scope: punctuation.definition.comment.pawn
       # The contexts to push onto the stack. This may be either a single context name, a list
       # of context names, or an inline, anonymous context.
@@ -96,6 +90,7 @@ contexts:
       
     - match: ^// =(\s*.*?)\s*=\s*$\n?
       scope: comment.line.banner.pawn
+      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         1: meta.toc-list.banner.line.pawn
       
