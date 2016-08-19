@@ -11,10 +11,10 @@ name: AmxxPawn
 
 # A list of strings, defining what file extensions this syntax should be used for.
 file_extensions:
-  - sma
-  - inc
   - bbcode
-  
+  - inc
+  - sma
+
 # The default scope assigned to all text in the file.
 scope: source.AmxxPawn
 
