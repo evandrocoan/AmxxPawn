@@ -301,7 +301,10 @@ contexts:
     - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while)\b
       scope: keyword.control.pawn
       
-    - match: \s*\b(Float|new|enum|char|const|static)\b
+    - match: \s*\b(new)\b
+      scope: keyword.pawn
+      
+    - match: \s*\b(Float|enum|char|const|static)\b
       scope: storage.type.vars.pawn
       
     - match: (any\:\.\.\.)
