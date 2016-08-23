@@ -117,52 +117,24 @@ contexts:
   
   # "Pawn Directives"
   pawn_directives:
-    - match: ^\s*#
-      scope: keyword.other.preprocessor.pawn
+    # Colored %0, %1, %2, ... for lines which does not continue using \
+    - match: '^\s*\#'
       push:
-        # Frequently it's convenient to include the contents of one context within another.
-        # For example, you may define several different contexts for parsing the C language,
-        # and almost all of them can include comments. Rather than copying the relevant match
-        # patterns into each of these contexts, you can include them.
-        - include: directive_include
-        - include: directive_define
-        - include: directive_others
-        - include: directive_invalid
-        
-    # Colored %1 %2...
-    - match: '%\d'
-      scope: keyword.other.preprocessor.group.pawn
-      
-  directive_include:
-    - match: (include)\s+((["][\t ]*[\w\-\/]*\.(inc|sma)?[\t ]*["])|([<][\t ]*[\w\-\/]*[\t ]*[>])|([^\s]*))
-      captures:
-        1: keyword.other.preprocessor.include.pawn
-        3: include_path.pawn
-        4: include_path.pawn
-        5: include_path.pawn
-        6: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
-      pop: true
-      
-  directive_define:
-    - match: (define)\s+(([a-zA-Z_][^\s]*)|([^\s]*))
-      captures:
-        1: keyword.other.preprocessor.define.pawn
-        3: entity.name.constant.preprocessor
-        4: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
-      pop: true
-      
-  directive_others:
-    - match: (if|elseif|else|endif|endinput|undef|endscript|error|file|line|tryinclude|emit|pragma|assert)\s*(.*)
-      captures:
-        1: keyword.other.preprocessor.define.pawn
-        2: entity.name.constant.preprocessor
-      pop: true
-      
-  directive_invalid:
-    - match: '[^\n]*'
-      scope: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
-      pop: true
-      
+        - meta_scope: preprocessor.pawn
+        - match: '%\d'
+          scope: constant.numeric.pawn
+        - match: '[^\\]\n'
+          pop: true
+          
+    # Colored %0, %1, %2, ... for lines which does continue using \
+    - match: '^\s*\#.*(%\d|(\\\n))'
+      push:
+        - meta_scope: preprocessor.pawn
+        - match: '%\d'
+          scope: constant.numeric.pawn
+        - match: '((.*\\\n)*.*[^\\]\n)'
+          pop: true
+          
   ########################################################
   
   
@@ -178,6 +150,10 @@ contexts:
           1: punctuation.definition.string.end.pawn
           2: invalid.illegal.unexpected-end-of-line.pawn
         pop: true
+        # Frequently it's convenient to include the contents of one context within another.
+        # For example, you may define several different contexts for parsing the C language,
+        # and almost all of them can include comments. Rather than copying the relevant match
+        # patterns into each of these contexts, you can include them.
       - include: string_escaped_char
       - include: string_placeholder
       
