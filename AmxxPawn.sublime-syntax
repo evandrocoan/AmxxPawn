@@ -1,7 +1,11 @@
 %YAML 1.2
 ---
 # "AmxxPawn Syntax"
-# Author: Destro-/Addons zz
+# Author: ppalex7/Destro-/Addons zz
+# 
+# https://github.com/ppalex7/SourcePawnCompletions
+# https://forums.alliedmods.net/showthread.php?t=284385
+# 
 # Note that due to the YAML syntax, tab characters are not allowed within .sublime-syntax files.
 
 
