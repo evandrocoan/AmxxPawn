@@ -26,7 +26,7 @@ first_line_match: '(?i:amxx\-?pawn)'
 variables:
   identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
   path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
-
+  
 # For most languages, you'll need more than one context. For example, in C, we don't
 # want a for word in the middle of a string to be highlighted as a keyword.
 contexts:
@@ -42,14 +42,11 @@ contexts:
     - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
-    
-    - include: parens
-    - include: check_brackets
-    
-    # Constants
-    #- include: Packages/amxmodx/const.sublime-syntax
-    # TODO: Create a parser to find the constants on the amxx include/scripting folder.
-    
+  
+  # Constants
+  #- include: Packages/amxmodx/const.sublime-syntax
+  # TODO: Create a parser to find the constants on the amxx include/scripting folder.
+  
   ########################################################
   
   
@@ -93,7 +90,7 @@ contexts:
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         1: meta.toc-list.banner.line.pawn
-      
+        
     - match: //
       scope: punctuation.definition.comment.pawn
       push:
@@ -162,7 +159,7 @@ contexts:
       scope: constant.character.escape.pawn
     - match: \^.
       scope: invalid.illegal.unknown-escape.pawn
-    
+      
   string_placeholder:
     - match: |-
         (?x)%
@@ -185,53 +182,42 @@ contexts:
   pawn_function:
     - include: function_definition
     - include: function_call
+    - include: function_block
+    
+  # We cannot include the whole main context here, otherwise we would re-include this own context
+  # creating an infinity context include loop. Then we need to include all main contexts except
+  # this own context.
+  pawn_function_includes:
+    - include: pawn_string
+    - include: pawn_character
+    - include: pawn_coment
+    - include: pawn_directives
+    - include: pawn_numbers
+    - include: pawn_keywords
+    - include: pawn_post_keywords
     
   function_definition:
-    - match: ^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*(\()
+    - match: '^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
       captures:
         1: storage.type.function.pawn
         2: storage.modifier.tag.pawn
-        3: support.function.definition.pawn
-        4: function.parens.pawn
-      push:
-        - match: \)
-          scope: function.parens.pawn
-        - include: main
-        - include: function_block
-    - match: '^[ ;]*([A-Za-z_]\w*:)?([A-Za-z_][\w_]*)[\s]*(\()'
-      captures:
-        1: storage.modifier.tag.pawn
-        2: support.function.definition.pawn
-        3: function.parens.pawn
-      push:
-        - match: \)
-          scope: function.parens.pawn
-        - include: main
-        - include: function_block
+        3: function.definition.pawn
         
   function_block:
-    - match: '\{'
-      scope: punctuation.definition.group.start
+    - match: '{'
       push:
-        - meta_scope: meta.block.pawn
-        - match: '\}'
-          scope: punctuation.definition.group.end
+        - match: '}'
           pop: true
-        - include: main
-        - include: function_call
-    - include: main
+        - include: function_block
+    - include: pawn_function_includes
     
   function_call:
-    - match: \s*([A-Za-z_][\w_]*)[\s]*(\()
+    - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
       captures:
-        1: support.function.call.pawn
-        2: function.parens.pawn
-      push:
-        - match: \)
-          scope: function.parens.pawn
-          pop: true
-        - include: main
-        
+        1: function.call.pawn
+        2: keyword.brackets.pawn
+    - include: pawn_function_includes
+  
   ########################################################
   
   
@@ -265,7 +251,7 @@ contexts:
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.pawn
       
-    - match: (\[|\]|)
+    - match: '\{|\}|\(|\)|\[|\]'
       scope: keyword.brackets.pawn
       
   pawn_keywords:
@@ -274,7 +260,7 @@ contexts:
         1: keyword.control.pawn
         2: storage.type.vars.pawn
         
-    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while)\b
+    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new)\b
       scope: keyword.control.pawn
       
     - match: \s*\b(new)\b
@@ -285,7 +271,7 @@ contexts:
       
     - match: (any\:\.\.\.)
       scope: storage.modifier.tag.pawn
-
+      
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
       scope: keyword.operator.assignment.pawn
       
@@ -308,26 +294,7 @@ contexts:
       scope: keyword.operator.bitwise.pawn
       
     - match: (\,)
-      scope: keyword.coma.pawn
-      
-  ########################################################
-  
-  
-  
-  # "Check Brackets Closed"
-  parens:
-    - match: \(
-      scope: parens.pawn
-      push:
-        - meta_scope: meta.group.c
-        - match: \)
-          scope: parens.pawn
-          pop: true
-        - include: main
-        
-  check_brackets:
-    - match: \)
-      scope: invalid.illegal.stray-bracket-end
+      scope: keyword.other.pawn
       
   ########################################################
   
