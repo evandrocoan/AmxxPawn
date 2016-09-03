@@ -94,6 +94,13 @@ contexts:
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         1: meta.toc-list.banner.line.AmxxPawn
+       
+    - match: ///
+      scope: punctuation.definition.doccomment.AmxxPawn
+      push:
+        - meta_scope: comment.line.triple-slash.AmxxPawn
+        - match: \n
+          pop: true
         
     - match: //
       scope: punctuation.definition.comment.AmxxPawn
