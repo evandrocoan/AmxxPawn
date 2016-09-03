@@ -1,7 +1,7 @@
 Sublime Text AMXX Pawn Syntax
 =============
 
-Replacement self-contained AmxxPawn syntax definition for Sublime Text.
+Replacement self-contained AmxxPawn syntax definition for Sublime Text. See a improved tutorial on [Sublime Text AMXX Pawn Syntax and Notepad++ Theme](https://forums.alliedmods.net/showthread.php?t=287196).
 
 ![Imgur](http://i.imgur.com/iXk6Qpb.png)
 
@@ -9,6 +9,7 @@ Replacement self-contained AmxxPawn syntax definition for Sublime Text.
 
 
 
+___
 ## Notes
 
 It only works well for the [Sublime Text Notepad++ Theme](https://github.com/evandrocoan/SublimeNotepadPlusPlusTheme).
@@ -24,7 +25,7 @@ It only works well for the [Sublime Text Notepad++ Theme](https://github.com/eva
 git clone https://github.com/evandrocoan/SublimeAmxxPawn SublimeAmxxPawn
 </code></pre>
 1. Restart Sublime
-
+1. Not clear enough? See the full installation video guide [How To Install Sublime Notepad Theme](https://vid.me/DXOc).
 
 
 ___
