@@ -212,7 +212,7 @@ contexts:
       captures:
         1: storage.type.function.AmxxPawn
         2: storage.modifier.tag.AmxxPawn
-        3: function.definition.AmxxPawn
+        3: function.definition.AmxxPawn, entity.name.function.AmxxPawn
         
   function_block:
     - match: '{'
