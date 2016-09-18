@@ -210,11 +210,11 @@ contexts:
     - include: pawn_post_keywords
     
   function_definition:
-    - match: '^[\s;]*(public|stock|native|forward)\s+([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
+    - match: '^(\s*(public|stock|native|forward)\s+)?([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
       captures:
-        1: storage.type.function.AmxxPawn
-        2: storage.modifier.tag.AmxxPawn
-        3: function.definition.AmxxPawn, entity.name.function.AmxxPawn
+        2: storage.type.function.AmxxPawn
+        3: storage.modifier.tag.AmxxPawn
+        4: function.definition.AmxxPawn, entity.name.function.AmxxPawn
         
   function_block:
     - match: '{'
