@@ -236,9 +236,10 @@ contexts:
         - include: pawn_numbers
         - include: pawn_keywords
         - include: pawn_post_keywords
-        - match: '({{words_pawn}})(\s*=\s*{{words_pawn}})?'
+        - match: '({{words_pawn}})(\s*(=)\s)?'
           captures:
             1: variable.definition.AmxxPawn
+            3: keyword.operator.assignment.AmxxPawn
         - match: ','
           scope: punctuation.separator.AmxxPawn
         
