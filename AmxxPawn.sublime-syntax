@@ -204,8 +204,16 @@ contexts:
   # "PAWN Function"
   pawn_function:
     - include: function_definition
-    - include: function_call
-    - include: function_block
+    - match: '{'
+      scope: keyword.brackets.AmxxPawn
+      push:
+        - meta_scope: meta.block.AmxxPawn
+        - include: function_call
+        - match: '}'
+          scope: keyword.brackets.AmxxPawn
+          pop: true
+        - include: pawn_function
+    - include: pawn_function_includes
     
   # We cannot include the whole main context here, otherwise we would re-include this own context
   # creating an infinity context include loop. Then we need to include all main contexts except
@@ -220,44 +228,40 @@ contexts:
     - include: pawn_keywords
     - include: pawn_post_keywords
     
+  pawn_function_includes_no_variables:
+    - include: pawn_string
+    - include: pawn_character
+    - include: pawn_coment
+    - include: pawn_directives
+    - include: pawn_numbers
+    - include: pawn_keywords
+    - include: pawn_post_keywords
+    
+  function_call:
+    - include: pawn_function_includes
+    - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
+      captures:
+        1: function.call.AmxxPawn
+        2: keyword.brackets.AmxxPawn
+    
   function_definition:
     - match: '^(\s*(public|stock|native|forward)\s+)([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
       captures:
         2: storage.type.function.AmxxPawn
         3: storage.modifier.tag.AmxxPawn
         4: function.definition.AmxxPawn, entity.name.function.AmxxPawn
-      push:  
+      push:
         - match: \)
           scope: keyword.brackets.AmxxPawn
           pop: true
-        - include: pawn_string
-        - include: pawn_character
-        - include: pawn_coment
-        - include: pawn_numbers
-        - include: pawn_keywords
-        - include: pawn_post_keywords
+        - include: pawn_function_includes_no_variables
         - match: '({{words_pawn}})(\s*(=)\s)?'
           captures:
-            1: variable.definition.AmxxPawn
+            1: paremeter.definition.AmxxPawn
             3: keyword.operator.assignment.AmxxPawn
         - match: ','
           scope: punctuation.separator.AmxxPawn
-        
-  function_block:
-    - match: '{'
-      push:
-        - match: '}'
-          pop: true
-        - include: function_block
-    - include: pawn_function_includes
-    
-  function_call:
-    - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
-      captures:
-        1: function.call.AmxxPawn
-        2: keyword.brackets.AmxxPawn
-    - include: pawn_function_includes
-  
+          
   ########################################################
   
   
@@ -354,7 +358,7 @@ contexts:
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.AmxxPawn
       
-    - match: '\{|\}|\(|\)|\[|\]'
+    - match: '\(|\)|\[|\]'
       scope: keyword.brackets.AmxxPawn
       
   ########################################################
