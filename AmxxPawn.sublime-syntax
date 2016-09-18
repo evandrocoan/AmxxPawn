@@ -43,8 +43,8 @@ contexts:
     - include: pawn_coment
     - include: pawn_directives
     - include: pawn_numbers
-    - include: pawn_variables
     - include: pawn_keywords
+    - include: pawn_variables
     - include: pawn_function
     - include: pawn_post_keywords
     
@@ -127,9 +127,11 @@ contexts:
   # "Pawn Directives"
   pawn_directives:
     # Colored %0, %1, %2, ... for lines which does not continue using \
-    - match: '^\s*\#'
+    - match: '^\s*\#(define\s*({{words_pawn}}))'
+      captures:
+        2: function.definition.AmxxPawn
       push:
-        - meta_scope: preprocessor.AmxxPawn
+        - meta_scope: meta.preprocessor.AmxxPawn
         - match: '%\d'
           scope: constant.numeric.AmxxPawn
         - match: '[^\\]\n'
@@ -138,7 +140,7 @@ contexts:
     # Colored %0, %1, %2, ... for lines which does continue using \
     - match: '^\s*\#.*(%\d|(\\\n))'
       push:
-        - meta_scope: preprocessor.AmxxPawn
+        - meta_scope: meta.preprocessor.AmxxPawn
         - match: '%\d'
           scope: constant.numeric.AmxxPawn
         - match: '((.*\\\n)*.*[^\\]\n)'
