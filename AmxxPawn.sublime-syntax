@@ -30,7 +30,7 @@ first_line_match: '(?i:amxx\-?pawn)'
 variables:
   identifiers: 'Float|enum|char|const|static'
   words_pawn: '[A-Za-z_0-9]+'
-  reserved_keywords: 'sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new'
+  reserved_keywords: 'sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new|false|true'
   
 # For most languages, you'll need more than one context. For example, in C, we don't
 # want a for word in the middle of a string to be highlighted as a keyword.
@@ -43,8 +43,8 @@ contexts:
     - include: pawn_coment
     - include: pawn_directives
     - include: pawn_numbers
-    - include: pawn_keywords
     - include: pawn_variables
+    - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
     
@@ -125,8 +125,9 @@ contexts:
   
   
   # "Pawn Directives"
+  # Colored %0, %1, %2, ...
   pawn_directives:
-    # Colored %0, %1, %2, ... for lines which does not continue using \
+    # For lines which does not continue using \
     - match: '^\s*\#(define\s*({{words_pawn}}))'
       captures:
         2: function.definition.AmxxPawn
@@ -137,7 +138,15 @@ contexts:
         - match: '[^\\]\n'
           pop: true
           
-    # Colored %0, %1, %2, ... for lines which does continue using \
+    - match: '^\s*\#\s*'
+      push:
+        - meta_scope: meta.preprocessor.AmxxPawn
+        - match: '%\d'
+          scope: constant.numeric.AmxxPawn
+        - match: '[^\\]\n'
+          pop: true
+          
+    # For lines which does continue using \
     - match: '^\s*\#.*(%\d|(\\\n))'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
@@ -217,6 +226,21 @@ contexts:
         2: storage.type.function.AmxxPawn
         3: storage.modifier.tag.AmxxPawn
         4: function.definition.AmxxPawn, entity.name.function.AmxxPawn
+      push:  
+        - match: \)
+          scope: keyword.brackets.AmxxPawn
+          pop: true
+        - include: pawn_string
+        - include: pawn_character
+        - include: pawn_coment
+        - include: pawn_numbers
+        - include: pawn_keywords
+        - include: pawn_post_keywords
+        - match: '({{words_pawn}})(\s*=\s*{{words_pawn}})?'
+          captures:
+            1: variable.definition.AmxxPawn
+        - match: ','
+          scope: punctuation.separator.AmxxPawn
         
   function_block:
     - match: '{'
@@ -260,14 +284,14 @@ contexts:
   
   # PAWN Variables
   pawn_variables:
-    - match: '\s*(new)\s*({{identifiers}})?(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+    - match: '\s*(new)\s*\b({{identifiers}})\b?(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
         3: variable.type.AmxxPawn
         4: variable.definition.AmxxPawn
         
-    - match: '\s*({{identifiers}})(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
       captures:
         1: storage.type.vars.AmxxPawn
         2: variable.type.AmxxPawn
@@ -291,8 +315,9 @@ contexts:
     - match: \s*\b({{identifiers}})\b
       scope: storage.type.vars.AmxxPawn
       
-    - match: (any\:\.\.\.)
-      scope: storage.modifier.tag.AmxxPawn
+    - match: any\:(\.\.\.)
+      captures: 
+        1: storage.modifier.tag.AmxxPawn
       
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
       scope: keyword.operator.assignment.AmxxPawn
