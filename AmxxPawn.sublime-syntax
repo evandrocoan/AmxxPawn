@@ -45,8 +45,8 @@ contexts:
     - include: pawn_numbers
     - include: pawn_variables
     - include: pawn_keywords
-    - include: pawn_post_keywords
     - include: pawn_function
+    - include: pawn_post_keywords
     
   # Constants
   #- include: Packages/amxmodx/const.sublime-syntax
