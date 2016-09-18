@@ -28,8 +28,9 @@ first_line_match: '(?i:amxx\-?pawn)'
 
 # "Global Variables"
 variables:
-  identifier: '\b[[:alpha:]_][[:alnum:]_]*\b'
-  path_lookahead: '(::\s*)?({{identifier}}\s*::\s*)*{{identifier}}'
+  identifiers: 'Float|enum|char|const|static'
+  words_pawn: '[A-Za-z_0-9]+'
+  reserved_keywords: 'sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new'
   
 # For most languages, you'll need more than one context. For example, in C, we don't
 # want a for word in the middle of a string to be highlighted as a keyword.
@@ -38,14 +39,14 @@ contexts:
   # The context name main special: Every syntax must define a main context, as it will be
   # used at the start of the file.
   main:
-    - include: pawn_string
     - include: pawn_character
     - include: pawn_coment
     - include: pawn_directives
     - include: pawn_numbers
+    - include: pawn_variables
     - include: pawn_keywords
-    - include: pawn_function
     - include: pawn_post_keywords
+    - include: pawn_function
     
   # Constants
   #- include: Packages/amxmodx/const.sublime-syntax
@@ -204,6 +205,7 @@ contexts:
     - include: pawn_coment
     - include: pawn_directives
     - include: pawn_numbers
+    - include: pawn_variables
     - include: pawn_keywords
     - include: pawn_post_keywords
     
@@ -254,24 +256,34 @@ contexts:
   
   
   
+  # PAWN Variables
+  pawn_variables:
+    - match: '\s*(new)\s*(Float|float|enum|char|const|static)?(\s*[A-Za-z_0-9]+\s*:)?\s*([A-Za-z_0-9]+)\s*'
+      captures:
+        1: keyword.control.AmxxPawn
+        2: storage.type.vars.AmxxPawn
+        3: variable.type.AmxxPawn
+        4: variable.definition.AmxxPawn
+        
+    - match: '\s*(Float|float|enum|char|const|static)(\s*[A-Za-z_0-9]+\s*:)?\s*([A-Za-z_0-9]+)\s*'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: variable.type.AmxxPawn
+        3: variable.definition.AmxxPawn
+        
+  ########################################################
+  
+  
+  
   # "PAWN Keywords"
-  pawn_post_keywords:
-    - match: '(?<!\?)\b[A-Za-z_]\w*\:'
-      scope: storage.modifier.tag.AmxxPawn
-      
-    - match: \s*\b(public|stock|native|forward)\b
-      scope: storage.type.function.AmxxPawn
-      
-    - match: '\{|\}|\(|\)|\[|\]'
-      scope: keyword.brackets.AmxxPawn
-      
+  
   pawn_keywords:
     - match: \s*(case (.*):)\s+
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
         
-    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new)\b
+    - match: \s*\b({{reserved_keywords}})\b
       scope: keyword.control.AmxxPawn
       
     - match: \s*\b(new)\b
@@ -306,6 +318,19 @@ contexts:
       
     - match: (\,)
       scope: keyword.other.AmxxPawn
+      
+  ########################################################
+  
+  
+  pawn_post_keywords:
+    - match: '(?<!\?)\b[A-Za-z_]\w*\:'
+      scope: storage.modifier.tag.AmxxPawn
+      
+    - match: \s*\b(public|stock|native|forward)\b
+      scope: storage.type.function.AmxxPawn
+      
+    - match: '\{|\}|\(|\)|\[|\]'
+      scope: keyword.brackets.AmxxPawn
       
   ########################################################
   
