@@ -258,14 +258,14 @@ contexts:
   
   # PAWN Variables
   pawn_variables:
-    - match: '\s*(new)\s*(Float|float|enum|char|const|static)?(\s*[A-Za-z_0-9]+\s*:)?\s*([A-Za-z_0-9]+)\s*'
+    - match: '\s*(new)\s*({{identifiers}})?(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
         3: variable.type.AmxxPawn
         4: variable.definition.AmxxPawn
         
-    - match: '\s*(Float|float|enum|char|const|static)(\s*[A-Za-z_0-9]+\s*:)?\s*([A-Za-z_0-9]+)\s*'
+    - match: '\s*({{identifiers}})(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
       captures:
         1: storage.type.vars.AmxxPawn
         2: variable.type.AmxxPawn
@@ -286,10 +286,7 @@ contexts:
     - match: \s*\b({{reserved_keywords}})\b
       scope: keyword.control.AmxxPawn
       
-    - match: \s*\b(new)\b
-      scope: keyword.AmxxPawn
-      
-    - match: \s*\b(Float|enum|char|const|static)\b
+    - match: \s*\b({{identifiers}})\b
       scope: storage.type.vars.AmxxPawn
       
     - match: (any\:\.\.\.)
