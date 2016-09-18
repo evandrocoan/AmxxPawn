@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>(source.AmxxPawn) &amp; (function | variable)</string>
+	<string>(source.AmxxPawn) &amp; (function.definition | variable.definition)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
