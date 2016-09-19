@@ -133,16 +133,14 @@ contexts:
         2: function.definition.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
-        - match: '%\d'
-          scope: constant.numeric.AmxxPawn
+        - include: preprocessor_numbers
         - match: '[^\\]\n'
           pop: true
           
-    - match: '^\s*\#\s*'
+    - match: '^\s*\#'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
-        - match: '%\d'
-          scope: constant.numeric.AmxxPawn
+        - include: preprocessor_numbers
         - match: '[^\\]\n'
           pop: true
           
@@ -150,11 +148,14 @@ contexts:
     - match: '^\s*\#.*(%\d|(\\\n))'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
-        - match: '%\d'
-          scope: constant.numeric.AmxxPawn
+        - include: preprocessor_numbers
         - match: '((.*\\\n)*.*[^\\]\n)'
           pop: true
           
+  preprocessor_numbers:
+    - match: '%\d'
+      scope: constant.numeric.AmxxPawn
+      
   ########################################################
   
   
