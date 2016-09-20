@@ -5,12 +5,23 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>(source.AmxxPawn) &amp; (function.definition | variable.definition)</string>
+	<string>(source.AmxxPawn) &amp; (function.definition | variable.definition - meta.block)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>showInIndexedSymbolList</key>
+		<integer>1</integer>
+	</dict>
+</dict>
+<dict>
+	<key>name</key>
+	<string>Symbol List</string>
+	<key>scope</key>
+	<string>(source.AmxxPawn) &amp; (variable.definition | parameter.definition)</string>
+	<key>settings</key>
+	<dict>
+		<key>showInSymbolList</key>
 		<integer>1</integer>
 	</dict>
 </dict>
