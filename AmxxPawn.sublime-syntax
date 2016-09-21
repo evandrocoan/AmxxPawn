@@ -128,6 +128,11 @@ contexts:
   # Colored %0, %1, %2, ...
   pawn_directives:
     # For lines which does not continue using \
+    - match: '^\s*\#(define\s*({{words_pawn}}))\n'
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        2: function.definition.AmxxPawn
+          
     - match: '^\s*\#(define\s*({{words_pawn}}))'
       captures:
         2: function.definition.AmxxPawn
