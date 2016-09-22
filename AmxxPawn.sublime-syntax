@@ -320,7 +320,7 @@ contexts:
       captures:
         1: storage.type.vars.AmxxPawn
         2: variable.type.AmxxPawn
-        3: variable.definition.AmxxPawn
+        3: variable.local.definition.AmxxPawn
         
   ########################################################
   
