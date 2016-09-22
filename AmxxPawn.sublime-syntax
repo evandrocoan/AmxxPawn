@@ -230,7 +230,7 @@ contexts:
     - include: pawn_coment
     - include: pawn_directives
     - include: pawn_numbers
-    - include: pawn_variables
+    - include: pawn_variables_local
     - include: pawn_keywords
     - include: pawn_post_keywords
     
@@ -301,6 +301,20 @@ contexts:
         2: storage.type.vars.AmxxPawn
         3: variable.type.AmxxPawn
         4: variable.definition.AmxxPawn
+        
+    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: variable.type.AmxxPawn
+        3: variable.definition.AmxxPawn
+        
+  pawn_variables_local:
+    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+      captures:
+        1: keyword.control.AmxxPawn
+        2: storage.type.vars.AmxxPawn
+        3: variable.type.AmxxPawn
+        4: variable.local.definition.AmxxPawn
         
     - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
       captures:
