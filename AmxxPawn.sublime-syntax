@@ -41,7 +41,7 @@ contexts:
   main:
     - include: pawn_character
     - include: pawn_coment
-    - include: pawn_directives
+    - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_variables
     - include: pawn_keywords
@@ -126,7 +126,7 @@ contexts:
   
   # "Pawn Directives"
   # Colored %0, %1, %2, ...
-  pawn_directives:
+  pawn_preprocessor:
     # For lines which does not continue using \
     #
     # For lines ending with a pawn word, we need to catch here, otherwise the next regex cannot
@@ -236,7 +236,7 @@ contexts:
     - include: pawn_string
     - include: pawn_character
     - include: pawn_coment
-    - include: pawn_directives
+    - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_variables_local
     - include: pawn_keywords
@@ -246,7 +246,7 @@ contexts:
     - include: pawn_string
     - include: pawn_character
     - include: pawn_coment
-    - include: pawn_directives
+    - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_keywords
     - include: pawn_post_keywords
