@@ -127,8 +127,6 @@ contexts:
   # "Pawn Directives"
   # Colored %0, %1, %2, ...
   pawn_preprocessor:
-    # For lines which does not continue using \
-    #
     # For lines ending with a pawn word, we need to catch here, otherwise the next regex cannot
     # consume enought to catch '[^\\]\n'
     - match: '^\s*\#(define\s+({{words_pawn}}))\n'
@@ -142,33 +140,33 @@ contexts:
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_numbers
-        - match: '[^\\]\n'
-          pop: true
           
     - match: '^\s*\#'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_numbers
-        - match: '[^\\]\n'
-          pop: true
-          
-    # For lines which does continue using \
-    - match: '^\s*\#.*(%\d|(\\\n))'
-      push:
-        - meta_scope: meta.preprocessor.AmxxPawn
-        - include: preprocessor_numbers
-        - match: '((.*\\\n)*.*[^\\]\n)'
-          pop: true
           
   preprocessor_numbers:
     - include: pawn_coment
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
+      
+    # For lines ending with digits
     - match: '\d\n'
       scope: constant.numeric.AmxxPawn
       pop: true
+      
+    # For the digits anywhere on the line, except its end
     - match: '\d'
       scope: constant.numeric.AmxxPawn
+      
+    # For \ signs on the line's middle
+    - match: '(\\.+)'
+      pop: true
+      
+    # For lines which does continue using \
+    - match: '([^\\]\n)'
+      pop: true
       
   ########################################################
   
