@@ -209,7 +209,7 @@ not match this
 /**
  * Setup the debugging tools when they are used/necessary.
  */
-#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL
+#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL /*  */
 not match this
     
     /**
@@ -267,7 +267,7 @@ not match this
 #pragma semicolon 1
 
 
-#if IS_TO_ENABLE_SVEN_COOP_SUPPPORT > 0
+#if IS_TO_ENABLE_SVEN_COOP_SUPPPORT > 0 /*  */
     #include <hamsandwich>
 #endif
 
