@@ -267,7 +267,7 @@ not match this
 #pragma semicolon 1
 
 
-#if IS_TO_ENABLE_SVEN_COOP_SUPPPORT > 0 /*  */
+#if IS_TO_ENABLE_SVEN_COOP_SUPPPORT > 0 /*  */ //
     #include <hamsandwich>
 #endif
 
