@@ -209,7 +209,7 @@ not match this
 /**
  * Setup the debugging tools when they are used/necessary.
  */
-#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL /*  */
+#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL /*  */ // 
 not match this
     
     /**
