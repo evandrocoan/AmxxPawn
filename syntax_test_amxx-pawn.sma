@@ -3,110 +3,112 @@
 
 
 /*
-// <- source.AmxxPawn comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
- // <- source.AmxxPawn comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
-  // <- source.AmxxPawn comment.block.AmxxPawn
+// <- comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
+ // <- comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
+  // <- comment.block.AmxxPawn
  * This version number must be synced with "githooks/GALILEO_SMA_VERSION.txt" for manual edition.
  * To update them automatically, use: ./githooks/updateVersion.sh [major | minor | patch | build]
  */
-// <- source.AmxxPawn comment.block.AmxxPawn
- // <- source.AmxxPawn comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
+// <- comment.block.AmxxPawn
+ // <- comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
   // <- source.AmxxPawn
 
 
 new const PLUGIN_AUTHOR[]    = "Brad Jones/Addons zz";
 new const PLUGIN_NAME[]      = "Galileo";
-// <- source.AmxxPawn keyword.control.AmxxPawn 
-  // <- source.AmxxPawn keyword.control.AmxxPawn 
-    // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-        // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-          // <- source.AmxxPawn variable.definition.AmxxPawn  
-                    // <- source.AmxxPawn variable.definition.AmxxPawn  
-                     // <- source.AmxxPawn keyword.brackets.AmxxPawn 
-                      // <- source.AmxxPawn keyword.brackets.AmxxPawn 
-                             // <- source.AmxxPawn keyword.operator.assignment.AmxxPawn  
-                               // <- source.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn 
-                                // <- source.AmxxPawn string.quoted.double.AmxxPawn  
-                                      // <- source.AmxxPawn string.quoted.double.AmxxPawn  
-                                       // <- source.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn 
+// <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+        // <- storage.type.vars.AmxxPawn
+          // <- variable.definition.AmxxPawn
+                    // <- variable.definition.AmxxPawn
+                     // <- keyword.brackets.AmxxPawn
+                      // <- keyword.brackets.AmxxPawn
+                             // <- keyword.operator.assignment.AmxxPawn
+                               // <- string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
+                                // <- string.quoted.double.AmxxPawn
+                                      // <- string.quoted.double.AmxxPawn
+                                       // <- string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
                                         // <- source.AmxxPawn
                                          // <- source.AmxxPawn
 
 
 new const bool:g_dummy_value = false;
-// <- source.AmxxPawn keyword.control.AmxxPawn 
-  // <- source.AmxxPawn keyword.control.AmxxPawn 
-    // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-        // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-          // <- source.AmxxPawn variable.type.AmxxPawn  
-             // <- source.AmxxPawn variable.type.AmxxPawn  
-              // <- source.AmxxPawn variable.type.AmxxPawn 
-               // <- source.AmxxPawn variable.definition.AmxxPawn 
-                           // <- source.AmxxPawn variable.definition.AmxxPawn 
-                             // <- source.AmxxPawn keyword.operator.assignment.AmxxPawn  
-                               // <- source.AmxxPawn keyword.control.AmxxPawn  
-                                   // <- source.AmxxPawn keyword.control.AmxxPawn  
+// <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+        // <- storage.type.vars.AmxxPawn
+          // <- variable.type.AmxxPawn
+             // <- variable.type.AmxxPawn
+              // <- variable.type.AmxxPawn
+               // <- variable.definition.AmxxPawn
+                           // <- variable.definition.AmxxPawn
+                             // <- keyword.operator.assignment.AmxxPawn
+                               // <- keyword.control.AmxxPawn
+                                   // <- keyword.control.AmxxPawn
                                     // <- source.AmxxPawn
                                      // <- source.AmxxPawn
 
 
 static formated_message[ MAX_BIG_BOSS_STRING ];
-// <- source.AmxxPawn storage.type.vars.AmxxPawn 
-     // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-       // <- source.AmxxPawn variable.definition.AmxxPawn  
-                      // <- source.AmxxPawn variable.definition.AmxxPawn  
-                       // <- source.AmxxPawn keyword.brackets.AmxxPawn  
-                         // <- source.AmxxPawn  
-                                           // <- source.AmxxPawn  
-                                             // <- source.AmxxPawn keyword.brackets.AmxxPawn 
+// <- storage.type.vars.AmxxPawn
+     // <- storage.type.vars.AmxxPawn
+       // <- variable.definition.AmxxPawn
+                      // <- variable.definition.AmxxPawn
+                       // <- keyword.brackets.AmxxPawn
+                         // <- source.AmxxPawn
+                                           // <- source.AmxxPawn
+                                             // <- keyword.brackets.AmxxPawn
                                               // <- source.AmxxPawn
-                                               // <- source.AmxxPawn 
+                                               // <- source.AmxxPawn
 
 
 const formated_message;
-// <- source.AmxxPawn storage.type.vars.AmxxPawn 
-    // <- source.AmxxPawn storage.type.vars.AmxxPawn 
-      // <- source.AmxxPawn variable.definition.AmxxPawn  
-                     // <- source.AmxxPawn variable.definition.AmxxPawn  
+// <- storage.type.vars.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+      // <- variable.definition.AmxxPawn
+                     // <- variable.definition.AmxxPawn
                       // <- source.AmxxPawn
-                       // <- source.AmxxPawn 
+                       // <- source.AmxxPawn
 
 
 stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
-// <- source.AmxxPawn storage.type.function.AmxxPawn  
-    // <- source.AmxxPawn storage.type.function.AmxxPawn  
-      // <- source.AmxxPawn function.definition.AmxxPawn, entity.name.function.AmxxPawn 
-                                  // <- source.AmxxPawn function.definition.AmxxPawn, entity.name.function.AmxxPawn 
-                                   // <- source.AmxxPawn keyword.brackets.AmxxPawn  
-                                     // <- source.AmxxPawn paremeter.definition.AmxxPawn 
-                                             // <- source.AmxxPawn paremeter.definition.AmxxPawn 
-                                               // <- source.AmxxPawn keyword.operator.assignment.AmxxPawn 
-                                                 // <- source.AmxxPawn constant.numeric.int.AmxxPawn  
-                                                  // <- source.AmxxPawn keyword.other.AmxxPawn 
-                                                    // <- source.AmxxPawn paremeter.definition.AmxxPawn 
-                                                                     // <- source.AmxxPawn paremeter.definition.AmxxPawn 
-                                                                      // <- source.AmxxPawn keyword.brackets.AmxxPawn 
-                                                                       // <- source.AmxxPawn keyword.brackets.AmxxPawn 
-                                                                         // <- source.AmxxPawn keyword.brackets.AmxxPawn  
+// <- storage.type.function.AmxxPawn
+    // <- storage.type.function.AmxxPawn
+      // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
+                                  // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
+                                   // <- keyword.brackets.AmxxPawn
+                                     // <- parameter.definition.AmxxPawn
+                                             // <- parameter.definition.AmxxPawn
+                                               // <- keyword.operator.assignment.AmxxPawn
+                                                 // <- constant.numeric.int.AmxxPawn
+                                                  // <- keyword.other.AmxxPawn
+                                                    // <- parameter.definition.AmxxPawn
+                                                                     // <- parameter.definition.AmxxPawn
+                                                                      // <- keyword.brackets.AmxxPawn
+                                                                       // <- keyword.brackets.AmxxPawn
+                                                                         // <- keyword.brackets.AmxxPawn
                                                                           // <- source.AmxxPawn
 
 
 {}
-// <- source.AmxxPawn meta.block.AmxxPawn keyword.brackets.AmxxPawn 
- // <- source.AmxxPawn meta.block.AmxxPawn keyword.brackets.AmxxPawn 
-  // <- source.AmxxPawn 
+// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
+ // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
+  // <- source.AmxxPawn
+
+
+    #else // this else only works for AMXX 183 or superior, due noted bug above
+    // <- meta.preprocessor.AmxxPawn
+     // <- meta.preprocessor.AmxxPawn
+        // <- meta.preprocessor.AmxxPawn
+          // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn punctuation.definition.comment.AmxxPawn
+            // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+                                                                              // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+
 
 
 stock test_loadVoteChoices_check( test_id, mapToCheck[], bool:isToBePresent = "asdfadsf" )
 {}
-
-#define INSERT_COLOR_TAGS(%1) \
-{ \
-    replace_all( %1, /*charsmax( %1 )*/, "!g", "^4" ); \
-    replace_all( %1, charsmax( %1 ), "!t", "^3" ); \
-    \ replace_all( %1, charsmax( %1 ), "!n", "^1" ); \
-    replace_all( %1, charsmax( %1 ), "!y", "^1" ); \
-}
 
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50
 /**
@@ -120,7 +122,7 @@ not match this
 not match
 not match
 
-    #define DEBUG 
+    #define DEBUG
 not match
 not match
 
@@ -147,7 +149,7 @@ not match this
 stock hi()
 {
     colored_menus();
-    
+
     if( colored_menus() )
     {
         copy( COLOR_RED, 2, "\r" );
@@ -155,17 +157,17 @@ stock hi()
         copy( COLOR_YELLOW, 2, "\y" );
         copy( COLOR_GREY, 2, "\d" );
     }
-    
+
     color_print( 0, "%Lggggg %L",
             LANG_PLAYER, "GAL_CHANGE_TIMEEXPIRED", LANG_PLAYER, "GAL_NEXTMAP", g_nextMap );
-    
+
     {
         color_print( 0, "%Lggggg %L",
                 LANG_PLAYER, "GAL_CHANGE_TIMEEXPIRED", LANG_PLAYER, "GAL_NEXTMAP", g_nextMap );
     }
-    
+
     colored_menus();
-    
+
     if( colored_menus() )
     {
         copy( COLOR_RED, 2, "\r" );
@@ -209,14 +211,14 @@ not match this
 /**
  * Setup the debugging tools when they are used/necessary.
  */
-#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL /*  */ // 
+#if DEBUG_LEVEL & DEBUG_LEVEL_UNIT_TEST_NORMAL /*  */ //
 not match this
-    
+
     /**
      * Contains all imediates unit tests to execute.
      */
     stock normalTestsToExecute()
-    { 
+    {
         test_registerTest();
         test_isInEmptyCycle();
         test_mapGetNext_cases();
@@ -224,19 +226,19 @@ not match this
         test_resetRoundsScores_cases();
         test_loadVoteChoices_cases( DEBUGGER_OUTPUT_LOG_FILE_NAME[], formated_message );
     }
-    
+
     #define DEBUG
     #define LOGGER(%1) debugMesssageLogger( %1 );
-    
+
 #else
     /**
      * The file on the './addons/amxmodx/logs' folder, to save the debugging text output.
      */
     new const DEBUGGER_OUTPUT_LOG_FILE_NAME[] = "_galileo.log";
-    
+
     /**
      * Write messages to the debug log file on 'addons/amxmodx/logs'.
-     * 
+     *
      * @param log_file               the log file name.
      * @param formated_message       the formatted message to write down to the debug log file.
      */
@@ -244,7 +246,7 @@ not match this
     {
         static formated_message[ MAX_BIG_BOSS_STRING ];
         vformat( formated_message, charsmax( formated_message ), message, 2 );
-        
+
         writeToTheDebugFile( DEBUGGER_OUTPUT_LOG_FILE_NAME, formated_message );
     }
 #endif
@@ -290,12 +292,12 @@ public plugin_init()
 #if DEBUG_LEVEL & DEBUG_LEVEL_CRITICAL_MODE
     g_debug_level = 1048575;
 #endif
-var = 50; // when anything start without indentation, it breaks other things, so just indent your code. 
+var = 50; // when anything start without indentation, it breaks other things, so just indent your code.
     register_plugin( PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR );
     LOGGER( 1, "^n^n^n^n%s PLUGIN VERSION %s INITIATING...", PLUGIN_NAME, PLUGIN_VERSION )
-    
+
     register_cvar( "amx_extendmap_max", "90" );
-    
+
     cvar_extendmapAllowStayType  = register_cvar( "amx_extendmap_allow_stay_type", "0" );
     cvar_disabledValuePointer    = register_cvar( "gal_disabled_value_pointer", "0", FCVAR_SPONLY );
     cvar_isFirstServerStart      = register_cvar
@@ -331,20 +333,20 @@ stock configureServerStart
 {
     LOGGER
     ( 128, "I AM ENTERING ON configureServerStart(0)" )
-    
+
     LOGGER( 128, "I AM ENTERING ON configureServerStart(0)" )
-    
+
     if( __get_pcvar_num
                        ( __cvar_gameCrashRecreationAction, get_pcvar_num( cvar_isFirstServerStart) ) )
     {
         g_isToCreateGameCrashFlag = true;
     }
-    
+
     if( get_pcvar_num( cvar_isFirstServerStart) )
     {
         new backupMapsFilePath[ MAX_FILE_PATH_LENGHT ];
         formatex( backupMapsFilePath, charsmax( backupMapsFilePath ), "%s/%s", g_dataDirPath, CURRENT_AND_NEXTMAP_FILE_NAME );
-        
+
         if( file_exists( backupMapsFilePath ) )
         {
             handleServerStart( backupMapsFilePath );
@@ -358,7 +360,7 @@ stock configureServerStart
     {
         saveCurrentAndNextMapNames( g_nextMap );
     }
-    
+
     // Handle the action to take immediately after half of the time-left or rounds-left passed
     // when using the 'Game Server Crash Recreation' Feature.
     if( g_isToCreateGameCrashFlag
@@ -369,19 +371,19 @@ stock configureServerStart
     {
         new gameCrashActionFilePath[ MAX_FILE_PATH_LENGHT ];
         g_isToCreateGameCrashFlag = false; // stop creating this file unnecessarily
-        
+
         LOGGER( 1, "( vote_manageEnd )  %d/%d < %d: %d", \
                 g_winLimitInteger, SERVER_GAME_CRASH_ACTION_RATIO_DIVISOR, g_totalTerroristsWins + g_totalCtWins, \
                 g_winLimitInteger / SERVER_GAME_CRASH_ACTION_RATIO_DIVISOR < g_totalTerroristsWins + g_totalCtWins )
-        
+
         generateGameCrashActionFilePath( gameCrashActionFilePath, charsmax( gameCrashActionFilePath ) );
         write_file( gameCrashActionFilePath, "Game Crash Action Flag File^n^nSee the cvar 'gal_game_crash_recreation'.^nDo not delete it." );
     }
-    
+
     // load runoff choices
     copy( runoffChoice[ 0 ], charsmax( runoffChoice[] ), g_votingMapNames[ g_arrayOfRunOffChoices[ 0 ] ] );
     copy( runoffChoice[ 1 ], charsmax( runoffChoice[] ), g_votingMapNames[ g_arrayOfRunOffChoices[ 1 ] ] );
-    
+
     LOGGER( 4, "  ( votedisplay ) g_isToRefreshVoteStatus: %i,  g_totalVoteOptions: %i, strlen( g_voteStatusClean ): %i", \
                                   g_isToRefreshVoteStatus,      g_totalVoteOptions,     strlen( g_voteStatusClean )  )
 }
@@ -390,7 +392,7 @@ stock configureServerStart
     {
         static formated_message[ MAX_BIG_BOSS_STRING ];
         vformat( formated_message, charsmax( formated_message ), message, 2 );
-        
+
         writeToTheDebugFile( DEBUGGER_OUTPUT_LOG_FILE_NAME, formated_message );
     }
 
@@ -405,15 +407,15 @@ stock test_loadVoteChoices_check( test_id, mapToCheck[], bool:isToBePresent = "a
 new const bool:g_dummy_value = false;
 static formated_message[ MAX_BIG_BOSS_STRING ];
 const formated_message;
-    
+
     new const bool:g_dummy_value = false;
     static formated_message[ MAX_BIG_BOSS_STRING ];
     const formated_message;
-    
+
     new bool:isMapPresent;
     new      currentIndex;
     new      errorMessage[ MAX_LONG_STRING ];
-    
+
 new const bool:g_dummy_value = false;
 static formated_message[ MAX_BIG_BOSS_STRING ];
 const formated_message;
@@ -421,9 +423,9 @@ const formated_message;
 new bool : isMapPresent ;
 new       currentIndex ;
 new       errorMessage [ MAX_LONG_STRING ];
-    
+
     fileDescriptor = fopen( mapFileListPath, "wt", partialNameAttempt );
-    
+
     if( mapToCheck[ 0 ] )
     {
         for( currentIndex = 0; currentIndex < sizeof g_votingMapNames; ++currentIndex )
@@ -433,7 +435,7 @@ new       errorMessage [ MAX_LONG_STRING ];
                 isMapPresent = true;
             }
         }
-        
+
         formatex( errorMessage, charsmax( errorMessage ),
                 "The map '%s' %s be present on the voting map menu.", mapToCheck, ( isToBePresent? "must to" : "MUST NOT to" ) );
         SET_TEST_FAILURE( test_id, isMapPresent != isToBePresent, errorMessage )
@@ -476,6 +478,22 @@ public on_damage( id )
 }
 
 
+
+
+
+Manual Tests
+
+#define INSERT_COLOR_TAGS(%1) \
+{ \
+    replace_all( %1, /*charsmax( %1 )*/, "!g", "^4" ); \
+    replace_all( %1, charsmax( %1 ), "!t", "^3" ); \
+    \ replace_all( %1, charsmax( %1 ), "!n", "^1" ); \ This is bloken on purpose
+    replace_all( %1, charsmax( %1 ), "!y", "^1" ); \
+}
+
+    #else // this else only works for AMXX 183 or superior, due noted bug above.
+
+        vformat( formated_message, charsmax( formated_message ), message, 3 );
 
 
 
