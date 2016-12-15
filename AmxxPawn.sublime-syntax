@@ -2,10 +2,10 @@
 ---
 # "AmxxPawn Syntax"
 # Author: ppalex7/Destro-/Addons zz
-# 
+#
 # https://github.com/ppalex7/SourcePawnCompletions
 # https://forums.alliedmods.net/showthread.php?t=284385
-# 
+#
 # Note that due to the YAML syntax, tab characters are not allowed within .sublime-syntax files.
 
 
@@ -28,14 +28,14 @@ first_line_match: '(?i:amxx\-?pawn)'
 
 # "Global Variables"
 variables:
-  identifiers: 'Float|enum|char|const|static'
+  identifiers: 'Float|enum|char|const|static|Array|bool|Trie'
   words_pawn: '[A-Za-z_0-9]+'
   reserved_keywords: 'sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new|false|true'
-  
+
 # For most languages, you'll need more than one context. For example, in C, we don't
 # want a for word in the middle of a string to be highlighted as a keyword.
 contexts:
-  
+
   # The context name main special: Every syntax must define a main context, as it will be
   # used at the start of the file.
   main:
@@ -47,18 +47,18 @@ contexts:
     - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
-    
+
   # Constants
   #- include: Packages/amxmodx/const.sublime-syntax
   # TODO: Create a parser to find the constants on the amxx include/scripting folder.
-  
+
   ########################################################
-  
-  
-  
+
+
+
   # "PAWN Comments"
   pawn_coment:
-    
+
     # The regex used to match against the text. YAML allows many strings to be written without
     # quotes, which can help make the regex clearer, but it's important to understand when you
     # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
@@ -77,32 +77,32 @@ contexts:
           scope: punctuation.definition.comment.AmxxPawn
           # Pops the current context off the stack. The only accepted value for this key is true.
           pop: true
-          
+
     - match: /\*
       scope: punctuation.definition.comment.AmxxPawn
-      
+
       push:
         - meta_scope: comment.block.AmxxPawn
         - match: \*/
           scope: punctuation.definition.comment.AmxxPawn
           pop: true
-          
+
     - match: \*/
       scope: invalid.illegal.stray-comment-end.AmxxPawn
-      
+
     - match: ^// =(\s*.*?)\s*=\s*$\n?
       scope: comment.line.banner.AmxxPawn
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         1: meta.toc-list.banner.line.AmxxPawn
-       
+
     - match: ///
       scope: punctuation.definition.doccomment.AmxxPawn
       push:
         - meta_scope: comment.line.triple-slash.AmxxPawn
         - match: \n
           pop: true
-        
+
     - match: //
       scope: punctuation.definition.comment.AmxxPawn
       push:
@@ -112,18 +112,18 @@ contexts:
             1: punctuation.separator.continuation.AmxxPawn
         - match: \n
           pop: true
-          
+
     - match: '//'
       scope: punctuation.definition.comment.AmxxPawn
       push:
         - meta_scope: comment.line.AmxxPawn
         - match: $
           pop: true
-          
+
   ########################################################
-  
-  
-  
+
+
+
   # "Pawn Directives"
   # Colored %0, %1, %2, ...
   pawn_preprocessor:
@@ -133,45 +133,47 @@ contexts:
       captures:
         0: meta.preprocessor.AmxxPawn
         2: function.definition.AmxxPawn
-        
+
     - match: '^\s*\#(define\s+({{words_pawn}}))'
       captures:
         2: function.definition.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_numbers
-          
+
     - match: '^\s*\#'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_numbers
-          
+        - match: '($)'
+          pop: true
+
   preprocessor_numbers:
     - include: pawn_coment
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
-      
+
     # For lines ending with digits
     - match: '\d\n'
       scope: constant.numeric.AmxxPawn
       pop: true
-      
+
     # For the digits anywhere on the line, except its end
     - match: '\d'
       scope: constant.numeric.AmxxPawn
-      
+
     # For \ signs on the line's middle
     - match: '(\\.+)'
       pop: true
-      
+
     # For lines which does continue using \
     - match: '([^\\]\n)'
       pop: true
-      
+
   ########################################################
-  
-  
-  
+
+
+
   # "PAWN String"
   pawn_string:
     - match: '"'
@@ -189,13 +191,13 @@ contexts:
         # patterns into each of these contexts, you can include them.
       - include: string_escaped_char
       - include: string_placeholder
-      
+
   string_escaped_char:
     - match: \^(\^|[abefnprtv\'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})
       scope: constant.character.escape.AmxxPawn
     - match: \^.
       scope: invalid.illegal.unknown-escape.AmxxPawn
-      
+
   string_placeholder:
     - match: |-
         (?x)%
@@ -203,17 +205,17 @@ contexts:
             (\.((-?\d+)|\*(-?\d+\$)?)?)?    # precision
             [cbdiufXxasLNn%]                # conversion type
       scope: constant.other.placeholder.AmxxPawn
-      
+
   pawn_character:
     - match: ('[\^]?.')|('.(.+'))
       captures:
         1: string.quoted.single.AmxxPawn
         2: invalid.illegal.invalid-character.AmxxPawn
-        
+
   ########################################################
-  
-  
-  
+
+
+
   # "PAWN Function"
   pawn_function:
     - include: function_definition
@@ -227,7 +229,7 @@ contexts:
           pop: true
         - include: pawn_function
     - include: pawn_function_includes
-    
+
   # We cannot include the whole main context here, otherwise we would re-include this own context
   # creating an infinity context include loop. Then we need to include all main contexts except
   # this own context.
@@ -240,7 +242,7 @@ contexts:
     - include: pawn_variables_local
     - include: pawn_keywords
     - include: pawn_post_keywords
-    
+
   pawn_function_includes_no_variables:
     - include: pawn_string
     - include: pawn_character
@@ -249,14 +251,14 @@ contexts:
     - include: pawn_numbers
     - include: pawn_keywords
     - include: pawn_post_keywords
-    
+
   function_call:
     - include: pawn_function_includes
     - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
       captures:
         1: function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
-    
+
   function_definition:
     - match: '^(\s*(public|stock|native|forward)\s+)([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
       captures:
@@ -270,15 +272,15 @@ contexts:
         - include: pawn_function_includes_no_variables
         - match: '({{words_pawn}})(\s*(=)\s)?'
           captures:
-            1: paremeter.definition.AmxxPawn
+            1: parameter.definition.AmxxPawn
             3: keyword.operator.assignment.AmxxPawn
         - match: ','
           scope: punctuation.separator.AmxxPawn
-          
+
   ########################################################
-  
-  
-  
+
+
+
   # "PAWN Numbers"
   pawn_numbers:
     - match: '(\d+)(\.{2})(\d+)'
@@ -286,111 +288,115 @@ contexts:
         1: constant.numeric.int.AmxxPawn
         2: keyword.operator.switch-range.AmxxPawn
         3: constant.numeric.int.AmxxPawn
-        
+
     - match: ([-]?0x[\da-f]+)
       scope: constant.numeric.hex.AmxxPawn
-      
+
     - match: \b(\d+\.\d+)\b
       scope: constant.numeric.float.AmxxPawn
-      
+
     - match: \b(\d+)\b
       scope: constant.numeric.int.AmxxPawn
-      
+
   ########################################################
-  
-  
-  
+
+
+
   # PAWN Variables
   pawn_variables:
-    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
         3: variable.type.AmxxPawn
+        4: keyword.operator.AmxxPawn
+        5: variable.definition.AmxxPawn
+
+    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: variable.type.AmxxPawn
+        3: keyword.operator.AmxxPawn
         4: variable.definition.AmxxPawn
-        
-    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
-      captures:
-        1: storage.type.vars.AmxxPawn
-        2: variable.type.AmxxPawn
-        3: variable.definition.AmxxPawn
-        
+
   pawn_variables_local:
-    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
         3: variable.type.AmxxPawn
-        4: variable.local.definition.AmxxPawn
-        
-    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*:)?\s*({{words_pawn}})\s*'
+        4: keyword.operator.AmxxPawn
+        5: variable.local.definition.AmxxPawn
+
+    - match: '\s*\b({{identifiers}})\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
       captures:
         1: storage.type.vars.AmxxPawn
         2: variable.type.AmxxPawn
-        3: variable.local.definition.AmxxPawn
-        
+        3: keyword.operator.AmxxPawn
+        4: variable.local.definition.AmxxPawn
+
   ########################################################
-  
-  
-  
+
+
+
   # "PAWN Keywords"
-  
+
   pawn_keywords:
     - match: \s*(case (.*):)\s+
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
-        
+
     - match: \s*\b({{reserved_keywords}})\b
       scope: keyword.control.AmxxPawn
-      
+
     - match: \s*\b({{identifiers}})\b
       scope: storage.type.vars.AmxxPawn
-      
+
     - match: any\:(\.\.\.)
-      captures: 
+      captures:
         1: storage.modifier.tag.AmxxPawn
-      
+
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
       scope: keyword.operator.assignment.AmxxPawn
-      
+
     - match: (==|!=|<=|>=|<>|<|>)
       scope: keyword.operator.comparison.AmxxPawn
-      
+
     - match: (\-\-|\+\+)
       scope: keyword.operator.increment-decrement.AmxxPawn
-      
+
     - match: (\?|:)
       scope: keyword.operator.ternary.AmxxPawn
-      
+
     - match: (\-|\+|\*|\/|%)
       scope: keyword.operator.arithmetic.AmxxPawn
-      
+
     - match: (!|&&|\|\|)
       scope: keyword.operator.logical.AmxxPawn
-      
+
     - match: (~|&|\||\^|<<|>>)
       scope: keyword.operator.bitwise.AmxxPawn
-      
+
     - match: (\,)
       scope: keyword.other.AmxxPawn
-      
+
   ########################################################
-  
-  
+
+
   pawn_post_keywords:
     - match: '(?<!\?)\b[A-Za-z_]\w*\:'
       scope: storage.modifier.tag.AmxxPawn
-      
+
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.AmxxPawn
-      
+
     - match: '\(|\)|\[|\]'
       scope: keyword.brackets.AmxxPawn
-      
+
   ########################################################
-  
-  
-  
-  
-  
+
+
+
+
+
