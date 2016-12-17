@@ -106,6 +106,105 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
                                                                               // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
 
 
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+                                                                     && IS_MAP_VALID( %1 ) )
+                                                                                                stock loadMapFileList()
+//                                                                                              ^^^^^ storage.type.function.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+                                                                     && IS_MAP_VALID( %1 ) )
+//                                                                                    ^^              constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 )
+//                                                             ^     constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 )
+//                                                    ^^     constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+//                                   ^     constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+//                         ^^     constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ]
+//        ^    constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ]
+//    ^^    constant.numeric.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 )
+//                                                        ^   punctuation.definition.string.begin.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+//                             ^     punctuation.definition.string.begin.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+//                                                          ^ punctuation.definition.string.end.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+//                                ^    punctuation.definition.string.end.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+//                                                         ^  string.quoted.double.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+//                              ^^    string.quoted.double.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+                                                                     && IS_MAP_VALID( %1 ) )
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.preprocessor.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1) \
+    ( %1[ 0 ] \
+                && !equal( %1, "//", 2 ) \
+                                           && !equal( %1, ";", 1 ) \
+                                                                     && IS_MAP_VALID( %1 ) )
+                                                                                                stock loadMapFileList()
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
+
+
+
+stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
+{
+    LOGGER( 128, "I AM ENTERING ON loadMapFileList(3) | mapFilePath: %s", mapFilePath )
+}
 
 stock test_loadVoteChoices_check( test_id, mapToCheck[], bool:isToBePresent = "asdfadsf" )
 {}

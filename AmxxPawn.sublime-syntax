@@ -149,6 +149,7 @@ contexts:
           pop: true
 
   preprocessor_numbers:
+    - include: pawn_string
     - include: pawn_coment
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
