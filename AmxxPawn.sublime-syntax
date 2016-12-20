@@ -40,7 +40,7 @@ contexts:
   # used at the start of the file.
   main:
     - include: pawn_character
-    - include: pawn_coment
+    - include: pawn_comment
     - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_variables
@@ -57,7 +57,7 @@ contexts:
 
 
   # "PAWN Comments"
-  pawn_coment:
+  pawn_comment:
 
     # The regex used to match against the text. YAML allows many strings to be written without
     # quotes, which can help make the regex clearer, but it's important to understand when you
@@ -150,7 +150,7 @@ contexts:
 
   preprocessor_numbers:
     - include: pawn_string
-    - include: pawn_coment
+    - include: pawn_comment
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
 
@@ -237,7 +237,7 @@ contexts:
   pawn_function_includes:
     - include: pawn_string
     - include: pawn_character
-    - include: pawn_coment
+    - include: pawn_comment
     - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_variables_local
@@ -247,7 +247,7 @@ contexts:
   pawn_function_includes_no_variables:
     - include: pawn_string
     - include: pawn_character
-    - include: pawn_coment
+    - include: pawn_comment
     - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_keywords
