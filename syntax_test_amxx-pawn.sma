@@ -200,6 +200,24 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
 
 
+#define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
+s
+s
+// <- source.AmxxPawn
+
+
+#define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
+
+new Array:dummy;
+// <- source.AmxxPawn keyword.control.AmxxPawn
+
+
+#define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
+s
+new Array:dummy;
+// <- source.AmxxPawn keyword.control.AmxxPawn
+
+
 
 stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
 {
