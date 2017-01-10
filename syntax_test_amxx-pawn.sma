@@ -242,17 +242,24 @@ new Array:dummy;
 
 #if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
         && DEBUG_LEVEL & DEBUG_LEVEL_FAKE_VOTES
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn meta.preprocessor.AmxxPawn
 
-
-
-
+#if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED )
+        hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
 
 
 
 new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-
+//  ^^^^ source.AmxxPawn variable.type.AmxxPawn
 
 stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
+// <- source.AmxxPawn storage.type.function.AmxxPawn
+
+stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
+//    ^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn function.definition.AmxxPawn, entity.name.function.AmxxPawn
+
+
 
 
 stock mp_fraglimitCvarSupport()
@@ -260,15 +267,25 @@ stock mp_fraglimitCvarSupport()
     else if( get_pcvar_num( cvar_fragLimitSupport ) )
     {
         new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
+        //  ^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn variable.type.AmxxPawn
 
         register_event( "DeathMsg", "client_death_event", "a" );
+     // ^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+
         cvar_mp_fraglimit = register_cvar( "mp_fraglimit", "0", FCVAR_SERVER );
+        //                  ^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
     }
     else
     {
         cvar_mp_fraglimit = cvar_disabledValuePointer;
     }
 }
+
+
+
+
+
+
 
 
 stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
