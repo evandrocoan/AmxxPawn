@@ -56,6 +56,20 @@ contexts:
 
 
 
+  # Pawn register_cvar() and create_cvar() symbols definitions
+  pawn_cvars:
+    - match: '((register_cvar)|(create_cvar))\s*(\()\s*(\")([A-Za-z_0-9]+)(\")'
+      captures:
+        1: function.call.AmxxPawn
+        4: keyword.brackets.AmxxPawn
+        5: punctuation.definition.string.begin.AmxxPawn
+        6: cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+        7: punctuation.definition.string.end.AmxxPawn
+
+  ########################################################
+
+
+
   # "PAWN Comments"
   pawn_comment:
 
@@ -177,6 +191,7 @@ contexts:
 
   # "PAWN String"
   pawn_string:
+    - include: pawn_cvars
     - match: '"'
       scope: punctuation.definition.string.begin.AmxxPawn
       push:
@@ -255,7 +270,7 @@ contexts:
 
   function_call:
     - include: pawn_function_includes
-    - match: '\s*([A-Za-z_][\w_]*)[\s]*(\()'
+    - match: '\s*([A-Za-z_][\w_]+)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
         1: function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
@@ -305,7 +320,7 @@ contexts:
 
   # PAWN Variables
   pawn_variables:
-    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
+    - match: '\s*(new)\s*\b([A-Za-z_0-9]+)?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
@@ -321,7 +336,7 @@ contexts:
         4: variable.definition.AmxxPawn
 
   pawn_variables_local:
-    - match: '\s*(new)\s*\b({{identifiers}})?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
+    - match: '\s*(new)\s*\b([A-Za-z_0-9]+)?\b(\s*{{words_pawn}}\s*(:))?\s*({{words_pawn}})\s*'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
