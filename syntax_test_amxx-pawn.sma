@@ -209,7 +209,7 @@ s
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
 
 new Array:dummy;
-// <- source.AmxxPawn keyword.control.AmxxPawn
+// <- source.AmxxPawn meta.preprocessor.AmxxPawn
 
 
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
@@ -218,9 +218,57 @@ new Array:dummy;
 // <- source.AmxxPawn keyword.control.AmxxPawn
 
 
+{
+    formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
+//  ^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+
+    formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
+//            ^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn
+
+    register_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
+//  ^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+
+    register_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
+//                  ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+
+    cvar_cmdListmaps= create_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
+//                                  ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+
+    cvar_cmdListmaps = create_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
+//                                   ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+}
+
+
 
 #if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
         && DEBUG_LEVEL & DEBUG_LEVEL_FAKE_VOTES
+
+
+
+
+
+
+
+new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
+
+
+stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
+
+
+stock mp_fraglimitCvarSupport()
+{
+    else if( get_pcvar_num( cvar_fragLimitSupport ) )
+    {
+        new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
+
+        register_event( "DeathMsg", "client_death_event", "a" );
+        cvar_mp_fraglimit = register_cvar( "mp_fraglimit", "0", FCVAR_SERVER );
+    }
+    else
+    {
+        cvar_mp_fraglimit = cvar_disabledValuePointer;
+    }
+}
 
 
 stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
