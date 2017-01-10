@@ -142,7 +142,7 @@ contexts:
   # Colored %0, %1, %2, ...
   pawn_preprocessor:
     # For lines ending with a pawn word, we need to catch here, otherwise the next regex cannot
-    # consume enought to catch '[^\\]\n'
+    # consume enough to catch '[^\\]\n'
     - match: '^\s*\#(define\s+({{words_pawn}}))\n'
       captures:
         0: meta.preprocessor.AmxxPawn
@@ -159,7 +159,7 @@ contexts:
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_numbers
-        - match: '($)'
+        - match: '([^\\\n]$)'
           pop: true
 
   preprocessor_numbers:
