@@ -104,34 +104,18 @@ contexts:
     - match: \*/
       scope: invalid.illegal.stray-comment-end.AmxxPawn
 
-    - match: ^// =(\s*.*?)\s*=\s*$\n?
-      scope: comment.line.banner.AmxxPawn
-      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
-      captures:
-        1: meta.toc-list.banner.line.AmxxPawn
-
-    - match: ///
+    - match: \/\/\/
       scope: punctuation.definition.doccomment.AmxxPawn
       push:
         - meta_scope: comment.line.triple-slash.AmxxPawn
-        - match: \n
+        - match: \n|$
           pop: true
 
-    - match: //
+    - match: \/\/
       scope: punctuation.definition.comment.AmxxPawn
       push:
         - meta_scope: comment.line.double-slash.AmxxPawn
-        - match: '(\\)$\n'
-          captures:
-            1: punctuation.separator.continuation.AmxxPawn
-        - match: \n
-          pop: true
-
-    - match: '//'
-      scope: punctuation.definition.comment.AmxxPawn
-      push:
-        - meta_scope: comment.line.AmxxPawn
-        - match: $
+        - match: \n|$
           pop: true
 
   ########################################################
@@ -143,28 +127,64 @@ contexts:
   pawn_preprocessor:
     # For lines ending with a pawn word, we need to catch here, otherwise the next regex cannot
     # consume enough to catch '[^\\]\n'
+    - include: preprocessor_define
+    - include: preprocessor_others
+
+  preprocessor_define:
     - match: '^\s*\#(define\s+({{words_pawn}}))\n'
+      # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         0: meta.preprocessor.AmxxPawn
         2: function.definition.AmxxPawn
+
+    - match: '^\s*\#(define\s+({{words_pawn}})).*(///)(.*)\n'
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        2: function.definition.AmxxPawn
+        3: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+        4: comment.line.triple-slash.AmxxPawn
+
+    - match: '^\s*\#(define\s+({{words_pawn}})).*(//)(.*)\n'
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        2: function.definition.AmxxPawn
+        3: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+        4: comment.line.double-slash.AmxxPawn
 
     - match: '^\s*\#(define\s+({{words_pawn}}))'
       captures:
         2: function.definition.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
+        - include: pawn_string
+        - include: pawn_comment
         - include: preprocessor_numbers
 
-    - match: '^\s*\#'
+  preprocessor_others:
+    - match: '^(\s*\#.*)(///)(.*)'
+      captures:
+        1: meta.preprocessor.AmxxPawn
+        2: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+        3: comment.line.triple-slash.AmxxPawn
+
+    - match: '^(\s*\#.*)(//)(.*)'
+      captures:
+        1: meta.preprocessor.AmxxPawn
+        2: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+        3: comment.line.double-slash.AmxxPawn
+
+    - match: '^(\s*\#.*)'
+      captures:
+        1: meta.preprocessor.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
+        - include: pawn_string
+        - include: pawn_comment
         - include: preprocessor_numbers
-        - match: '([^\\\n]$)'
+        - match: '[^\\\n]$'
           pop: true
 
   preprocessor_numbers:
-    - include: pawn_string
-    - include: pawn_comment
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
 
@@ -178,11 +198,11 @@ contexts:
       scope: constant.numeric.AmxxPawn
 
     # For \ signs on the line's middle
-    - match: '(\\.+)'
+    - match: '\\.+'
       pop: true
 
     # For lines which does continue using \
-    - match: '([^\\]\n)'
+    - match: '[^\\]\n'
       pop: true
 
   ########################################################

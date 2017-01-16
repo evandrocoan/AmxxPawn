@@ -9,6 +9,8 @@
 	<dict>
 		<key>decreaseIndentPattern</key>
 		<string>^(.*\*/)?\s*\}.*$</string>
+		<key>increaseIndentPattern</key>
+		<string>^.*\{[^}"']*$</string>
 		<key>highlightPairs</key>
 		<array>
 			<array>
@@ -32,8 +34,6 @@
 				<string>'</string>
 			</array>
 		</array>
-		<key>increaseIndentPattern</key>
-		<string>^.*\{[^}"']*$</string>
 		<key>shellVariables</key>
 		<array>
 			<dict>
