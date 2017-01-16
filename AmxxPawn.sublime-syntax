@@ -108,14 +108,14 @@ contexts:
       scope: punctuation.definition.doccomment.AmxxPawn
       push:
         - meta_scope: comment.line.triple-slash.AmxxPawn
-        - match: \n|$
+        - match: \n
           pop: true
 
     - match: \/\/
       scope: punctuation.definition.comment.AmxxPawn
       push:
         - meta_scope: comment.line.double-slash.AmxxPawn
-        - match: \n|$
+        - match: \n
           pop: true
 
   ########################################################
@@ -173,7 +173,7 @@ contexts:
         2: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
         3: comment.line.double-slash.AmxxPawn
 
-    - match: '^(\s*\#.*)'
+    - match: '^(\s*\#)'
       captures:
         1: meta.preprocessor.AmxxPawn
       push:
