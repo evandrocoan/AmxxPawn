@@ -101,10 +101,23 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     // <- meta.preprocessor.AmxxPawn
      // <- meta.preprocessor.AmxxPawn
         // <- meta.preprocessor.AmxxPawn
-          // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn punctuation.definition.comment.AmxxPawn
-            // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
-                                                                              // <- meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+          // <- punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+            // <- comment.line.double-slash.AmxxPawn
+                                                                              // <- comment.line.double-slash.AmxxPawn
 
+
+{
+#else // this else only works for AMXX 183 or superior, due noted bug above.
+    vformat( formated_message, charsmax( formated_message ), message, 3 );
+//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+}
+
+
+{
+#define IT_IS_A_VALID_LINE(%1) // this else only works for AMXX 183 or superior, due noted bug above.
+    vformat( formated_message, charsmax( formated_message ), message, 3 );
+//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+}
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
@@ -258,7 +271,6 @@ stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, ma
 
 stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
 //    ^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn function.definition.AmxxPawn, entity.name.function.AmxxPawn
-
 
 
 
