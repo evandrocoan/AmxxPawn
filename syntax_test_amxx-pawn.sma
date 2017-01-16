@@ -107,7 +107,13 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 
 
 {
-#else // this else only works for AMXX 183 or superior, due noted bug above.
+#endif // this else only works for AMXX 183 or superior, due noted bug above.
+
+    vformat( formated_message, charsmax( formated_message ), message, 3 );
+//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+
+#endif
+
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
 }
@@ -117,7 +123,13 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 #define IT_IS_A_VALID_LINE(%1) // this else only works for AMXX 183 or superior, due noted bug above.
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+
+#define IT_IS_A_VALID_LINE(%1)
+
+    LOGGER( 64, "( color_print ) [out] player_id: %d, Chat printed: %s...", player_id, formated_message )
+//  ^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
 }
+
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
