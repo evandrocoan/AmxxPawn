@@ -3,7 +3,7 @@
     "selector": "source.AmxxPawn, source.AMXX",
 
     "file_regex": "^.*[\\/\\\\]+(.+)\\(([0-9]+ ?.*)\\) : (.*)",
-    "cmd": ["sh","$packages/Amxx Pawn/AmxxPawn.sh","$file", "$file_base_name"],
+    "cmd": ["sh","$packages/Amxx Pawn/AmxxPawn.sh","$file", "$file_base_name", "$packages"],
 
     // "target": "ansi_color_build",
     "syntax": "Packages/ANSIescape/ANSI.tmLanguage"
