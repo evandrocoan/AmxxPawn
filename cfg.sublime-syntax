@@ -19,7 +19,7 @@ scope: text.Config
 
 # When a file is opened without a recognized extension, the first line of the file
 # contents will be tested against this regex, to see if the syntax should be applied.
-first_line_match: '(.*[en].*)'
+first_line_match: '(.*\[en\].*)'
 
 # "Global Variables"
 variables:
