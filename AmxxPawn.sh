@@ -1,7 +1,10 @@
 
 
-FULL_PATH_TO_PACKAGES=$(echo $3 | sed -r "s|\\\|\/|g" | sed -r "s|:||g")
-printf "\n$(date)\n$FULL_PATH_TO_PACKAGES\n\n"
+printf "\nCompiling $2... Current time is: $(date)\n\n"
+
+
+
+
 
 # Import the helper functions.
 
