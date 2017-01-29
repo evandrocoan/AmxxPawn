@@ -1,7 +1,24 @@
 
 
-printf "\nCompiling $2... Current time is: $(date)\n\n"
+printf "\nCompiling $2... Current time is: $(date)\n"
 
+# Put here the paths to the folders where do you want to install the plugin.
+# You must to provide at least one folder.
+#
+# Declare an array variable.
+# You can access them using echo "${arr[0]}", "${arr[1]}"
+declare -a folders_list=(
+"F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/plugins"
+"F:/SteamCMD/steamapps/common/Half-Life/cstrike/addons/amxmodx/plugins" )
+
+# Where is your compiler?
+#
+# Examples:
+#
+# "F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/scripting/amxxpc.exe"
+# "/home/jack/steam/steamapps/common/Half-Life/czero/addons/amxmodx/scripting/compiler.sh"
+#
+AMXX_COMPILER_PATH="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/scripting/amxxpc.exe"
 
 
 
@@ -132,35 +149,43 @@ isFloatNumber()
 }
 
 
-
-
-
-#
 # $1 is the first shell argument and $2 is the second shell argument passed by AmxxPawn.sublime-build
 # Usually they should be the plugin's file full path and the plugin's file name without extension.
 #
-# Where is your compiler?
-# Example: "F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/scripting/amxxpc.exe"
-AMXX_COMPILER_PATH="amxxpc.exe"
-
-# Where put the '.amxx' compiled file?
-# Example: "/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/plugins"
-AMXX_OUTPUT_PLUGIN_FOLDER="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/plugins"
-
 # Example: $1="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/my_plugin.sma"
-FILE_PATH=$1
+PLUGIN_SOURCE_CODE_FILE_PATH=$1
 
 # Example: $2="my_plugin"
 PLUGIN_BASE_FILE_NAME=$2
+PLUGIN_BINARY_FILE_PATH=${folders_list[0]}/$PLUGIN_BASE_FILE_NAME.amxx
 
-PLUGIN_BINARY_FULL_PATH=$AMXX_OUTPUT_PLUGIN_FOLDER/$PLUGIN_BASE_FILE_NAME.amxx
+# Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
+# So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
+rm -v "$PLUGIN_BINARY_FILE_PATH"
+printf "\n"
 
-# To call the compiler to compile the plugin to the output folder $AMXX_OUTPUT_PLUGIN_FOLDER
-"$AMXX_COMPILER_PATH" -o"$PLUGIN_BINARY_FULL_PATH" "$FILE_PATH"
+# To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
+"$AMXX_COMPILER_PATH" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
-cp "$PLUGIN_BINARY_FULL_PATH" "F:/SteamCMD/steamapps/common/Half-Life/cstrike/addons/amxmodx/plugins/"
+printf "\nInstalling the plugin to the folder: ${folders_list[0]}\n"
 
+# Remove the first element
+unset folders_list[0]
 
+# Now loop through the above array
+for current_output_folder in "${folders_list[@]}"
+do
+    if [ -d $current_output_folder ]
+    then
+        printf "Installing the plugin to the folder: $current_output_folder\n"
+
+        rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
+        cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
+    else
+        printf "Error! The folder does not exists: $current_output_folder.\n"
+        exit 1
+    fi
+done
 
 FULL_PATH_TO_SCRIPT=$(echo $0 | sed -r "s|\\\|\/|g" | sed -r "s|:||g")
 
