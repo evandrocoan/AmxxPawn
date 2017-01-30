@@ -72,16 +72,18 @@ set PLUGIN_BINARY_FILE_PATH=%folders_list[0]%\%PLUGIN_BASE_FILE_NAME%.amxx
 
 rem Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
 rem So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
-del "%PLUGIN_BINARY_FILE_PATH%"
+IF EXIST "%PLUGIN_BINARY_FILE_PATH%" del "%PLUGIN_BINARY_FILE_PATH%"
 
 rem To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
 "%AMXX_COMPILER_PATH%" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
 
+rem If there was a compilation error, there is nothing more to be done.
+IF NOT EXIST "%PLUGIN_BINARY_FILE_PATH%" GOTO end
+
+
+
 echo.
-echo|set /p="Installing the plugin to %folders_list[0]%, "
-echo 1 File(s) copied
-
-
+echo 1 File(s) copied, to the folder %folders_list[0]%
 
 rem Initial array index to loop into.
 set "currentIndex=1"
@@ -90,14 +92,15 @@ rem Loop throw all games to install the new files.
 :SymLoop
 if defined folders_list[%currentIndex%] (
 
-    rem Print what mod it currently copying/installing
-    call echo|set /p="Installing the plugin to %%folders_list[%currentIndex%]%%, "
-
     rem Some how the AMXX compiler could not compiling/copied some times, so let us know when it does not.
-    call del "%%folders_list[%currentIndex%]%%\%PLUGIN_BASE_FILE_NAME%.amxx"
+    setlocal EnableDelayedExpansion
+
+    rem Try to delete the file only if it exists
+    IF EXIST "!folders_list[%currentIndex%]!\%PLUGIN_BASE_FILE_NAME%.amxx" del "!folders_list[%currentIndex%]!\%PLUGIN_BASE_FILE_NAME%.amxx"
 
     rem To do the actual copying/installing.
-    call xcopy /E /S /Y "%PLUGIN_BINARY_FILE_PATH%" "%%folders_list[%currentIndex%]%%"|find /v "%PLUGIN_BASE_FILE_NAME%"
+    for /f "delims=" %%a in ( 'xcopy /E /S /Y "%PLUGIN_BINARY_FILE_PATH%"^
+            "!folders_list[%currentIndex%]!"^|find /v "%PLUGIN_BASE_FILE_NAME%"' ) do echo %%a, to the folder !folders_list[%currentIndex%]!
 
     rem Update the next 'for/array' index to copy/install.
     set /a "currentIndex+=1"
@@ -106,6 +109,8 @@ if defined folders_list[%currentIndex%] (
 )
 
 
+
+:end
 
 rem Calculating the duration is easy.
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
