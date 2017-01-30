@@ -131,12 +131,14 @@ contexts:
     - include: preprocessor_others
 
   preprocessor_define:
+    # Handle preprocessor declaration ending a `words_pawn` only
     - match: '^\s*\#(define\s+({{words_pawn}}))\n'
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         0: meta.preprocessor.AmxxPawn
         2: function.definition.AmxxPawn
 
+    # Handle preprocessor declaration ending a triple slash commentary ///
     - match: '^\s*\#(define\s+({{words_pawn}})).*(///)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
@@ -144,6 +146,7 @@ contexts:
         3: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
         4: comment.line.triple-slash.AmxxPawn
 
+    # Handle preprocessor declaration ending a double slash commentary //
     - match: '^\s*\#(define\s+({{words_pawn}})).*(//)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
@@ -151,14 +154,31 @@ contexts:
         3: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
         4: comment.line.double-slash.AmxxPawn
 
+    # Handle preprocessor declaration ending with double quotes "
+    - match: '^\s*\#(define\s+({{words_pawn}})).*(".*")\n'
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        2: function.definition.AmxxPawn
+        3: string.quoted.double.AmxxPawn
+
+    # Handle all the remaining preprocessor declarations
     - match: '^\s*\#(define\s+({{words_pawn}}))'
       captures:
         2: function.definition.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
-        - include: pawn_string
+        - include: preprocessor_string
         - include: pawn_comment
         - include: preprocessor_numbers
+
+  # Here are not multiline strings support due we cannot handle strings ending with double quotes "
+  # and lines ending with strings will not be highlighted.
+  preprocessor_string:
+    - match: '(").*("[^\n])'
+      captures:
+        0: string.quoted.double.AmxxPawn
+        1: punctuation.definition.string.begin.AmxxPawn
+        2: punctuation.definition.string.end.AmxxPawn
 
   preprocessor_others:
     - match: '^(\s*\#.*)(///)(.*)'

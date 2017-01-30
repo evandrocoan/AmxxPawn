@@ -110,24 +110,24 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 #endif // this else only works for AMXX 183 or superior, due noted bug above.
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 
 #endif
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
 {
 #define IT_IS_A_VALID_LINE(%1) // this else only works for AMXX 183 or superior, due noted bug above.
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-//  ^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1)
 
     LOGGER( 64, "( color_print ) [out] player_id: %d, Chat printed: %s...", player_id, formated_message )
-//  ^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
@@ -234,40 +234,40 @@ s
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
 
 new Array:dummy;
-// <- source.AmxxPawn meta.preprocessor.AmxxPawn
+// <- meta.preprocessor.AmxxPawn
 
 
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
 s
 new Array:dummy;
-// <- source.AmxxPawn keyword.control.AmxxPawn
+// <- keyword.control.AmxxPawn
 
 
 {
     formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
-//  ^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 
     formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
-//            ^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn
+//            ^^^^^^^^^^^ meta.block.AmxxPawn
 
     register_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
-//  ^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 
     register_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
-//                  ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+//                  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
 
     cvar_cmdListmaps= create_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
-//                                  ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+//                                  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
 
     cvar_cmdListmaps = create_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
-//                                   ^^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+//                                   ^^^^^^^^^^^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
 }
 
 
 
 #if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
         && DEBUG_LEVEL & DEBUG_LEVEL_FAKE_VOTES
-//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn meta.preprocessor.AmxxPawn
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.preprocessor.AmxxPawn
 
 #if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED )
         hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_
@@ -276,13 +276,13 @@ new Array:dummy;
 
 
 new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-//  ^^^^ source.AmxxPawn variable.type.AmxxPawn
+//  ^^^^ variable.type.AmxxPawn
 
 stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
-// <- source.AmxxPawn storage.type.function.AmxxPawn
+// <- storage.type.function.AmxxPawn
 
 stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
-//    ^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn function.definition.AmxxPawn, entity.name.function.AmxxPawn
+//    ^^^^^^^^^^^^^^^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
 
 
 
@@ -291,19 +291,38 @@ stock mp_fraglimitCvarSupport()
     else if( get_pcvar_num( cvar_fragLimitSupport ) )
     {
         new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-        //  ^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn variable.type.AmxxPawn
+        //  ^^^^ meta.block.AmxxPawn meta.block.AmxxPawn variable.type.AmxxPawn
 
         register_event( "DeathMsg", "client_death_event", "a" );
-     // ^^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+     // ^^^^^^^^^^^^^^ meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
 
         cvar_mp_fraglimit = register_cvar( "mp_fraglimit", "0", FCVAR_SERVER );
-        //                  ^^^^^^^^^^^^^ source.AmxxPawn meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+        //                  ^^^^^^^^^^^^^ meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
     }
     else
     {
         cvar_mp_fraglimit = cvar_disabledValuePointer;
     }
 }
+
+
+#define AUTHOR  "Author"
+
+public plugin_init()
+//     ^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
+
+#define AUTHOR  "Author" \
+    " "
+
+public plugin_init()
+//     ^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
+{
+    plugin_init();
+//  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+}
+
+
+
 
 
 
