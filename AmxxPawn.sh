@@ -25,7 +25,9 @@ printf "\nCompiling $2... Current time is: $(date)\n"
 # You can access them using echo "${arr[0]}", "${arr[1]}"
 declare -a folders_list=(
 "F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/plugins"
-"F:/SteamCMD/steamapps/common/Half-Life/cstrike/addons/amxmodx/plugins" )
+"F:/SteamCMD/steamapps/common/Half-Life/cstrike/addons/amxmodx/plugins"
+"F:/SteamLibrary/steamapps/common/Sven Co-op Dedicated Server/svencoop/addons/amxmodx/plugins"
+)
 
 # Where is your compiler?
 #
@@ -165,6 +167,7 @@ isFloatNumber()
 }
 
 
+
 # $1 is the first shell argument and $2 is the second shell argument passed by AmxxPawn.sublime-build
 # Usually they should be the plugin's file full path and the plugin's file name without extension.
 #
@@ -177,31 +180,31 @@ PLUGIN_BINARY_FILE_PATH=${folders_list[0]}/$PLUGIN_BASE_FILE_NAME.amxx
 
 # Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
 # So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
-rm -v "$PLUGIN_BINARY_FILE_PATH"
+rm "$PLUGIN_BINARY_FILE_PATH"
 printf "\n"
 
 # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
 "$AMXX_COMPILER_PATH" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
-printf "\nInstalling the plugin to the folder: ${folders_list[0]}\n"
 
-# Remove the first element, as it was already processed and it is the source file.
-unset folders_list[0]
 
-# Now loop through the above array
-for current_output_folder in "${folders_list[@]}"
-do
-    if [ -d $current_output_folder ]
-    then
+# If there was a compilation error, there is nothing more to be done.
+if [ -f $PLUGIN_BINARY_FILE_PATH ]
+then
+    printf "\nInstalling the plugin to the folder: ${folders_list[0]}\n"
+
+    # Remove the first element, as it was already processed and it is the source file.
+    unset folders_list[0]
+
+    # Now loop through the above array
+    for current_output_folder in "${folders_list[@]}"
+    do
         printf "Installing the plugin to the folder: $current_output_folder\n"
 
         rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
         cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
-    else
-        printf "Error! The folder does not exists: $current_output_folder.\n"
-        exit 1
-    fi
-done
+    done
+fi
 
 FULL_PATH_TO_SCRIPT=$(echo $0 | sed -r "s|\\\|\/|g" | sed -r "s|:||g")
 
