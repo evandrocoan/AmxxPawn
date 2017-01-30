@@ -1,4 +1,20 @@
 
+# AMXX Plugin Compiler Script
+#
+#  This program is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU General Public License as published by the
+#  Free Software Foundation; either version 2 of the License, or ( at
+#  your option ) any later version.
+#
+#  This program is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#  See the GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 
 printf "\nCompiling $2... Current time is: $(date)\n"
 
@@ -26,7 +42,7 @@ AMXX_COMPILER_PATH="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/
 # Import the helper functions.
 
 # The time flag file path
-updateFlagFilePath="$(pwd)/.epos_flag_file.txt"
+updateFlagFilePath="$(pwd)/.amxx_flag_file.txt"
 
 # Save the current seconds
 if ! [ -f $updateFlagFilePath ]
@@ -156,7 +172,7 @@ isFloatNumber()
 PLUGIN_SOURCE_CODE_FILE_PATH=$1
 
 # Example: $2="my_plugin"
-PLUGIN_BASE_FILE_NAME=$2
+PLUGIN_BASE_FILE_NAME="$2"
 PLUGIN_BINARY_FILE_PATH=${folders_list[0]}/$PLUGIN_BASE_FILE_NAME.amxx
 
 # Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
@@ -169,7 +185,7 @@ printf "\n"
 
 printf "\nInstalling the plugin to the folder: ${folders_list[0]}\n"
 
-# Remove the first element
+# Remove the first element, as it was already processed and it is the source file.
 unset folders_list[0]
 
 # Now loop through the above array
