@@ -99,7 +99,7 @@ if defined folders_list[%currentIndex%] (
     IF EXIST "!folders_list[%currentIndex%]!\%PLUGIN_BASE_FILE_NAME%.amxx" del "!folders_list[%currentIndex%]!\%PLUGIN_BASE_FILE_NAME%.amxx"
 
     rem To do the actual copying/installing.
-    for /f "delims=" %%a in ( 'xcopy /E /S /Y "%PLUGIN_BINARY_FILE_PATH%"^
+    for /f "delims=" %%a in ( 'xcopy /S /Y "%PLUGIN_BINARY_FILE_PATH%"^
             "!folders_list[%currentIndex%]!"^|find /v "%PLUGIN_BASE_FILE_NAME%"' ) do echo %%a, to the folder !folders_list[%currentIndex%]!
 
     rem Update the next 'for/array' index to copy/install.
