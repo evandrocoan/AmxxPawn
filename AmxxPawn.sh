@@ -191,7 +191,7 @@ printf "\n"
 # If there was a compilation error, there is nothing more to be done.
 if [ -f $PLUGIN_BINARY_FILE_PATH ]
 then
-    printf "\nInstalling the plugin to the folder: ${folders_list[0]}\n"
+    printf "\nInstalling the plugin to the folder ${folders_list[0]}\n"
 
     # Remove the first element, as it was already processed and it is the source file.
     unset folders_list[0]
@@ -199,7 +199,7 @@ then
     # Now loop through the above array
     for current_output_folder in "${folders_list[@]}"
     do
-        printf "Installing the plugin to the folder: $current_output_folder\n"
+        printf "Installing the plugin to the folder $current_output_folder\n"
 
         rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
         cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
