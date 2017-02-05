@@ -17,7 +17,7 @@
         },
     ],
 
-    "syntax": "Packages/amxmodx/AMXX-Console.sublime-syntax",
+    "syntax": "Packages/Amxx Pawn/AMXX-Console.sublime-syntax",
 
     // "target": "ansi_color_build",
     // "syntax": "Packages/ANSIescape/ANSI.tmLanguage"
