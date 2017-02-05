@@ -9,13 +9,15 @@
     [
         {
             "name": "Build AMXX Plugin (Linux/Cygwin)",
-            "cmd": ["sh","$packages/Amxx Pawn/AmxxPawn.sh","$file", "$file_base_name", "$packages"],
+            "cmd": ["sh","$packages/Amxx Pawn/AmxxPawn.sh","$file", "$file_base_name", "$packages", "$file_path"],
         },
         {
             "name": "Build AMXX Plugin (Windows/Bat)",
-            "cmd": ["$packages/Amxx Pawn/AmxxPawn.bat","$file", "$file_base_name", "$packages"],
+            "cmd": ["$packages/Amxx Pawn/AmxxPawn.bat","$file", "$file_base_name", "$packages", "$file_path"],
         },
-    ]
+    ],
+
+    "syntax": "Packages/amxmodx/AMXX-Console.sublime-syntax",
 
     // "target": "ansi_color_build",
     // "syntax": "Packages/ANSIescape/ANSI.tmLanguage"

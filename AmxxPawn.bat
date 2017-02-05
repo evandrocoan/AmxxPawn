@@ -64,6 +64,10 @@ rem
 rem Example: %1="F:\SteamCMD\steamapps\common\Half-Life\czero\addons\my_plugin.sma"
 set PLUGIN_SOURCE_CODE_FILE_PATH="%1"
 
+rem %4 is the path of the folder where the plugin source code is.
+rem Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
+set PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=%4\include/
+
 
 
 rem Example: $2="my_plugin"
@@ -75,7 +79,7 @@ rem So, this way there is not way you are going to use the wrong version of the 
 IF EXIST "%PLUGIN_BINARY_FILE_PATH%" del "%PLUGIN_BINARY_FILE_PATH%"
 
 rem To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"%AMXX_COMPILER_PATH%" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
+"%AMXX_COMPILER_PATH%" -i"%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
 
 rem If there was a compilation error, there is nothing more to be done.
 IF NOT EXIST "%PLUGIN_BINARY_FILE_PATH%" GOTO end
