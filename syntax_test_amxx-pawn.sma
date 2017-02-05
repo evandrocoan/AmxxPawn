@@ -550,13 +550,13 @@ configureServerStart(%1,%2, var = 80, str[] = "kjlçkj" )
     LOGGER( 128, "I AM ENTERING ON configureServerStart(0)" )
 }
 
-configureServerStart( )
+configureServerStartt( )
     // However this function call bellow could match as a function definition also
     // but it would just pollute a little the symbols list.
     LOGGER( 128, "I AM ENTERING ON configureServerStart(0)" )
 
 
-stock configureServerStart
+stock configureServerStartt
 (
                                )
 {
