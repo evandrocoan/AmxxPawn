@@ -174,6 +174,12 @@ isFloatNumber()
 # Example: $1="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/my_plugin.sma"
 PLUGIN_SOURCE_CODE_FILE_PATH=$1
 
+# %4 is the path of the folder where the plugin source code is.
+# Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
+PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=$4/include/
+
+
+
 # Example: $2="my_plugin"
 PLUGIN_BASE_FILE_NAME="$2"
 PLUGIN_BINARY_FILE_PATH=${folders_list[0]}/$PLUGIN_BASE_FILE_NAME.amxx
@@ -184,7 +190,7 @@ rm "$PLUGIN_BINARY_FILE_PATH"
 printf "\n"
 
 # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"$AMXX_COMPILER_PATH" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
+"$AMXX_COMPILER_PATH" -i"$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
 
 
