@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List Global</string>
 	<key>scope</key>
-	<string>(source.AmxxPawn) &amp; (variable.local.definition | parameter.definition | function.definition | variable.definition)</string>
+	<string>(source.AmxxPawn | source.sma) &amp; (variable.local.definition | parameter.definition | function.definition | variable.definition)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

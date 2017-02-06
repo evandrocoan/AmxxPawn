@@ -66,7 +66,7 @@ set PLUGIN_SOURCE_CODE_FILE_PATH="%1"
 
 rem %4 is the path of the folder where the plugin source code is.
 rem Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
-set PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=%4\include/
+set PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=%4\include
 
 
 
@@ -79,7 +79,7 @@ rem So, this way there is not way you are going to use the wrong version of the 
 IF EXIST "%PLUGIN_BINARY_FILE_PATH%" del "%PLUGIN_BINARY_FILE_PATH%"
 
 rem To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"%AMXX_COMPILER_PATH%" -i"%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
+"%AMXX_COMPILER_PATH%" -i"%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%/" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
 
 rem If there was a compilation error, there is nothing more to be done.
 IF NOT EXIST "%PLUGIN_BINARY_FILE_PATH%" GOTO end
@@ -111,6 +111,32 @@ if defined folders_list[%currentIndex%] (
 
     GOTO :SymLoop
 )
+
+
+
+rem Copy the include files to the compiler include files, if they exist.
+setlocal enabledelayedexpansion enableextensions
+
+rem See: http://stackoverflow.com/questions/659647/how-to-get-folder-path-from-file-path-with-cmd
+rem set myPath=C:\Somewhere\Somewhere\SomeFile.txt
+set myPath=%AMXX_COMPILER_PATH%
+call :file_name_from_path result !myPath!
+
+
+set COMPILER_INCLUDE_FOLDER_PATH=%result%include
+IF EXIST "%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" call xcopy /S /Y "%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" "%COMPILER_INCLUDE_FOLDER_PATH%" > nul
+
+
+goto :eof
+
+:file_name_from_path <resultVar> <pathVar>
+(
+    set "%~1=%~dp2"
+    exit /b
+)
+
+:eof
+endlocal
 
 
 

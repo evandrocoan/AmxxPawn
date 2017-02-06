@@ -20,7 +20,7 @@ file_extensions:
   - sma
 
 # The default scope assigned to all text in the file.
-scope: source.AmxxPawn
+scope: source.AmxxPawn, source.sma
 
 # When a file is opened without a recognized extension, the first line of the file
 # contents will be tested against this regex, to see if the syntax should be applied.

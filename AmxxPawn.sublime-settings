@@ -1,3 +1,7 @@
 {
-	"extensions": ["sma", "inc"]
+	"extensions":
+	[
+		"inc",
+		"sma"
+	]
 }

@@ -176,7 +176,7 @@ PLUGIN_SOURCE_CODE_FILE_PATH=$1
 
 # %4 is the path of the folder where the plugin source code is.
 # Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
-PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=$4/include/
+PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=$4/include
 
 
 
@@ -190,7 +190,7 @@ rm "$PLUGIN_BINARY_FILE_PATH"
 printf "\n"
 
 # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"$AMXX_COMPILER_PATH" -i"$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
+"$AMXX_COMPILER_PATH" -i"$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
 
 
@@ -210,6 +210,14 @@ then
         rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
         cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
     done
+
+    # Copy the include files to the compiler include files, if they exist.
+    COMPILER_INCLUDE_FOLDER_PATH=$(dirname "${AMXX_COMPILER_PATH}")/
+
+    if [ -d $PLUGIN_SOURCE_CODE_FOLDER_INCLUDE ]
+    then
+        cp -r "$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE" "$COMPILER_INCLUDE_FOLDER_PATH"
+    fi
 fi
 
 FULL_PATH_TO_SCRIPT=$(echo $0 | sed -r "s|\\\|\/|g" | sed -r "s|:||g")
