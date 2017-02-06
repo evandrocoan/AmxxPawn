@@ -16,15 +16,6 @@
                         "children":
                         [
                             {
-                                "command": "new_amxx_include",
-                                "caption": "New Include"
-                            },
-                            {
-                                "command": "new_amxx_plugin",
-                                "caption": "New Plug-In"
-                            },
-                            { "caption": "-" },
-                            {
                                 "command": "open_file",
                                 "args": {"file": "${packages}/Amxx Pawn/AmxxPawn.sh"},
                                 "caption": "Configure Linux/Cygwin Compiler"
