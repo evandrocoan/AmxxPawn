@@ -20,7 +20,7 @@ file_extensions:
   - sma
 
 # The default scope assigned to all text in the file.
-scope: source.AmxxPawn, source.sma
+scope: source.AmxxPawn source.sma
 
 # When a file is opened without a recognized extension, the first line of the file
 # contents will be tested against this regex, to see if the syntax should be applied.
@@ -60,10 +60,10 @@ contexts:
   pawn_cvars:
     - match: '((register_cvar)|(create_cvar))\s*(\()\s*(\")([A-Za-z_0-9]+)(\")'
       captures:
-        1: function.call.AmxxPawn
+        1: support.function.call.pawn function.call.AmxxPawn
         4: keyword.brackets.AmxxPawn
         5: punctuation.definition.string.begin.AmxxPawn
-        6: cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
+        6: cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
         7: punctuation.definition.string.end.AmxxPawn
 
   ########################################################
@@ -86,7 +86,7 @@ contexts:
       push:
         # This assigns the given scope to all text within this context, including the
         # patterns that push the context onto the stack and pop it off.
-        - meta_scope: doccomment.block.AmxxPawn
+        - meta_scope: comment.pawn doccomment.block.AmxxPawn
         - match: \*/
           scope: punctuation.definition.comment.AmxxPawn
           # Pops the current context off the stack. The only accepted value for this key is true.
@@ -136,13 +136,13 @@ contexts:
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         0: meta.preprocessor.AmxxPawn
-        2: function.definition.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
 
     # Handle preprocessor declaration ending a triple slash commentary ///
     - match: '^\s*\#(define\s+({{words_pawn}})).*(///)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
-        2: function.definition.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
         3: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
         4: comment.line.triple-slash.AmxxPawn
 
@@ -150,7 +150,7 @@ contexts:
     - match: '^\s*\#(define\s+({{words_pawn}})).*(//)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
-        2: function.definition.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
         3: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
         4: comment.line.double-slash.AmxxPawn
 
@@ -158,13 +158,13 @@ contexts:
     - match: '^\s*\#(define\s+({{words_pawn}})).*(".*")\n'
       captures:
         0: meta.preprocessor.AmxxPawn
-        2: function.definition.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
         3: string.quoted.double.AmxxPawn
 
     # Handle all the remaining preprocessor declarations
     - match: '^\s*\#(define\s+({{words_pawn}}))'
       captures:
-        2: function.definition.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_string
@@ -312,7 +312,7 @@ contexts:
     - include: pawn_function_includes
     - match: '\s*([A-Za-z_][\w_]+)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
-        1: function.call.AmxxPawn
+        1: support.function.call.pawn function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
 
   function_definition:
@@ -320,7 +320,7 @@ contexts:
       captures:
         2: storage.type.function.AmxxPawn
         3: storage.modifier.tag.AmxxPawn
-        4: function.definition.AmxxPawn, entity.name.function.AmxxPawn
+        4: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
       push:
         - match: \)
           scope: keyword.brackets.AmxxPawn
@@ -331,7 +331,7 @@ contexts:
             1: parameter.definition.AmxxPawn
             3: keyword.operator.assignment.AmxxPawn
         - match: ','
-          scope: punctuation.separator.AmxxPawn
+          scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
   ########################################################
 
@@ -364,7 +364,7 @@ contexts:
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
-        3: variable.type.AmxxPawn
+        3: storage.type.vars.pawn variable.type.AmxxPawn
         4: keyword.operator.AmxxPawn
         5: variable.definition.AmxxPawn
 
