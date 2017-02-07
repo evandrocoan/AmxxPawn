@@ -58,13 +58,13 @@ contexts:
 
   # Pawn register_cvar() and create_cvar() symbols definitions
   pawn_cvars:
-    - match: '((register_cvar)|(create_cvar))\s*(\()\s*(\")([A-Za-z_0-9]+)(\")'
+    - match: '((register_cvar)|(create_cvar))\s*(\()\s*((\")([A-Za-z_0-9]+)(\"))?'
       captures:
-        1: support.function.call.pawn function.call.AmxxPawn
+        2: support.function.call.pawn function.call.AmxxPawn
         4: keyword.brackets.AmxxPawn
-        5: punctuation.definition.string.begin.AmxxPawn
-        6: cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
-        7: punctuation.definition.string.end.AmxxPawn
+        6: punctuation.definition.string.begin.AmxxPawn
+        7: cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
+        8: punctuation.definition.string.end.AmxxPawn
 
   ########################################################
 

@@ -322,6 +322,56 @@ public plugin_init()
 }
 
 
+public plugin_init()
+{
+// meta.block.AmxxPawn keyword.brackets.AmxxPawn
+
+    register_plugin(PLUGIN, VERSION, AUTHOR)
+//  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+
+    register_cvar()
+//  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+
+    register_cvar(const name[], const string[], flags = 0, Float:fvalue = 0.0)
+//  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+
+    // Add your code here...
+    register_cvar( "Hello", const string[], flags = 0, Float:fvalue = 0.0)
+//  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+
+    register_cvar( "Hi", )
+//  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+
+    register_plugin(PLUGIN, VERSION, AUTHOR)
+//                  ^^^^^^ meta.block.AmxxPawn
+
+    register_cvar(const name[], const string[], flags = 0, Float:fvalue = 0.0)
+//                ^^^^^ meta.block.AmxxPawn storage.type.vars.AmxxPawn
+
+    // Add your code here...
+    register_cvar( "Hello", const string[], flags = 0, Float:fvalue = 0.0)
+//                  ^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
+
+    register_cvar( "Hi", )
+//                  ^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
+
+    register_cvar( "Hi", )
+//                     ^ meta.block.AmxxPawn keyword.other.AmxxPawn
+
+    register_cvar( "Hi", )
+//                       ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+
+    register_cvar( "Hi", )
+//               ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+
+    register_cvar( "Hi", )
+//                 ^ meta.block.AmxxPawn punctuation.definition.string.begin.AmxxPawn
+
+    register_cvar( "Hi", )
+//                    ^ meta.block.AmxxPawn punctuation.definition.string.end.AmxxPawn
+
+}
+// meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
 
 
