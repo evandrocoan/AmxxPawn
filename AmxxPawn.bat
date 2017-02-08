@@ -66,7 +66,7 @@ set PLUGIN_SOURCE_CODE_FILE_PATH="%1"
 
 rem %4 is the path of the folder where the plugin source code is.
 rem Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
-set PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=%4\include
+set SOURCE_CODE_INCLUDE_FOLDER=%4\include
 
 
 
@@ -79,10 +79,10 @@ rem So, this way there is not way you are going to use the wrong version of the 
 IF EXIST "%PLUGIN_BINARY_FILE_PATH%" del "%PLUGIN_BINARY_FILE_PATH%"
 
 rem To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"%AMXX_COMPILER_PATH%" -i"%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%/" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
+"%AMXX_COMPILER_PATH%" -i"%SOURCE_CODE_INCLUDE_FOLDER%/" -o"%PLUGIN_BINARY_FILE_PATH%" %PLUGIN_SOURCE_CODE_FILE_PATH%
 
 rem If there was a compilation error, there is nothing more to be done.
-IF NOT EXIST "%PLUGIN_BINARY_FILE_PATH%" GOTO end
+IF NOT EXIST "%PLUGIN_BINARY_FILE_PATH%" goto end
 
 
 
@@ -109,7 +109,7 @@ if defined folders_list[%currentIndex%] (
     rem Update the next 'for/array' index to copy/install.
     set /a "currentIndex+=1"
 
-    GOTO :SymLoop
+    goto :SymLoop
 )
 
 
@@ -120,22 +120,31 @@ setlocal enabledelayedexpansion enableextensions
 rem See: http://stackoverflow.com/questions/659647/how-to-get-folder-path-from-file-path-with-cmd
 rem set myPath=C:\Somewhere\Somewhere\SomeFile.txt
 set myPath=%AMXX_COMPILER_PATH%
-call :file_name_from_path result !myPath!
+call :path_from_file_name result !myPath!
 
 
+rem Build the compiler include folder path
 set COMPILER_INCLUDE_FOLDER_PATH=%result%include
-IF EXIST "%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" call xcopy /S /Y "%PLUGIN_SOURCE_CODE_FOLDER_INCLUDE%" "%COMPILER_INCLUDE_FOLDER_PATH%" > nul
+
+rem echo COMPILER_INCLUDE_FOLDER_PATH: %COMPILER_INCLUDE_FOLDER_PATH%
+rem echo SOURCE_CODE_INCLUDE_FOLDER: %SOURCE_CODE_INCLUDE_FOLDER%
+
+for %%A in ("%COMPILER_INCLUDE_FOLDER_PATH%") do for %%B in ("%SOURCE_CODE_INCLUDE_FOLDER%") do if "%%~fA"=="%%~fB" goto end
+IF EXIST "%SOURCE_CODE_INCLUDE_FOLDER%" call xcopy /S /Y "%SOURCE_CODE_INCLUDE_FOLDER%" "%COMPILER_INCLUDE_FOLDER_PATH%" > nul
 
 
-goto :eof
 
-:file_name_from_path <resultVar> <pathVar>
+rem Sub routines
+goto :end
+
+rem This one must to be on the `enabledelayedexpansion` range
+:path_from_file_name <resultVar> <pathVar>
 (
     set "%~1=%~dp2"
     exit /b
 )
 
-:eof
+rem Closes the `enabledelayedexpansion` scope
 endlocal
 
 
