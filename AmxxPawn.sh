@@ -53,7 +53,7 @@ then
     export scriptStartSecond=$(date +%s.%N)
 
     # Create a flag file to avoid override the initial time.
-    echo "The EPOS 1.1 time flag." > $updateFlagFilePath
+    echo "The time flag." > $updateFlagFilePath
 fi
 
 # Calculates and prints to the screen the seconds elapsed since this script started.
@@ -176,7 +176,8 @@ PLUGIN_SOURCE_CODE_FILE_PATH=$1
 
 # %4 is the path of the folder where the plugin source code is.
 # Example F:\SteamCMD\steamapps\common\Half-Life\czero\addons\
-PLUGIN_SOURCE_CODE_FOLDER_INCLUDE=$4/include
+SOURCE_CODE_FOLDER=$4
+SOURCE_CODE_INCLUDE_FOLDER=$SOURCE_CODE_FOLDER/include
 
 
 
@@ -190,7 +191,7 @@ rm "$PLUGIN_BINARY_FILE_PATH"
 printf "\n"
 
 # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"$AMXX_COMPILER_PATH" -i"$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
+"$AMXX_COMPILER_PATH" -i"$SOURCE_CODE_INCLUDE_FOLDER/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
 
 
@@ -212,11 +213,19 @@ then
     done
 
     # Copy the include files to the compiler include files, if they exist.
-    COMPILER_INCLUDE_FOLDER_PATH=$(dirname "${AMXX_COMPILER_PATH}")/
-
-    if [ -d $PLUGIN_SOURCE_CODE_FOLDER_INCLUDE ]
+    if [ -d $SOURCE_CODE_INCLUDE_FOLDER ]
     then
-        cp -r "$PLUGIN_SOURCE_CODE_FOLDER_INCLUDE" "$COMPILER_INCLUDE_FOLDER_PATH"
+        # Build the compiler include folder path
+        COMPILER_FOLDER_PATH=$(dirname "${AMXX_COMPILER_PATH}")/
+
+        # echo "$(readlink -f "$SOURCE_CODE_FOLDER")"
+        # echo "$(readlink -f "$COMPILER_FOLDER_PATH")"
+
+        # See: http://stackoverflow.com/questions/42105743/how-to-check-if-two-variables-in-a-shell-script-point-to-the-same-folder
+        if [ "$(readlink -f "$SOURCE_CODE_FOLDER")" != "$(readlink -f "$COMPILER_FOLDER_PATH")" ]
+        then
+            cp -r "$SOURCE_CODE_INCLUDE_FOLDER" "$COMPILER_FOLDER_PATH"
+        fi
     fi
 fi
 
