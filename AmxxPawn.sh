@@ -185,46 +185,49 @@ SOURCE_CODE_INCLUDE_FOLDER=$SOURCE_CODE_FOLDER/include
 PLUGIN_BASE_FILE_NAME="$2"
 PLUGIN_BINARY_FILE_PATH=${folders_list[0]}/$PLUGIN_BASE_FILE_NAME.amxx
 
-# Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
-# So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
-rm "$PLUGIN_BINARY_FILE_PATH"
-printf "\n"
-
-# To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
-"$AMXX_COMPILER_PATH" -i"$SOURCE_CODE_INCLUDE_FOLDER/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
-
-
-
-# If there was a compilation error, there is nothing more to be done.
-if [ -f $PLUGIN_BINARY_FILE_PATH ]
+if [[ $PLUGIN_BASE_FILE_NAME == "" ]]
 then
-    printf "\nInstalling the plugin to the folder ${folders_list[0]}\n"
+    printf "\nYou must to save the plugin before to compile it.\n"
+else
+    # Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
+    # So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
+    rm "$PLUGIN_BINARY_FILE_PATH"
+    printf "\n"
 
-    # Remove the first element, as it was already processed and it is the source file.
-    unset folders_list[0]
+    # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
+    "$AMXX_COMPILER_PATH" -i"$SOURCE_CODE_INCLUDE_FOLDER/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
-    # Now loop through the above array
-    for current_output_folder in "${folders_list[@]}"
-    do
-        printf "Installing the plugin to the folder $current_output_folder\n"
-
-        rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
-        cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
-    done
-
-    # Copy the include files to the compiler include files, if they exist.
-    if [ -d $SOURCE_CODE_INCLUDE_FOLDER ]
+    # If there was a compilation error, there is nothing more to be done.
+    if [ -f $PLUGIN_BINARY_FILE_PATH ]
     then
-        # Build the compiler include folder path
-        COMPILER_FOLDER_PATH=$(dirname "${AMXX_COMPILER_PATH}")/
+        printf "\nInstalling the plugin to the folder ${folders_list[0]}\n"
 
-        # echo "$(readlink -f "$SOURCE_CODE_FOLDER")"
-        # echo "$(readlink -f "$COMPILER_FOLDER_PATH")"
+        # Remove the first element, as it was already processed and it is the source file.
+        unset folders_list[0]
 
-        # See: http://stackoverflow.com/questions/42105743/how-to-check-if-two-variables-in-a-shell-script-point-to-the-same-folder
-        if [ "$(readlink -f "$SOURCE_CODE_FOLDER")" != "$(readlink -f "$COMPILER_FOLDER_PATH")" ]
+        # Now loop through the above array
+        for current_output_folder in "${folders_list[@]}"
+        do
+            printf "Installing the plugin to the folder $current_output_folder\n"
+
+            rm "$current_output_folder/$PLUGIN_BASE_FILE_NAME.amxx"
+            cp "$PLUGIN_BINARY_FILE_PATH" "$current_output_folder"
+        done
+
+        # Copy the include files to the compiler include files, if they exist.
+        if [ -d $SOURCE_CODE_INCLUDE_FOLDER ]
         then
-            cp -r "$SOURCE_CODE_INCLUDE_FOLDER" "$COMPILER_FOLDER_PATH"
+            # Build the compiler include folder path
+            COMPILER_FOLDER_PATH=$(dirname "${AMXX_COMPILER_PATH}")/
+
+            # echo "$(readlink -f "$SOURCE_CODE_FOLDER")"
+            # echo "$(readlink -f "$COMPILER_FOLDER_PATH")"
+
+            # See: http://stackoverflow.com/questions/42105743/how-to-check-if-two-variables-in-a-shell-script-point-to-the-same-folder
+            if [ "$(readlink -f "$SOURCE_CODE_FOLDER")" != "$(readlink -f "$COMPILER_FOLDER_PATH")" ]
+            then
+                cp -r "$SOURCE_CODE_INCLUDE_FOLDER" "$COMPILER_FOLDER_PATH"
+            fi
         fi
     fi
 fi
