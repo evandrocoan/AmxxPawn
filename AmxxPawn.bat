@@ -74,6 +74,8 @@ rem Example: $2="my_plugin"
 set PLUGIN_BASE_FILE_NAME=%2
 set PLUGIN_BINARY_FILE_PATH=%folders_list[0]%\%PLUGIN_BASE_FILE_NAME%.amxx
 
+IF %PLUGIN_BASE_FILE_NAME%=="" echo You must to save the plugin before to compile it. & goto end
+
 rem Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
 rem So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
 IF EXIST "%PLUGIN_BINARY_FILE_PATH%" del "%PLUGIN_BINARY_FILE_PATH%"
