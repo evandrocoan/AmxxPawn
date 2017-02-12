@@ -191,10 +191,13 @@ then
 else
     # Delete the old binary in case some crazy problem on the compiler, or in the system while copy it.
     # So, this way there is not way you are going to use the wrong version of the plugin without knowing it.
-    rm "$PLUGIN_BINARY_FILE_PATH"
-    printf "\n"
+    if [ -f $PLUGIN_BINARY_FILE_PATH ]
+    then
+        rm "$PLUGIN_BINARY_FILE_PATH"
+    fi
 
     # To call the compiler to compile the plugin to the output folder $PLUGIN_BINARY_FILE_PATH
+    printf "\n"
     "$AMXX_COMPILER_PATH" -i"$SOURCE_CODE_INCLUDE_FOLDER/" -o"$PLUGIN_BINARY_FILE_PATH" "$PLUGIN_SOURCE_CODE_FILE_PATH"
 
     # If there was a compilation error, there is nothing more to be done.
