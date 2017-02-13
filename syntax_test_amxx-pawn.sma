@@ -97,6 +97,32 @@ stock const shit3;
             // <- variable.definition.AmxxPawn
                 // <- variable.definition.AmxxPawn
 
+stock new g_dummy_value = false;
+// <- storage.type.vars.AmxxPawn
+      // keyword.control.AmxxPawn
+          // variable.definition.AmxxPawn
+
+stock new const g_dummy_value = false;
+// <- storage.type.vars.AmxxPawn
+      // keyword.control.AmxxPawn
+          // storage.type.vars.pawn
+                // variable.definition.AmxxPawn
+
+stock new const bool:g_dummy_value = false;
+// <- storage.type.vars.AmxxPawn
+      // keyword.control.AmxxPawn
+          // storage.type.vars.pawn
+                // variable.type.AmxxPawn
+                    // keyword.operator.AmxxPawn
+                     // variable.definition.AmxxPawn
+
+stock new bool:g_dummy_value = false;
+// <- storage.type.vars.AmxxPawn
+      // keyword.control.AmxxPawn
+          // variable.type.AmxxPawn
+              // keyword.operator.AmxxPawn
+               // variable.definition.AmxxPawn
+
 stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // <- storage.type.function.AmxxPawn
     // <- storage.type.function.AmxxPawn
