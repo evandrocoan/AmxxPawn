@@ -141,6 +141,21 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
                                                                          // <- keyword.brackets.AmxxPawn
                                                                           // <- source.AmxxPawn
 
+public bool:   hi()
+// <- storage.type.function.AmxxPawn
+     // <- storage.type.function.AmxxPawn
+       // <- variable.type.AmxxPawn
+          // <- variable.type.AmxxPawn
+               // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                 // <- keyword.brackets.AmxxPawn
+                  // <- keyword.brackets.AmxxPawn
+
+nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+
+
+bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+
 
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
