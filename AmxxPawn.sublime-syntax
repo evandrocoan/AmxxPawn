@@ -38,7 +38,9 @@ contexts:
     - include: pawn_preprocessor
     - include: pawn_numbers
     - include: pawn_function
+    - include: private_function_definition
     - include: pawn_post_keywords
+
 
   # Constants
   #- include: Packages/amxmodx/const.sublime-syntax
@@ -277,7 +279,6 @@ contexts:
         - match: '}'
           scope: keyword.brackets.AmxxPawn
           pop: true
-        # - include: private_function_definition
         - include: pawn_function
     - include: pawn_function_includes
 

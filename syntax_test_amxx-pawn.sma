@@ -152,7 +152,8 @@ public bool:   hi()
                   // <- keyword.brackets.AmxxPawn
 
 nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
-
+// <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                            // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
 bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 
