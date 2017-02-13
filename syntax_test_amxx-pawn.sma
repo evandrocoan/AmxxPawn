@@ -50,6 +50,10 @@ new const bool:g_dummy_value = false;
                                      // <- source.AmxxPawn
 
 
+new g_dummy_value = false;
+// <- keyword.control.AmxxPawn
+    // <- variable.definition.AmxxPawn
+
 static formated_message[ MAX_BIG_BOSS_STRING ];
 // <- storage.type.vars.AmxxPawn
      // <- storage.type.vars.AmxxPawn
@@ -71,6 +75,27 @@ const formated_message;
                       // <- source.AmxxPawn
                        // <- source.AmxxPawn
 
+new stock formated_message;
+// <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+        // <- storage.type.vars.AmxxPawn
+          // <- variable.definition.AmxxPawn
+                         // <- variable.definition.AmxxPawn
+
+stock shit3;
+// <- storage.type.vars.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+      // <- variable.definition.AmxxPawn
+          // <- variable.definition.AmxxPawn
+
+stock const shit3;
+// <- storage.type.vars.AmxxPawn
+    // <- storage.type.vars.AmxxPawn
+      // <- storage.type.vars.AmxxPawn
+          // <- storage.type.vars.AmxxPawn
+            // <- variable.definition.AmxxPawn
+                // <- variable.definition.AmxxPawn
 
 stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // <- storage.type.function.AmxxPawn
@@ -291,7 +316,7 @@ stock mp_fraglimitCvarSupport()
     else if( get_pcvar_num( cvar_fragLimitSupport ) )
     {
         new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-        //  ^^^^ meta.block.AmxxPawn meta.block.AmxxPawn variable.type.AmxxPawn
+        //  ^^^^ meta.block.AmxxPawn meta.block.AmxxPawn storage.type.vars.pawn variable.type.AmxxPawn
 
         register_event( "DeathMsg", "client_death_event", "a" );
      // ^^^^^^^^^^^^^^ meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
@@ -373,6 +398,24 @@ public plugin_init()
 }
 // meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
+
+
+
+
+
+
+
+public func(){}
+/     ^^^^ function.definition.AmxxPawn
+
+stock func(){}
+/    ^^^^ function.definition.AmxxPawn
+
+bool:func(){}
+/   ^^^^ function.definition.AmxxPawn
+
+punishmet(id, PunishType:type) {}
+/ <- function.definition.AmxxPawn
 
 
 
