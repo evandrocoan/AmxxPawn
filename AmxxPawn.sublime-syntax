@@ -37,8 +37,6 @@ contexts:
     - include: pawn_comment
     - include: pawn_preprocessor
     - include: pawn_numbers
-    - include: pawn_global_variables
-    - include: pawn_keywords
     - include: pawn_function
     - include: pawn_post_keywords
 
@@ -52,7 +50,7 @@ contexts:
 
   # Pawn register_cvar() and create_cvar() symbols definitions
   pawn_cvars:
-    - match: '((register_cvar)|(create_cvar))\s*(\()\s*((\")([A-Za-z_0-9]+)(\"))?'
+    - match: '((register_cvar)|(create_cvar))\s*(\()\s*((\")(\w+)(\"))?'
       captures:
         2: support.function.call.pawn function.call.AmxxPawn
         4: keyword.brackets.AmxxPawn
@@ -126,14 +124,14 @@ contexts:
 
   preprocessor_define:
     # Handle preprocessor declaration ending a `words_pawn` only
-    - match: '^\s*\#(define\s+([A-Za-z_0-9]+))\n'
+    - match: '^\s*\#(define\s+(\w+))\n'
       # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
 
     # Handle preprocessor declaration ending a triple slash commentary ///
-    - match: '^\s*\#(define\s+([A-Za-z_0-9]+)).*(///)(.*)\n'
+    - match: '^\s*\#(define\s+(\w+)).*(///)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
@@ -141,7 +139,7 @@ contexts:
         4: comment.line.triple-slash.AmxxPawn
 
     # Handle preprocessor declaration ending a double slash commentary //
-    - match: '^\s*\#(define\s+([A-Za-z_0-9]+)).*(//)(.*)\n'
+    - match: '^\s*\#(define\s+(\w+)).*(//)(.*)\n'
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
@@ -149,14 +147,14 @@ contexts:
         4: comment.line.double-slash.AmxxPawn
 
     # Handle preprocessor declaration ending with double quotes "
-    - match: '^\s*\#(define\s+([A-Za-z_0-9]+)).*(".*")\n'
+    - match: '^\s*\#(define\s+(\w+)).*(".*")\n'
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
         3: string.quoted.double.AmxxPawn
 
     # Handle all the remaining preprocessor declarations
-    - match: '^\s*\#(define\s+([A-Za-z_0-9]+))'
+    - match: '^\s*\#(define\s+(\w+))'
       captures:
         2: support.function.definition.pawn function.definition.AmxxPawn
       push:
@@ -268,7 +266,9 @@ contexts:
 
   # "PAWN Function"
   pawn_function:
-    - include: function_definition
+    - include: general_function_definition
+    - include: pawn_global_variables
+    - include: pawn_keywords
     - match: '{'
       scope: keyword.brackets.AmxxPawn
       push:
@@ -277,6 +277,7 @@ contexts:
         - match: '}'
           scope: keyword.brackets.AmxxPawn
           pop: true
+        # - include: private_function_definition
         - include: pawn_function
     - include: pawn_function_includes
 
@@ -306,28 +307,66 @@ contexts:
 
   function_call:
     - include: pawn_function_includes
-    - match: '([A-Za-z_][\w_]+)\s*(?<!register_cvar|create_cvar)\s*(\()'
+    - match: '(\w+)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
         1: support.function.call.pawn function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
 
-  function_definition:
-    - match: '^\s*([^new]\s+(public|stock|native|forward)\s+)([A-Za-z_]\w*:\s*)?([A-Za-z_][\w_]*)[\s]*'
+  private_function_definition:
+    # Matches: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+    # Groups:  1
+    - match: '^\s*(\w+)\s*(?=\()'
       captures:
-        2: storage.type.function.AmxxPawn
-        3: storage.modifier.tag.AmxxPawn
+        1: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+      push:
+        - include: function_definition_parameters
+
+    # Matches: bool: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+    # Groups:  1   2 3
+    - match: '^\s*(\w+)(:)\s*(\w+)\s*(?=\()'
+      captures:
+        1: storage.type.vars.pawn variable.type.AmxxPawn
+        2: keyword.operator.AmxxPawn
+        3: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+      push:
+        - include: function_definition_parameters
+
+
+  general_function_definition:
+    # Matches: stock bool: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+    # Groups:  1     2   3 4
+    - match: '^\s*(public|stock|native|forward)\s+(\w+)(:)\s*(\w+)\s*(?=\()'
+      captures:
+        1: storage.type.function.AmxxPawn
+        2: storage.type.vars.pawn variable.type.AmxxPawn
+        3: keyword.operator.AmxxPawn
         4: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
       push:
-        - match: \)
-          scope: keyword.brackets.AmxxPawn
-          pop: true
-        - include: pawn_function_includes_no_variables
-        - match: '([A-Za-z_0-9]+)(\s*(=)\s)?'
-          captures:
-            1: parameter.definition.AmxxPawn
-            3: keyword.operator.assignment.AmxxPawn
-        - match: ','
-          scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+        - include: function_definition_parameters
+
+    # Matches: stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+    # Groups:  1     2
+    - match: '^\s*(public|stock|native|forward)\s+(\w+)\s*(?=\()'
+      captures:
+        1: storage.type.function.AmxxPawn
+        2: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+      push:
+        - include: function_definition_parameters
+
+  # Compute the definition function parameters as `( player_id = 5, partialNameAttempt[] )`
+  function_definition_parameters:
+    - match: \(
+      scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+    - match: \)
+      scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+      pop: true
+    - include: pawn_function_includes_no_variables
+    - match: '(\w+)(\s*(=)\s+)?'
+      captures:
+        1: parameter.definition.AmxxPawn
+        3: keyword.operator.assignment.AmxxPawn
+    - match: ','
+      scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
   ########################################################
 
@@ -358,7 +397,7 @@ contexts:
   pawn_global_variables:
     # Match:            stock new  const  bool:g_dummy_value = false;
     # Capture Groups:     1    2     3     4  5      6
-    - match: '(stock)\s+(new)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*[A-Za-z_0-9]+(:))?\s*([A-Za-z_0-9]+)'
+    - match: '(stock)\s+(new)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: storage.type.vars.AmxxPawn
         2: keyword.control.AmxxPawn
@@ -367,7 +406,7 @@ contexts:
         5: keyword.operator.AmxxPawn
         6: variable.definition.AmxxPawn
 
-    - match: '(stock)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*[A-Za-z_0-9]+(:))?\s*([A-Za-z_0-9]+)'
+    - match: '(stock)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: storage.type.vars.AmxxPawn
         2: storage.type.vars.AmxxPawn
@@ -375,7 +414,7 @@ contexts:
         4: keyword.operator.AmxxPawn
         5: variable.definition.AmxxPawn
 
-    - match: '(new)\s+\b([A-Za-z_0-9]+)?\b(\s*[A-Za-z_0-9]+(:))?\s*([A-Za-z_0-9]+)'
+    - match: '(new)\s+\b(\w+)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
@@ -383,15 +422,17 @@ contexts:
         4: keyword.operator.AmxxPawn
         5: variable.definition.AmxxPawn
 
-    - match: '\b(Float|enum|char|const|static|Array|bool|Trie)\b(\s*[A-Za-z_0-9]+\s*(:))?\s*([A-Za-z_0-9]+)'
+    - match: '\b(Float|enum|char|const|static|Array|bool|Trie)\b(\s*\w+\s*(:))?\s*(\w+)'
       captures:
         1: storage.type.vars.AmxxPawn
-        2: variable.type.AmxxPawn
+        2: storage.type.vars.pawn variable.type.AmxxPawn
         3: keyword.operator.AmxxPawn
         4: variable.definition.AmxxPawn
 
   pawn_local_variables:
-    - match: '(new)\s*\b([A-Za-z_0-9]+)?\b(\s*[A-Za-z_0-9]+(:))?\s*([A-Za-z_0-9]+)'
+    # Matches: new const bool: g_dummy_value = false;
+    # Groups:  1   2     3   4 5
+    - match: '(new)\s*\b(\w+)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
@@ -399,7 +440,7 @@ contexts:
         4: keyword.operator.AmxxPawn
         5: variable.local.definition.AmxxPawn
 
-    - match: '\b(Float|enum|char|const|static|Array|bool|Trie)\b(\s*[A-Za-z_0-9]+(:))?\s*([A-Za-z_0-9]+)'
+    - match: '\b(Float|enum|char|const|static|Array|bool|Trie)\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: storage.type.vars.AmxxPawn
         2: variable.type.AmxxPawn
@@ -422,7 +463,7 @@ contexts:
       scope: keyword.control.AmxxPawn
 
     - match: \s*\b(Float|enum|char|const|static|Array|bool|Trie)\b
-      scope: storage.type.vars.AmxxPawn
+      scope: storage.type.vars.pawn variable.type.AmxxPawn
 
     - match: any\:(\.\.\.)
       captures:
@@ -456,13 +497,8 @@ contexts:
 
 
   pawn_post_keywords:
-    - match: '(?<!\?)\b[A-Za-z_]\w*\:'
+    - match: '(?<!\?)\b\w+\:'
       scope: storage.modifier.tag.AmxxPawn
-
-    # - match: \s*\b(public|stock|native|forward)\b
-    #   captures:
-    #     1: storage.type.vars.AmxxPawn
-    #     2: keyword.control.AmxxPawn
 
     - match: \s*\b(public|stock|native|forward)\b
       scope: storage.type.function.AmxxPawn
