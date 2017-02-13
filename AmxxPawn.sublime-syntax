@@ -295,6 +295,8 @@ contexts:
     - include: pawn_comment
     - include: pawn_preprocessor
     - include: pawn_numbers
+    # The `pawn_variables_local` must to be included before the `pawn_keywords`, otherwise we cannot
+    # recognize the scope `variable.local.definition`.
     - include: pawn_variables_local
     - include: pawn_keywords
     - include: pawn_post_keywords
@@ -380,7 +382,7 @@ contexts:
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
-        3: variable.type.AmxxPawn
+        3: storage.type.vars.pawn variable.type.AmxxPawn
         4: keyword.operator.AmxxPawn
         5: variable.local.definition.AmxxPawn
 
