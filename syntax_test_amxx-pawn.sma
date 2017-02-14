@@ -100,21 +100,21 @@ new stock formated_message;
 new stock g_dummy_value = false;
 // <- keyword.control.AmxxPawn
     // <- storage.type.vars.AmxxPawn
-          // variable.definition.AmxxPawn
+          // <- variable.definition.AmxxPawn
 
 new stock const g_dummy_value = false;
 // <- keyword.control.AmxxPawn
     // <- storage.type.vars.AmxxPawn
-          // storage.type.vars.pawn
-                // variable.definition.AmxxPawn
+          // <- storage.type.vars.pawn
+                // <- variable.definition.AmxxPawn
 
 new stock const bool:g_dummy_value = false;
 // <- keyword.control.AmxxPawn
     // <- storage.type.vars.AmxxPawn
-          // storage.type.vars.pawn
-                // variable.type.AmxxPawn
-                    // keyword.operator.AmxxPawn
-                     // variable.definition.AmxxPawn
+          // <- storage.type.vars.pawn
+                // <- variable.type.AmxxPawn
+                    // <- keyword.operator.AmxxPawn
+                     // <- variable.definition.AmxxPawn
 
 new stock bool:g_dummy_value = false;
 // <- keyword.control.AmxxPawn
@@ -162,16 +162,20 @@ bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
                                  // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
 public func(){}
-//     ^^^^ function.definition.AmxxPawn
+       // <- function.definition.AmxxPawn
+          // <- function.definition.AmxxPawn
 
 stock func(){}
-//    ^^^^ function.definition.AmxxPawn
+      // <- function.definition.AmxxPawn
+         // <- function.definition.AmxxPawn
 
 bool:func(){}
-//   ^^^^ function.definition.AmxxPawn
+     // <- function.definition.AmxxPawn
+        // <- function.definition.AmxxPawn
 
 punishmet(id, PunishType:type) {}
 // <- function.definition.AmxxPawn
+        // <- function.definition.AmxxPawn
 
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
@@ -197,19 +201,22 @@ punishmet(id, PunishType:type) {}
 #endif
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+    // <- meta.block.AmxxPawn function.call.AmxxPawn
+        // <- meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
 {
 #define IT_IS_A_VALID_LINE(%1) // this else only works for AMXX 183 or superior, due noted bug above.
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+    // <- meta.block.AmxxPawn function.call.AmxxPawn
+          // <- meta.block.AmxxPawn function.call.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1)
 
     LOGGER( 64, "( color_print ) [out] player_id: %d, Chat printed: %s...", player_id, formated_message )
-//  ^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+    // <- meta.block.AmxxPawn function.call.AmxxPawn
+         // <- meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
@@ -219,7 +226,8 @@ punishmet(id, PunishType:type) {}
                                            && !equal( %1, ";", 1 ) \
                                                                      && IS_MAP_VALID( %1 ) )
                                                                                                 stock loadMapFileList()
-//                                                                                              ^^^^^ storage.type.function.AmxxPawn
+//                                                                                              ^     storage.type.function.AmxxPawn
+//                                                                                                  ^ storage.type.function.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
@@ -409,7 +417,7 @@ public plugin_init()
 
 public plugin_init()
 {
-// meta.block.AmxxPawn keyword.brackets.AmxxPawn
+// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
     register_plugin(PLUGIN, VERSION, AUTHOR)
 //  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
@@ -456,7 +464,7 @@ public plugin_init()
 //                    ^ meta.block.AmxxPawn punctuation.definition.string.end.AmxxPawn
 
 }
-// meta.block.AmxxPawn keyword.brackets.AmxxPawn
+// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
 
 
