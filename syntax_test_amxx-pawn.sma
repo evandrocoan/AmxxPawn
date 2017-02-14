@@ -156,7 +156,22 @@ nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
                             // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
 bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+// <- variable.type.AmxxPawn
+   // <- variable.type.AmxxPawn
+     // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                                 // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
+public func(){}
+//     ^^^^ function.definition.AmxxPawn
+
+stock func(){}
+//    ^^^^ function.definition.AmxxPawn
+
+bool:func(){}
+//   ^^^^ function.definition.AmxxPawn
+
+punishmet(id, PunishType:type) {}
+// <- function.definition.AmxxPawn
 
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
@@ -343,7 +358,10 @@ new Array:dummy;
 
 
 new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-//  ^^^^ variable.type.AmxxPawn
+    // <- variable.type.AmxxPawn
+       // <- variable.type.AmxxPawn
+         // <- variable.definition.AmxxPawn
+                       // <- variable.definition.AmxxPawn
 
 stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
 // <- storage.type.function.AmxxPawn
@@ -441,23 +459,6 @@ public plugin_init()
 // meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
 
-
-
-
-
-
-
-public func(){}
-/     ^^^^ function.definition.AmxxPawn
-
-stock func(){}
-/    ^^^^ function.definition.AmxxPawn
-
-bool:func(){}
-/   ^^^^ function.definition.AmxxPawn
-
-punishmet(id, PunishType:type) {}
-/ <- function.definition.AmxxPawn
 
 
 

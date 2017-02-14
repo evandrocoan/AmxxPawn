@@ -460,11 +460,8 @@ contexts:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
 
-    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|new|false|true)\b
+    - match: \s*\b(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|false|true)\b
       scope: keyword.control.AmxxPawn
-
-    - match: \s*\b(Float|enum|char|const|static|Array|bool|Trie)\b
-      scope: storage.type.vars.pawn variable.type.AmxxPawn
 
     - match: any\:(\.\.\.)
       captures:
@@ -479,7 +476,7 @@ contexts:
     - match: (\-\-|\+\+)
       scope: keyword.operator.increment-decrement.AmxxPawn
 
-    - match: (\?|:)
+    - match: (\?.*:)
       scope: keyword.operator.ternary.AmxxPawn
 
     - match: (\-|\+|\*|\/|%)
@@ -498,11 +495,6 @@ contexts:
 
 
   pawn_post_keywords:
-    - match: '(?<!\?)\b\w+\:'
-      scope: storage.modifier.tag.AmxxPawn
-
-    - match: \s*\b(public|stock|native|forward)\b
-      scope: storage.type.function.AmxxPawn
 
     - match: '\(|\)|\[|\]'
       scope: keyword.brackets.AmxxPawn
