@@ -398,10 +398,10 @@ contexts:
   pawn_global_variables:
     # Match:            stock new  const  bool:g_dummy_value = false;
     # Capture Groups:     1    2     3     4  5      6
-    - match: '(stock)\s+(new)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
+    - match: '(new)\s+(stock)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
-        1: storage.type.vars.AmxxPawn
-        2: keyword.control.AmxxPawn
+        1: keyword.control.AmxxPawn
+        2: storage.type.vars.AmxxPawn
         3: storage.type.vars.pawn
         4: storage.type.vars.pawn variable.type.AmxxPawn
         5: keyword.operator.AmxxPawn
