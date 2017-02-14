@@ -359,7 +359,7 @@ contexts:
     - match: \(
       scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
     - match: \)
-      scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+      scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
       pop: true
     - include: pawn_function_includes_no_variables
     - match: '(\w+)(\s*(=)\s+)?'

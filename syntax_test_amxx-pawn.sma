@@ -177,6 +177,24 @@ punishmet(id, PunishType:type) {}
 // <- function.definition.AmxxPawn
         // <- function.definition.AmxxPawn
 
+enum (+=100)
+// <- storage.type.vars.AmxxPawn
+   // <- storage.type.vars.AmxxPawn
+     // <- punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+           // <- punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
+//      ^^^ constant.numeric.int.AmxxPawn
+{
+    TASK_FIRST_CMD = 106
+};
+
+enum PunishType
+// <- storage.type.vars.AmxxPawn
+   // <- storage.type.vars.AmxxPawn
+     // variable.definition.AmxxPawn
+{
+    PUNISH_BAD_CLIENT, PUNISH WRONG CMO
+}
+
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
@@ -313,7 +331,7 @@ punishmet(id, PunishType:type) {}
                                                                      && IS_MAP_VALID( %1 ) )
                                                                                                 stock loadMapFileList()
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
-
+//                                                                                                     ^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
 s
@@ -331,7 +349,8 @@ new Array:dummy;
 s
 new Array:dummy;
 // <- keyword.control.AmxxPawn
-
+    // <- storage.type.vars.pawn variable.type.AmxxPawn
+         // <- keyword.operator.AmxxPawn
 
 {
     formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
@@ -870,7 +889,11 @@ Manual Tests
 
 
 
+private_function_declaration()
+    call_to_function()
 
+private_function_declaration()
+   { call_to_function() }
 
 
 
