@@ -262,6 +262,17 @@ enum (+= 100000)
     TASKID_SHOW_LAST_ROUND_HUD,
 }
 
+function()
+{
+    enum loadMapFilesTypes
+    {
+        t_Whitelist,
+        t_MininumPlayers,
+        t_MiddlePlayers,
+        t_NormalPlayers
+    }
+}
+
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
