@@ -32,6 +32,7 @@ contexts:
   # The context name main special: Every syntax must define a main context, as it will be
   # used at the start of the file.
   main:
+    - include: enumerations
     - include: pawn_character
     - include: pawn_comment
     - include: pawn_preprocessor
@@ -329,7 +330,6 @@ contexts:
       push:
         - include: function_definition_parameters
 
-
   general_function_definition:
     # Matches: stock bool: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     # Groups:  1     2   3 4
@@ -365,6 +365,101 @@ contexts:
         3: keyword.operator.assignment.AmxxPawn
     - match: ','
       scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+
+  ########################################################
+
+
+
+  # "PAWN Enumeration"
+  pawn_enumeration_includes:
+    - include: pawn_string
+    - include: pawn_character
+    - include: pawn_comment
+    - include: pawn_preprocessor
+
+  enumerations:
+    # Matches: enum _ : PunishType
+    # Groups:  1    2 3 4
+    - match: '\b(enum)\b\s*(\w*)(:)(\w*)'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: storage.type.vars.pawn variable.type.AmxxPawn
+        3: keyword.operator.AmxxPawn
+        4: variable.definition.AmxxPawn
+      push:
+        - include: pawn_enumeration_includes
+        - match: '{'
+          scope: keyword.brackets.AmxxPawn
+          push:
+            - meta_scope: meta.block.AmxxPawn
+            - include: enumeration_body
+            - match: '(?=})'
+              scope: keyword.brackets.AmxxPawn
+              pop: true
+        - match: '}'
+          scope: keyword.brackets.AmxxPawn
+          pop: true
+
+    # Matches: enum ( +=100)
+    # Groups:  1    2 3 4  5
+    - match: '\b(enum)\b\s*(\()\s*(.=)\s*(\d+)\s*(\))'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+        3:  keyword.operator.assignment.AmxxPawn
+        4: constant.numeric.int.AmxxPawn
+        5: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
+      push:
+        - include: pawn_enumeration_includes
+        - match: '{'
+          scope: keyword.brackets.AmxxPawn
+          push:
+            - meta_scope: meta.block.AmxxPawn
+            - include: enumeration_body
+            - match: '(?=})'
+              scope: keyword.brackets.AmxxPawn
+              pop: true
+        - match: '}'
+          scope: keyword.brackets.AmxxPawn
+          pop: true
+
+    # Matches: enum PunishType
+    # Groups:  1    2
+    - match: '\b(enum)\b\s*(\w*)'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        2: variable.definition.AmxxPawn
+      push:
+        - include: pawn_enumeration_includes
+        - match: '{'
+          scope: keyword.brackets.AmxxPawn
+          push:
+            - meta_scope: meta.block.AmxxPawn
+            - include: enumeration_body
+            - match: '(?=})'
+              scope: keyword.brackets.AmxxPawn
+              pop: true
+        - match: '}'
+          scope: keyword.brackets.AmxxPawn
+          pop: true
+
+  enumeration_body:
+    # Matches: TASK_FIRST_CMD3 = 106,
+    # Groups:  1               2 3  4
+    - match: '(\w+)\s*(=)\s*(\d*)(,)?'
+      captures:
+        1: variable.definition.AmxxPawn
+        2: keyword.operator.assignment.AmxxPawn
+        3: constant.numeric.int.AmxxPawn
+        4: keyword.other.AmxxPawn
+
+    # Matches: TASK_FIRST_CMD3,
+    # Groups:  1              2
+    - match: '(\w+)\s*(,)?'
+      captures:
+        1: variable.definition.AmxxPawn
+        2: keyword.other.AmxxPawn
+    - include: pawn_enumeration_includes
 
   ########################################################
 
@@ -427,11 +522,6 @@ contexts:
         3: keyword.operator.AmxxPawn
         4: variable.definition.AmxxPawn
 
-    - match: '\b(enum)\b(?=\s*\(.*\))'
-      captures:
-        1: storage.type.vars.AmxxPawn
-        2: variable.definition.AmxxPawn
-
   pawn_local_variables:
     # Matches: new const bool: g_dummy_value = false;
     # Groups:  1   2     3   4 5
@@ -478,9 +568,6 @@ contexts:
     - match: (\-\-|\+\+)
       scope: keyword.operator.increment-decrement.AmxxPawn
 
-    - match: (\?.*:)
-      scope: keyword.operator.ternary.AmxxPawn
-
     - match: (\-|\+|\*|\/|%)
       scope: keyword.operator.arithmetic.AmxxPawn
 
@@ -500,6 +587,12 @@ contexts:
 
     - match: '\(|\)|\[|\]'
       scope: keyword.brackets.AmxxPawn
+
+    - match: ';'
+      scope: keyword.semicolon.AmxxPawn
+
+    - match: (\?|:)
+      scope: keyword.operator.ternary.AmxxPawn
 
   ########################################################
 

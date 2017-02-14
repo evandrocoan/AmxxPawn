@@ -176,23 +176,90 @@ bool:func(){}
 punishmet(id, PunishType:type) {}
 // <- function.definition.AmxxPawn
         // <- function.definition.AmxxPawn
+                        // <- keyword.operator.ternary.AmxxPawn
 
 enum (+=100)
+//    ^^ keyword.operator.assignment.AmxxPawn
+//      ^^^ constant.numeric.int.AmxxPawn
 // <- storage.type.vars.AmxxPawn
    // <- storage.type.vars.AmxxPawn
      // <- keyword.brackets.AmxxPawn
            // <- keyword.brackets.AmxxPawn
-//      ^^^ constant.numeric.int.AmxxPawn
 {
     TASK_FIRST_CMD = 106
+//  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                 ^ keyword.operator.assignment.AmxxPawn
+//                   ^^^ constant.numeric.int.AmxxPawn
 };
+
+enum (+=100)
+{
+    PUNISH_BAD_CLIENT2, PUNISH_WRONG_CMO2
+//  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                    ^ keyword.other.AmxxPawn
+//                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+}
+
+enum PunishType3
+// <- storage.type.vars.AmxxPawn
+   // <- storage.type.vars.AmxxPawn
+//   ^^^^^^^^^^^ variable.definition.AmxxPawn
+
+{
+    TASK_FIRST_CMD3 = 106,
+//  ^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                  ^ keyword.operator.assignment.AmxxPawn
+//                    ^^^ constant.numeric.int.AmxxPawn
+//                       ^ keyword.other.AmxxPawn
+    TASK_FIRST_CMD4 = 555
+//  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                  ^ keyword.operator.assignment.AmxxPawn
+//                    ^^^ constant.numeric.int.AmxxPawn
+};
+ // <- keyword.semicolon.AmxxPawn
+
+enum bool:PunishType5
+// <- storage.type.vars.AmxxPawn
+   // <- storage.type.vars.AmxxPawn
+     // <- variable.type.AmxxPawn
+        // <- variable.type.AmxxPawn
+         // <- keyword.operator.AmxxPawn
+//        ^^^^^^^^^^^ variable.definition.AmxxPawn
+{
+    PUNISH_BAD_CLIENT4, PUNISH_WRONG_CMO4
+}
 
 enum PunishType
 // <- storage.type.vars.AmxxPawn
    // <- storage.type.vars.AmxxPawn
-     // variable.definition.AmxxPawn
+//   ^^^^^^^^^^ variable.definition.AmxxPawn
 {
-    PUNISH_BAD_CLIENT, PUNISH WRONG CMO
+    PUNISH_BAD_CLIENT3, PUNISH_WRONG_CMO3
+}
+
+enum _:PunishType6
+// <- storage.type.vars.AmxxPawn
+   // <- storage.type.vars.AmxxPawn
+      // <- keyword.operator.AmxxPawn
+     // <- variable.type.AmxxPawn
+//     ^^^^^^^^^^^ variable.definition.AmxxPawn
+{
+    PUNISH_BAD_CLIENT5, PUNISH_WRONG_CMO6
+//  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                    ^ keyword.other.AmxxPawn
+//                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+}
+
+/**
+ * Task ids are 100000 apart.
+ */
+enum (+= 100000)
+//    ^^ keyword.operator.assignment.AmxxPawn
+//       ^^^^^^ constant.numeric.int.AmxxPawn
+// <- storage.type.vars.AmxxPawn
+{
+    TASKID_RTV_REMINDER = 100000, // start with 100000
+    TASKID_SHOW_LAST_ROUND_HUD,
 }
 
 {}
@@ -215,6 +282,7 @@ enum PunishType
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+                                                                         // <- keyword.semicolon.AmxxPawn
 
 #endif
 
