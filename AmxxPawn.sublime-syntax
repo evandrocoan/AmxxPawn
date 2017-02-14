@@ -361,11 +361,18 @@ contexts:
     - match: \)
       scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
       pop: true
-    - include: pawn_function_parameters_includes
-    - match: '(\w+)(\s*(=)\s+)?'
+    - match: '((\w*)(:))?(\w+)\s*(=)\s*([a-zA-Z_]+)'
       captures:
-        1: parameter.definition.AmxxPawn
-        3: keyword.operator.assignment.AmxxPawn
+        2: storage.type.vars.pawn variable.type.AmxxPawn
+        3: keyword.operator.ternary.AmxxPawn
+        4: parameter.definition.AmxxPawn
+        5: keyword.operator.assignment.AmxxPawn
+    - include: pawn_function_parameters_includes
+    - match: '((\w*)(:))?(\w+)'
+      captures:
+        2: storage.type.vars.pawn variable.type.AmxxPawn
+        3: keyword.operator.ternary.AmxxPawn
+        4: parameter.definition.AmxxPawn
     - match: ','
       scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
