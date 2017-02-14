@@ -180,8 +180,8 @@ punishmet(id, PunishType:type) {}
 enum (+=100)
 // <- storage.type.vars.AmxxPawn
    // <- storage.type.vars.AmxxPawn
-     // <- punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
-           // <- punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
+     // <- keyword.brackets.AmxxPawn
+           // <- keyword.brackets.AmxxPawn
 //      ^^^ constant.numeric.int.AmxxPawn
 {
     TASK_FIRST_CMD = 106
