@@ -273,6 +273,16 @@ function()
     }
 }
 
+stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilersPathArray, &Array:maxMapsPerGroupToUse = Var )
+//                              ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                  ^ keyword.operator.bitwise.AmxxPawn
+//                                                        ^ keyword.operator.ternary.AmxxPawn
+//                                                         ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                                    ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                                                           ^^^ source.AmxxPawn source.sma
+{
+}
+
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
