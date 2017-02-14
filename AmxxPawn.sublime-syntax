@@ -361,18 +361,43 @@ contexts:
     - match: \)
       scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
       pop: true
+
+    - match: '(const)\s*((\w*)(:))?(\w+)\s*(=)\s*([a-zA-Z_]+)'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        3: storage.type.vars.pawn variable.type.AmxxPawn
+        4: keyword.operator.ternary.AmxxPawn
+        5: parameter.definition.AmxxPawn
+        6: keyword.operator.assignment.AmxxPawn
+
+    - match: '(const)\s*((\w*)(:))?(\w+)'
+      captures:
+        1: storage.type.vars.AmxxPawn
+        3: storage.type.vars.pawn variable.type.AmxxPawn
+        4: keyword.operator.ternary.AmxxPawn
+        5: parameter.definition.AmxxPawn
+
     - match: '((\w*)(:))?(\w+)\s*(=)\s*([a-zA-Z_]+)'
       captures:
         2: storage.type.vars.pawn variable.type.AmxxPawn
         3: keyword.operator.ternary.AmxxPawn
         4: parameter.definition.AmxxPawn
         5: keyword.operator.assignment.AmxxPawn
-    - include: pawn_function_parameters_includes
-    - match: '((\w*)(:))?(\w+)'
+
+    - match: '((\w*)(:))(\w+)'
       captures:
         2: storage.type.vars.pawn variable.type.AmxxPawn
         3: keyword.operator.ternary.AmxxPawn
         4: parameter.definition.AmxxPawn
+
+    # Matches everything else as strings " ", chars, numbers, etc.
+    - include: pawn_function_parameters_includes
+
+    # What is remaining is then parameters definitions.
+    - match: '(\w+)'
+      captures:
+        1: parameter.definition.AmxxPawn
+
     - match: ','
       scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
@@ -498,8 +523,8 @@ contexts:
 
   # PAWN Variables
   pawn_global_variables:
-    # Match:            stock new  const  bool:g_dummy_value = false;
-    # Capture Groups:     1    2     3     4  5      6
+    # Match:            new stock  const  bool:g_dummy_value = false;
+    # Capture Groups:    1    2      3     4  5      6
     - match: '(new)\s+(stock)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: keyword.control.AmxxPawn
