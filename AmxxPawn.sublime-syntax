@@ -266,7 +266,7 @@ contexts:
   # "PAWN Function"
   pawn_functions:
     - include: general_functions
-    - include: private_functions
+    - include: private_function_headers
 
   # We cannot include the whole main context here, otherwise we would re-include this own context
   # creating an infinity context include loop. Then we need to include all main contexts except
@@ -283,7 +283,7 @@ contexts:
     - include: pawn_keywords
     - include: pawn_post_keywords
 
-  pawn_function_includes_no_variables:
+  pawn_function_parameters_includes:
     - include: pawn_string
     - include: pawn_character
     - include: pawn_comment
@@ -314,10 +314,10 @@ contexts:
         1: support.function.call.pawn function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
 
-  private_functions:
+  private_function_headers:
     # Matches: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     # Groups:  1
-    - match: '^\s*(\w+)\s*(?=\()'
+    - match: '[\s;]*(\w+)\s*(?=\()'
       captures:
         1: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
       push:
@@ -325,7 +325,7 @@ contexts:
 
     # Matches: bool: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     # Groups:  1   2 3
-    - match: '^\s*(\w+)(:)\s*(\w+)\s*(?=\()'
+    - match: '[\s;]*(\w+)(:)\s*(\w+)\s*(?=\()'
       captures:
         1: storage.type.vars.pawn variable.type.AmxxPawn
         2: keyword.operator.AmxxPawn
@@ -336,7 +336,7 @@ contexts:
   general_function_headers:
     # Matches: stock bool: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     # Groups:  1     2   3 4
-    - match: '^\s*(public|stock|native|forward)\s+(\w+)(:)\s*(\w+)\s*(?=\()'
+    - match: '[\s;]*(public|stock|native|forward)\s+(\w+)(:)\s*(\w+)\s*(?=\()'
       captures:
         1: storage.type.function.AmxxPawn
         2: storage.type.vars.pawn variable.type.AmxxPawn
@@ -347,7 +347,7 @@ contexts:
 
     # Matches: stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
     # Groups:  1     2
-    - match: '^\s*(public|stock|native|forward)\s+(\w+)\s*(?=\()'
+    - match: '[\s;]*(public|stock|native|forward)\s+(\w+)\s*(?=\()'
       captures:
         1: storage.type.function.AmxxPawn
         2: support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
@@ -361,7 +361,7 @@ contexts:
     - match: \)
       scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
       pop: true
-    - include: pawn_function_includes_no_variables
+    - include: pawn_function_parameters_includes
     - match: '(\w+)(\s*(=)\s+)?'
       captures:
         1: parameter.definition.AmxxPawn
