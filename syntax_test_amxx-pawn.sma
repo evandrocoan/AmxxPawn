@@ -14,6 +14,10 @@
   // <- source.AmxxPawn
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Variables
+///
+
 new const PLUGIN_AUTHOR[]    = "Brad Jones/Addons zz";
 new const PLUGIN_NAME[]      = "Galileo";
 // <- keyword.control.AmxxPawn
@@ -123,60 +127,10 @@ new stock bool:g_dummy_value = false;
               // <- keyword.operator.AmxxPawn
                // <- variable.definition.AmxxPawn
 
-stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
-// <- storage.type.function.AmxxPawn
-    // <- storage.type.function.AmxxPawn
-      // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
-                                  // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
-                                   // <- keyword.brackets.AmxxPawn
-                                     // <- parameter.definition.AmxxPawn
-                                             // <- parameter.definition.AmxxPawn
-                                               // <- keyword.operator.assignment.AmxxPawn
-                                                 // <- constant.numeric.int.AmxxPawn
-                                                  // <- keyword.other.AmxxPawn
-                                                    // <- parameter.definition.AmxxPawn
-                                                                     // <- parameter.definition.AmxxPawn
-                                                                      // <- keyword.brackets.AmxxPawn
-                                                                       // <- keyword.brackets.AmxxPawn
-                                                                         // <- keyword.brackets.AmxxPawn
-                                                                          // <- source.AmxxPawn
 
-public bool:   hi()
-// <- storage.type.function.AmxxPawn
-     // <- storage.type.function.AmxxPawn
-       // <- variable.type.AmxxPawn
-          // <- variable.type.AmxxPawn
-               // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                 // <- keyword.brackets.AmxxPawn
-                  // <- keyword.brackets.AmxxPawn
-
-nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
-// <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                            // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-
-bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
-// <- variable.type.AmxxPawn
-   // <- variable.type.AmxxPawn
-     // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                                 // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-
-public func(){}
-       // <- function.definition.AmxxPawn
-          // <- function.definition.AmxxPawn
-
-stock func(){}
-      // <- function.definition.AmxxPawn
-         // <- function.definition.AmxxPawn
-
-bool:func(){}
-     // <- function.definition.AmxxPawn
-        // <- function.definition.AmxxPawn
-
-punishmet(id, PunishType:type) {}
-// <- function.definition.AmxxPawn
-        // <- function.definition.AmxxPawn
-                        // <- keyword.operator.ternary.AmxxPawn
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Enumerations
+///
 
 enum (+=100)
 //    ^^ keyword.operator.assignment.AmxxPawn
@@ -273,6 +227,11 @@ function()
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Functions definition
+///
+
 stock nominationAttemptWithNamePart( player_id )
 //                                   ^^^^^^^^^ parameter.definition.AmxxPawn
 
@@ -308,11 +267,71 @@ stock loadMapGroupsFeatureFile( mapFilerFilePath[], Array:mapFilersPathArray, Ar
 //                                                                                 ^ keyword.operator.ternary.AmxxPawn
 //                                                                                  ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 
+stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+// <- storage.type.function.AmxxPawn
+    // <- storage.type.function.AmxxPawn
+      // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
+                                  // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
+                                   // <- keyword.brackets.AmxxPawn
+                                     // <- parameter.definition.AmxxPawn
+                                             // <- parameter.definition.AmxxPawn
+                                               // <- keyword.operator.assignment.AmxxPawn
+                                                 // <- constant.numeric.int.AmxxPawn
+                                                  // <- keyword.other.AmxxPawn
+                                                    // <- parameter.definition.AmxxPawn
+                                                                     // <- parameter.definition.AmxxPawn
+                                                                      // <- keyword.brackets.AmxxPawn
+                                                                       // <- keyword.brackets.AmxxPawn
+                                                                         // <- keyword.brackets.AmxxPawn
+                                                                          // <- source.AmxxPawn
+
+nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+// <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                            // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+
+bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
+// <- variable.type.AmxxPawn
+   // <- variable.type.AmxxPawn
+     // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                                 // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+
+punishmet(id, PunishType:type) {}
+// <- function.definition.AmxxPawn
+        // <- function.definition.AmxxPawn
+                        // <- keyword.operator.ternary.AmxxPawn
+
+public bool:   hi()
+// <- storage.type.function.AmxxPawn
+     // <- storage.type.function.AmxxPawn
+       // <- variable.type.AmxxPawn
+          // <- variable.type.AmxxPawn
+               // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+                 // <- keyword.brackets.AmxxPawn
+                  // <- keyword.brackets.AmxxPawn
+
+public func(){}
+       // <- function.definition.AmxxPawn
+          // <- function.definition.AmxxPawn
+
+stock func(){}
+      // <- function.definition.AmxxPawn
+         // <- function.definition.AmxxPawn
+
+bool:func(){}
+     // <- function.definition.AmxxPawn
+        // <- function.definition.AmxxPawn
+
+
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
   // <- source.AmxxPawn
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Preprocessor
+///
 
     #else // this else only works for AMXX 183 or superior, due noted bug above
     // <- meta.preprocessor.AmxxPawn
@@ -466,6 +485,20 @@ new Array:dummy;
     // <- storage.type.vars.pawn variable.type.AmxxPawn
          // <- keyword.operator.AmxxPawn
 
+
+#if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
+        && DEBUG_LEVEL & DEBUG_LEVEL_FAKE_VOTES
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.preprocessor.AmxxPawn
+
+#if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED )
+        hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Functions calls
+///
+
 {
     formatex( debug_level, charsmax( debug_level ), "%d | %d", g_debug_level, DEBUG_LEVEL );
 //  ^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
@@ -485,17 +518,6 @@ new Array:dummy;
     cvar_cmdListmaps = create_cvar( "gal_debug_level", debug_level, FCVAR_SERVER | FCVAR_SPONLY );
 //                                   ^^^^^^^^^^^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
 }
-
-
-
-#if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
-        && DEBUG_LEVEL & DEBUG_LEVEL_FAKE_VOTES
-//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.preprocessor.AmxxPawn
-
-#if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED )
-        hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_hi_
-//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
-
 
 
 new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
