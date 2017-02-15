@@ -11,7 +11,6 @@
  */
 // <- comment.block.AmxxPawn
  // <- comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
-  // <- source.AmxxPawn
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,124 +20,142 @@
 new const PLUGIN_AUTHOR[]    = "Brad Jones/Addons zz";
 new const PLUGIN_NAME[]      = "Galileo";
 // <- keyword.control.AmxxPawn
+ // <- keyword.control.AmxxPawn
   // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-        // <- storage.type.vars.AmxxPawn
-          // <- variable.definition.AmxxPawn
-                    // <- variable.definition.AmxxPawn
-                     // <- keyword.brackets.AmxxPawn
-                      // <- keyword.brackets.AmxxPawn
-                             // <- keyword.operator.assignment.AmxxPawn
-                               // <- string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
-                                // <- string.quoted.double.AmxxPawn
-                                      // <- string.quoted.double.AmxxPawn
-                                       // <- string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
-                                        // <- source.AmxxPawn
-                                         // <- source.AmxxPawn
-
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^^^^^^^ variable.definition.AmxxPawn
+//                   ^^ keyword.brackets.AmxxPawn
+//                           ^ keyword.operator.assignment.AmxxPawn
+//                             ^ string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
+//                              ^^^^^^^ string.quoted.double.AmxxPawn
+//                                     ^ string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
+//                                      ^^ source.AmxxPawn
 
 new const bool:g_dummy_value = false;
 // <- keyword.control.AmxxPawn
+ // <- keyword.control.AmxxPawn
   // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-        // <- storage.type.vars.AmxxPawn
-          // <- variable.type.AmxxPawn
-             // <- variable.type.AmxxPawn
-              // <- variable.type.AmxxPawn
-               // <- variable.definition.AmxxPawn
-                           // <- variable.definition.AmxxPawn
-                             // <- keyword.operator.assignment.AmxxPawn
-                               // <- keyword.control.AmxxPawn
-                                   // <- keyword.control.AmxxPawn
-                                    // <- source.AmxxPawn
-                                     // <- source.AmxxPawn
-
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^ variable.type.AmxxPawn
+//            ^ variable.type.AmxxPawn
+//             ^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                           ^ keyword.operator.assignment.AmxxPawn
+//                             ^^^^^ keyword.control.AmxxPawn
+//                                  ^^ source.AmxxPawn
 
 new g_dummy_value = false;
 // <- keyword.control.AmxxPawn
-    // <- variable.definition.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                ^ keyword.operator.assignment.AmxxPawn
+//                  ^^^^^ keyword.control.AmxxPawn
+//                       ^^ source.AmxxPawn
 
 static formated_message[ MAX_BIG_BOSS_STRING ];
 // <- storage.type.vars.AmxxPawn
-     // <- storage.type.vars.AmxxPawn
-       // <- variable.definition.AmxxPawn
-                      // <- variable.definition.AmxxPawn
-                       // <- keyword.brackets.AmxxPawn
-                         // <- source.AmxxPawn
-                                           // <- source.AmxxPawn
-                                             // <- keyword.brackets.AmxxPawn
-                                              // <- source.AmxxPawn
-                                               // <- source.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^^^ storage.type.vars.AmxxPawn
+//     ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                     ^ keyword.brackets.AmxxPawn
+//                       ^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
+//                                           ^ keyword.brackets.AmxxPawn
+//                                            ^^ source.AmxxPawn
 
 
 const formated_message;
 // <- storage.type.vars.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-      // <- variable.definition.AmxxPawn
-                     // <- variable.definition.AmxxPawn
-                      // <- source.AmxxPawn
-                       // <- source.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^^ storage.type.vars.AmxxPawn
+//    ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                    ^^ source.AmxxPawn
 
 stock shit3;
 // <- storage.type.vars.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-      // <- variable.definition.AmxxPawn
-          // <- variable.definition.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^^ storage.type.vars.AmxxPawn
+//    ^^^^^ variable.definition.AmxxPawn
+//         ^^ source.AmxxPawn
 
 stock const shit3;
 // <- storage.type.vars.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-      // <- storage.type.vars.AmxxPawn
-          // <- storage.type.vars.AmxxPawn
-            // <- variable.definition.AmxxPawn
-                // <- variable.definition.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^^ storage.type.vars.AmxxPawn
+//    ^^^^^ storage.type.vars.AmxxPawn
+//          ^^^^^ variable.definition.AmxxPawn
+//               ^^ source.AmxxPawn
 
 new stock formated_message;
 // <- keyword.control.AmxxPawn
+ // <- keyword.control.AmxxPawn
   // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-        // <- storage.type.vars.AmxxPawn
-          // <- variable.definition.AmxxPawn
-                         // <- variable.definition.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^^^^^^^^^^^^  variable.definition.AmxxPawn
+//                        ^^ source.AmxxPawn
 
 new stock g_dummy_value = false;
 // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-          // <- variable.definition.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                      ^ keyword.operator.assignment.AmxxPawn
+//                        ^^^^^ keyword.control.AmxxPawn
+//                             ^^ source.AmxxPawn
 
 new stock const g_dummy_value = false;
 // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-          // <- storage.type.vars.pawn
-                // <- variable.definition.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^ storage.type.vars.pawn
+//              ^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                            ^ keyword.operator.assignment.AmxxPawn
+//                              ^^^^^ keyword.control.AmxxPawn
+//                                   ^^ source.AmxxPawn
 
 new stock const bool:g_dummy_value = false;
 // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-          // <- storage.type.vars.pawn
-                // <- variable.type.AmxxPawn
-                    // <- keyword.operator.AmxxPawn
-                     // <- variable.definition.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^ storage.type.vars.pawn
+//              ^^^^ variable.type.AmxxPawn
+//                  ^ keyword.operator.AmxxPawn
+//                   ^ variable.definition.AmxxPawn
+//                                 ^ keyword.operator.assignment.AmxxPawn
+//                                   ^^^^^ keyword.control.AmxxPawn
+//                                        ^^ source.AmxxPawn
 
 new stock bool:g_dummy_value = false;
 // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.AmxxPawn
-          // <- variable.type.AmxxPawn
-              // <- keyword.operator.AmxxPawn
-               // <- variable.definition.AmxxPawn
-
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^ variable.type.AmxxPawn
+//            ^ keyword.operator.AmxxPawn
+//             ^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                           ^ keyword.operator.assignment.AmxxPawn
+//                             ^^^^^ keyword.control.AmxxPawn
+//                                  ^^ source.AmxxPawn
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Enumerations
 ///
 
 enum (+=100)
+// <- storage.type.vars.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
+//   ^ keyword.brackets.AmxxPawn
 //    ^^ keyword.operator.assignment.AmxxPawn
 //      ^^^ constant.numeric.int.AmxxPawn
-// <- storage.type.vars.AmxxPawn
-   // <- storage.type.vars.AmxxPawn
-     // <- keyword.brackets.AmxxPawn
-           // <- keyword.brackets.AmxxPawn
+//         ^ keyword.brackets.AmxxPawn
 {
     TASK_FIRST_CMD = 106
 //  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
@@ -150,13 +167,15 @@ enum (+=100)
 {
     PUNISH_BAD_CLIENT2, PUNISH_WRONG_CMO2
 //  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                    ^ keyword.other.AmxxPawn
+//                    ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
 //                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 }
 
 enum PunishType3
 // <- storage.type.vars.AmxxPawn
-   // <- storage.type.vars.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
 //   ^^^^^^^^^^^ variable.definition.AmxxPawn
 
 {
@@ -164,7 +183,7 @@ enum PunishType3
 //  ^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                  ^ keyword.operator.assignment.AmxxPawn
 //                    ^^^ constant.numeric.int.AmxxPawn
-//                       ^ keyword.other.AmxxPawn
+//                       ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
     TASK_FIRST_CMD4 = 555
 //  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                  ^ keyword.operator.assignment.AmxxPawn
@@ -174,10 +193,11 @@ enum PunishType3
 
 enum bool:PunishType5
 // <- storage.type.vars.AmxxPawn
-   // <- storage.type.vars.AmxxPawn
-     // <- variable.type.AmxxPawn
-        // <- variable.type.AmxxPawn
-         // <- keyword.operator.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
+//   ^^^^ variable.type.AmxxPawn
+//       ^ keyword.operator.AmxxPawn
 //        ^^^^^^^^^^^ variable.definition.AmxxPawn
 {
     PUNISH_BAD_CLIENT4, PUNISH_WRONG_CMO4
@@ -185,7 +205,9 @@ enum bool:PunishType5
 
 enum PunishType
 // <- storage.type.vars.AmxxPawn
-   // <- storage.type.vars.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
 //   ^^^^^^^^^^ variable.definition.AmxxPawn
 {
     PUNISH_BAD_CLIENT3, PUNISH_WRONG_CMO3
@@ -193,14 +215,16 @@ enum PunishType
 
 enum _:PunishType6
 // <- storage.type.vars.AmxxPawn
-   // <- storage.type.vars.AmxxPawn
-      // <- keyword.operator.AmxxPawn
-     // <- variable.type.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
+//    ^ keyword.operator.AmxxPawn
+//   ^ variable.type.AmxxPawn
 //     ^^^^^^^^^^^ variable.definition.AmxxPawn
 {
     PUNISH_BAD_CLIENT5, PUNISH_WRONG_CMO6
 //  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                    ^ keyword.other.AmxxPawn
+//                    ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
 //                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 }
 
@@ -208,9 +232,14 @@ enum _:PunishType6
  * Task ids are 100000 apart.
  */
 enum (+= 100000)
+// <- storage.type.vars.AmxxPawn
+ // <- storage.type.vars.AmxxPawn
+  // <- storage.type.vars.AmxxPawn
+// ^ storage.type.vars.AmxxPawn
+//   ^ keyword.brackets.AmxxPawn
 //    ^^ keyword.operator.assignment.AmxxPawn
 //       ^^^^^^ constant.numeric.int.AmxxPawn
-// <- storage.type.vars.AmxxPawn
+//             ^ keyword.brackets.AmxxPawn
 {
     TASKID_RTV_REMINDER = 100000, // start with 100000
     TASKID_SHOW_LAST_ROUND_HUD,
@@ -238,17 +267,17 @@ stock nominationAttemptWithNamePart( player_id )
 stock loadMapGroupsFeatureFile( const map[],
                                 Array:maxMapsPerGroupToUse = bool:Var )
 //                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                   ^ keyword.operator.ternary.AmxxPawn
+//                                   ^ keyword.operator.AmxxPawn
 //                                    ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 
 stock loadMapGroupsFeatureFile( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
 //                                                                              ^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                                                  ^ keyword.operator.ternary.AmxxPawn
+//                                                                                  ^ keyword.operator.AmxxPawn
 
 stock loadMapGroupsFeatureFile( const map[],
                                 const Array:maxMapsPerGroupToUse = bool:Var )
 //                                    ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                         ^ keyword.operator.ternary.AmxxPawn
+//                                         ^ keyword.operator.AmxxPawn
 //                                          ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 
 stock loadMapGroupsFeatureFile( const mapFilerFilePath[], const Array:maxMapsPerGroupToUse = Var )
@@ -256,83 +285,115 @@ stock loadMapGroupsFeatureFile( const mapFilerFilePath[], const Array:maxMapsPer
 //                                    ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 //                                                        ^^^^^ storage.type.vars.AmxxPawn
 //                                                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                                   ^ keyword.operator.ternary.AmxxPawn
+//                                                                   ^ keyword.operator.AmxxPawn
 
-stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilersPathArray, &Array:maxMapsPerGroupToUse = Var )
+stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilers, &Array:maxMapsPer = Var )
 //                              ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 //                                                  ^ keyword.operator.bitwise.AmxxPawn
 //                                                   ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                        ^ keyword.operator.ternary.AmxxPawn
-//                                                         ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                                                    ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                        ^ keyword.operator.AmxxPawn
+//                                                         ^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                  ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                                    ^ keyword.operator.bitwise.AmxxPawn
+//                                                                     ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                                                          ^ keyword.operator.AmxxPawn
+//                                                                           ^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                                      ^ keyword.operator.assignment.AmxxPawn
 {
 }
 
 stock loadMapGroupsFeatureFile( mapFilerFilePath[], Array:mapFilersPathArray, Array:maxMapsPerGroupToUse = Var )
 //                              ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 //                                                  ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                       ^ keyword.operator.ternary.AmxxPawn
+//                                                       ^ keyword.operator.AmxxPawn
 //                                                        ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 //                                                                            ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
-//                                                                                 ^ keyword.operator.ternary.AmxxPawn
+//                                                                                 ^ keyword.operator.AmxxPawn
 //                                                                                  ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 
 stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // <- storage.type.function.AmxxPawn
-    // <- storage.type.function.AmxxPawn
-      // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
-                                  // <- function.definition.AmxxPawn, entity.name.function.AmxxPawn
-                                   // <- keyword.brackets.AmxxPawn
-                                     // <- parameter.definition.AmxxPawn
-                                             // <- parameter.definition.AmxxPawn
-                                               // <- keyword.operator.assignment.AmxxPawn
-                                                 // <- constant.numeric.int.AmxxPawn
-                                                  // <- keyword.other.AmxxPawn
-                                                    // <- parameter.definition.AmxxPawn
-                                                                     // <- parameter.definition.AmxxPawn
-                                                                      // <- keyword.brackets.AmxxPawn
-                                                                       // <- keyword.brackets.AmxxPawn
-                                                                         // <- keyword.brackets.AmxxPawn
-                                                                          // <- source.AmxxPawn
+ // <- storage.type.function.AmxxPawn
+  // <- storage.type.function.AmxxPawn
+// ^^ storage.type.function.AmxxPawn
+//    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
+//                                 ^ keyword.brackets.AmxxPawn
+//                                   ^^^^^^^^^ parameter.definition.AmxxPawn
+//                                             ^ keyword.operator.assignment.AmxxPawn
+//                                               ^ constant.numeric.int.AmxxPawn
+//                                                ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                  ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                    ^^ keyword.brackets.AmxxPawn
+//                                                                       ^ keyword.brackets.AmxxPawn
+//                                                                        ^^ source.AmxxPawn
 
 nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                            // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+ // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+  // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+//                           ^ keyword.brackets.AmxxPawn
+//                             ^^^^^^^^^ parameter.definition.AmxxPawn
+//                                       ^ keyword.operator.assignment.AmxxPawn
+//                                         ^ constant.numeric.int.AmxxPawn
+//                                          ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                            ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                              ^^ keyword.brackets.AmxxPawn
+//                                                                 ^ keyword.brackets.AmxxPawn
+//                                                                  ^^ source.AmxxPawn
 
 bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // <- variable.type.AmxxPawn
-   // <- variable.type.AmxxPawn
-     // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                                 // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+ // <- variable.type.AmxxPawn
+  // <- variable.type.AmxxPawn
+// ^ variable.type.AmxxPawn
+//  ^ keyword.operator.AmxxPawn
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+//                                ^ keyword.brackets.AmxxPawn
+//                                  ^^^^^^^^^ parameter.definition.AmxxPawn
+//                                            ^ keyword.operator.assignment.AmxxPawn
+//                                              ^ constant.numeric.int.AmxxPawn
+//                                               ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                 ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                   ^^ keyword.brackets.AmxxPawn
+//                                                                      ^ keyword.brackets.AmxxPawn
+//                                                                       ^^ source.AmxxPawn
 
 punishmet(id, PunishType:type) {}
 // <- function.definition.AmxxPawn
-        // <- function.definition.AmxxPawn
-                        // <- keyword.operator.ternary.AmxxPawn
+ // <- function.definition.AmxxPawn
+  // <- function.definition.AmxxPawn
+// ^^^^^^ function.definition.AmxxPawn
+//       ^ keyword.brackets.AmxxPawn
+//        ^^ parameter.definition.AmxxPawn
+//          ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//            ^^^^^^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                      ^ keyword.operator.AmxxPawn
+//                       ^^^^ parameter.definition.AmxxPawn
+//                           ^ keyword.brackets.AmxxPawn
+//                             ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+//                              ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
 public bool:   hi()
 // <- storage.type.function.AmxxPawn
-     // <- storage.type.function.AmxxPawn
-       // <- variable.type.AmxxPawn
-          // <- variable.type.AmxxPawn
-               // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-                 // <- keyword.brackets.AmxxPawn
-                  // <- keyword.brackets.AmxxPawn
+ // <- storage.type.function.AmxxPawn
+  // <- storage.type.function.AmxxPawn
+// ^^^ storage.type.function.AmxxPawn
+//     ^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//         ^ keyword.operator.AmxxPawn
+//             ^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+//               ^ keyword.brackets.AmxxPawn
+//                ^ keyword.brackets.AmxxPawn
 
 public func(){}
-       // <- function.definition.AmxxPawn
-          // <- function.definition.AmxxPawn
+//     ^^^^ function.definition.AmxxPawn
 
 stock func(){}
-      // <- function.definition.AmxxPawn
-         // <- function.definition.AmxxPawn
+//    ^^^^ function.definition.AmxxPawn
 
 bool:func(){}
-     // <- function.definition.AmxxPawn
-        // <- function.definition.AmxxPawn
-
+//  ^ keyword.operator.AmxxPawn
+//   ^^^^ function.definition.AmxxPawn
 
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
@@ -345,12 +406,10 @@ bool:func(){}
 ///
 
     #else // this else only works for AMXX 183 or superior, due noted bug above
-    // <- meta.preprocessor.AmxxPawn
-     // <- meta.preprocessor.AmxxPawn
-        // <- meta.preprocessor.AmxxPawn
-          // <- punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
-            // <- comment.line.double-slash.AmxxPawn
-                                                                              // <- comment.line.double-slash.AmxxPawn
+//  ^^^^^ meta.preprocessor.AmxxPawn
+//        ^^ punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+//          ^ comment.line.double-slash.AmxxPawn
+//           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.double-slash.AmxxPawn
 
 
 {
@@ -358,27 +417,24 @@ bool:func(){}
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-                                                                         // <- keyword.semicolon.AmxxPawn
+//                                                                       ^ keyword.semicolon.AmxxPawn
 
 #endif
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-    // <- meta.block.AmxxPawn function.call.AmxxPawn
-        // <- meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
 {
 #define IT_IS_A_VALID_LINE(%1) // this else only works for AMXX 183 or superior, due noted bug above.
     vformat( formated_message, charsmax( formated_message ), message, 3 );
-    // <- meta.block.AmxxPawn function.call.AmxxPawn
-          // <- meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1)
 
     LOGGER( 64, "( color_print ) [out] player_id: %d, Chat printed: %s...", player_id, formated_message )
-    // <- meta.block.AmxxPawn function.call.AmxxPawn
-         // <- meta.block.AmxxPawn function.call.AmxxPawn
+//  ^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
 
@@ -388,8 +444,7 @@ bool:func(){}
                                            && !equal( %1, ";", 1 ) \
                                                                      && IS_MAP_VALID( %1 ) )
                                                                                                 stock loadMapFileList()
-//                                                                                              ^     storage.type.function.AmxxPawn
-//                                                                                                  ^ storage.type.function.AmxxPawn
+//                                                                                              ^^^^^ storage.type.function.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
@@ -402,64 +457,48 @@ bool:func(){}
     ( %1[ 0 ] \
                 && !equal( %1, "//", 2 ) \
                                            && !equal( %1, ";", 1 )
-//                                                             ^     constant.numeric.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
-                                           && !equal( %1, ";", 1 )
 //                                                    ^^     constant.numeric.AmxxPawn
-
+//                                                        ^ punctuation.definition.string.begin.AmxxPawn
+//                                                         ^ string.quoted.double.AmxxPawn
+//                                                          ^ punctuation.definition.string.end.AmxxPawn
+//                                                             ^     constant.numeric.AmxxPawn
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
                 && !equal( %1, "//", 2 ) \
 //                                   ^     constant.numeric.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
 //                         ^^     constant.numeric.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ]
 //        ^    constant.numeric.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ]
 //    ^^    constant.numeric.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
                 && !equal( %1, "//", 2 ) \
                                            && !equal( %1, ";", 1 )
-//                                                        ^   punctuation.definition.string.begin.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
-//                             ^     punctuation.definition.string.begin.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
-                                           && !equal( %1, ";", 1 ) \
+//                                                        ^ punctuation.definition.string.begin.AmxxPawn
+//                                                         ^ string.quoted.double.AmxxPawn
 //                                                          ^ punctuation.definition.string.end.AmxxPawn
-
-#define IT_IS_A_VALID_LINE(%1) \
-    ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
-//                                ^    punctuation.definition.string.end.AmxxPawn
+new crazy
+//  ^^^^^ variable.definition.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
                 && !equal( %1, "//", 2 ) \
                                            && !equal( %1, ";", 1 ) \
-//                                                         ^  string.quoted.double.AmxxPawn
+//                                                        ^ punctuation.definition.string.begin.AmxxPawn
+//                                                         ^ string.quoted.double.AmxxPawn
+//                                                          ^ punctuation.definition.string.end.AmxxPawn
+    crazy
+//  ^^^^^ meta.preprocessor.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
-                && !equal( %1, "//", 2 ) \
-//                              ^^    string.quoted.double.AmxxPawn
+                && !equal( %1, "//", 2 )
+//                             ^ punctuation.definition.string.begin.AmxxPawn
+//                              ^^ string.quoted.double.AmxxPawn
+//                                ^ punctuation.definition.string.end.AmxxPawn
 
 #define IT_IS_A_VALID_LINE(%1) \
     ( %1[ 0 ] \
@@ -473,9 +512,8 @@ bool:func(){}
                 && !equal( %1, "//", 2 ) \
                                            && !equal( %1, ";", 1 ) \
                                                                      && IS_MAP_VALID( %1 ) )
-                                                                                                stock loadMapFileList()
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
-//                                                                                                     ^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
+      stock loadMapFileList()
+//          ^^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 
 #define IS_TO_USE_BLACKLIST_INSTEAD_OF_WHITELIST 01+50 \
 s
@@ -493,8 +531,10 @@ new Array:dummy;
 s
 new Array:dummy;
 // <- keyword.control.AmxxPawn
-    // <- storage.type.vars.pawn variable.type.AmxxPawn
-         // <- keyword.operator.AmxxPawn
+//  ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//       ^ keyword.operator.AmxxPawn
+//        ^^^^^ variable.definition.AmxxPawn
+//             ^ keyword.semicolon.AmxxPawn
 
 
 #if DEBUG_LEVEL & ( DEBUG_LEVEL_UNIT_TEST_NORMAL | DEBUG_LEVEL_MANUAL_TEST_START | DEBUG_LEVEL_UNIT_TEST_DELAYED ) \
@@ -562,6 +602,10 @@ stock mp_fraglimitCvarSupport()
     {
         cvar_mp_fraglimit = cvar_disabledValuePointer;
     }
+
+    ( hi ? bye : bytes )
+//       ^ keyword.operator.ternary.AmxxPawn
+//             ^ keyword.operator.ternary.AmxxPawn
 }
 
 
@@ -612,23 +656,12 @@ public plugin_init()
 //                  ^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
 
     register_cvar( "Hi", )
-//                  ^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
-
-    register_cvar( "Hi", )
-//                     ^ meta.block.AmxxPawn keyword.other.AmxxPawn
-
-    register_cvar( "Hi", )
-//                       ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
-
-    register_cvar( "Hi", )
 //               ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
-
-    register_cvar( "Hi", )
 //                 ^ meta.block.AmxxPawn punctuation.definition.string.begin.AmxxPawn
-
-    register_cvar( "Hi", )
+//                  ^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
 //                    ^ meta.block.AmxxPawn punctuation.definition.string.end.AmxxPawn
-
+//                     ^ meta.block.AmxxPawn keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                       ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
 }
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
@@ -983,6 +1016,12 @@ new       errorMessage [ MAX_LONG_STRING ];
 
 
 
+private_function_declaration()
+    call_to_function()
+
+private_function_declaration()
+   { call_to_function() }
+
 public own_type:on_damage( id )
 {
     new attacker = own_type: get_user_attacker( id )
@@ -992,7 +1031,6 @@ public own_type:on_damage( id )
 #if defined DAMAGE_RECIEVED
     // id should be connected if this message is sent, but lets check anyway
     if( is_user_connected( id )
-        && is_user_connected( attacker ) )
         if( get_user_flags( attacker ) & ADMIN_LEVEL_H )
         {
             new damage = read_data( 2 )
@@ -1016,11 +1054,12 @@ public on_damage( id )
     get_user_attacker( id )
 }
 
+private_function_declaration()
+    call_to_function()
 
+private_function_declaration()
+   { call_to_function() }
 
-
-
-Manual Tests
 
 #define INSERT_COLOR_TAGS(%1) \
 { \
@@ -1033,15 +1072,6 @@ Manual Tests
     #else // this else only works for AMXX 183 or superior, due noted bug above.
 
         vformat( formated_message, charsmax( formated_message ), message, 3 );
-
-
-
-private_function_declaration()
-    call_to_function()
-
-private_function_declaration()
-   { call_to_function() }
-
 
 
 

@@ -369,7 +369,7 @@ contexts:
       captures:
         1: storage.type.vars.AmxxPawn
         2: storage.type.vars.pawn variable.type.AmxxPawn
-        3: keyword.operator.ternary.AmxxPawn
+        3: keyword.operator.AmxxPawn
         4: parameter.definition.AmxxPawn
 
     # This had to be slit into one using the &, and other not using the &. Just doing (&)? not worked
@@ -381,7 +381,7 @@ contexts:
       captures:
         1: keyword.operator.bitwise.AmxxPawn
         3: storage.type.vars.pawn variable.type.AmxxPawn
-        4: keyword.operator.ternary.AmxxPawn
+        4: keyword.operator.AmxxPawn
         5: parameter.definition.AmxxPawn
 
     # Matches: load( Array: max = Var )
@@ -389,7 +389,7 @@ contexts:
     - match: '(?<=^|\,|\()\s*(\b([\w]+))(:)\s*(\w*)'
       captures:
         2: storage.type.vars.pawn variable.type.AmxxPawn
-        3: keyword.operator.ternary.AmxxPawn
+        3: keyword.operator.AmxxPawn
         4: parameter.definition.AmxxPawn
 
     # Matches: Part( player_id = 5, partialNameAttempt[] )
@@ -411,18 +411,24 @@ contexts:
         1: storage.type.vars.AmxxPawn
         2: parameter.definition.AmxxPawn
 
+    # As everything else possible is already parsed, tag the parameters default value.
+    # Matches: File( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
+    # Groups:                                                        1   2
+    - match: '(\w+)(?=:)'
+      captures:
+        1: storage.type.vars.pawn variable.type.AmxxPawn
+
+    # I tried to parse `:` together above with (\w+)(:), but Sublime Text just keeps ignoring me and
+    # to do attribute the scope to `:`
+    - match: '(:)'
+      captures:
+        1: keyword.operator.AmxxPawn
+
     # Matches everything else as strings " ", chars, numbers, etc.
     - include: pawn_function_parameters_includes
 
     - match: ','
       scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
-
-    # As everything else possible is already parsed, tag the parameters default value.
-    # Matches: File( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
-    # Groups:                                                        1
-    - match: '(\w+)(?=:)'
-      captures:
-        1: storage.type.vars.pawn variable.type.AmxxPawn
 
   ########################################################
 
@@ -509,14 +515,14 @@ contexts:
         1: variable.definition.AmxxPawn
         2: keyword.operator.assignment.AmxxPawn
         3: constant.numeric.int.AmxxPawn
-        4: keyword.other.AmxxPawn
+        4: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
     # Matches: TASK_FIRST_CMD3,
     # Groups:  1              2
     - match: '(\w+)\s*(,)?'
       captures:
         1: variable.definition.AmxxPawn
-        2: keyword.other.AmxxPawn
+        2: keyword.brackets.pawn punctuation.separator.AmxxPawn
     - include: pawn_enumeration_includes
 
   ########################################################
@@ -546,8 +552,8 @@ contexts:
 
   # PAWN Variables
   pawn_global_variables:
-    # Match:            new stock  const  bool:g_dummy_value = false;
-    # Capture Groups:    1    2      3     4  5      6
+    # Match:            new stock  const  bool: g_dummy_value = false;
+    # Capture Groups:    1  2      3      4   5 6
     - match: '(new)\s+(stock)\s+\b(Float|enum|char|const|static|Array|bool|Trie)?\b(\s*\w+(:))?\s*(\w+)'
       captures:
         1: keyword.control.AmxxPawn
@@ -636,7 +642,7 @@ contexts:
       scope: keyword.operator.bitwise.AmxxPawn
 
     - match: (\,)
-      scope: keyword.other.AmxxPawn
+      scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
 
   ########################################################
 
