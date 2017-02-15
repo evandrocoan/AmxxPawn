@@ -235,9 +235,21 @@ function()
 stock nominationAttemptWithNamePart( player_id )
 //                                   ^^^^^^^^^ parameter.definition.AmxxPawn
 
+stock loadMapGroupsFeatureFile( const map[],
+                                Array:maxMapsPerGroupToUse = bool:Var )
+//                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                   ^ keyword.operator.ternary.AmxxPawn
+//                                    ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+
 stock loadMapGroupsFeatureFile( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
 //                                                                              ^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                                                                                  ^ keyword.operator.ternary.AmxxPawn
+
+stock loadMapGroupsFeatureFile( const map[],
+                                const Array:maxMapsPerGroupToUse = bool:Var )
+//                                    ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                         ^ keyword.operator.ternary.AmxxPawn
+//                                          ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 
 stock loadMapGroupsFeatureFile( const mapFilerFilePath[], const Array:maxMapsPerGroupToUse = Var )
 //                              ^^^^^ storage.type.vars.AmxxPawn

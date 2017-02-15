@@ -377,7 +377,7 @@ contexts:
     # properly.
     # Matches: load( & Array: max = Var )
     # Groups:        1 2    3 4
-    - match: '(?<=\,|\()\s*(&)(\b([\w]+))(:)\s*(\w*)'
+    - match: '(?<=^|\,|\()\s*(&)(\b([\w]+))(:)\s*(\w*)'
       captures:
         1: keyword.operator.bitwise.AmxxPawn
         3: storage.type.vars.pawn variable.type.AmxxPawn
@@ -386,7 +386,7 @@ contexts:
 
     # Matches: load( Array: max = Var )
     # Groups:        1    2 3
-    - match: '(?<=\,|\()\s*(\b([\w]+))(:)\s*(\w*)'
+    - match: '(?<=^|\,|\()\s*(\b([\w]+))(:)\s*(\w*)'
       captures:
         2: storage.type.vars.pawn variable.type.AmxxPawn
         3: keyword.operator.ternary.AmxxPawn
@@ -400,7 +400,7 @@ contexts:
     # Groups:        1          1
     # Matches: Part( player_id )
     # Groups:        1
-    - match: '(?<=\,|\()\s*(?!const)(\w+)(?!:)'
+    - match: '(?<=^|\,|\()\s*(?!const)(\w+)(?!:)'
       captures:
         1: parameter.definition.AmxxPawn
 
