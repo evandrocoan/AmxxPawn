@@ -299,6 +299,15 @@ stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilersPathArray, &
 {
 }
 
+stock loadMapGroupsFeatureFile( mapFilerFilePath[], Array:mapFilersPathArray, Array:maxMapsPerGroupToUse = Var )
+//                              ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                  ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                                       ^ keyword.operator.ternary.AmxxPawn
+//                                                        ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                            ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                                                                 ^ keyword.operator.ternary.AmxxPawn
+//                                                                                  ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+
 {}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn

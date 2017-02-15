@@ -371,22 +371,25 @@ contexts:
         3: keyword.operator.ternary.AmxxPawn
         4: parameter.definition.AmxxPawn
 
-    # Matches: load( Array: max = Var )
-    # Groups:        1    2 3
-    - match: '(?<=\,|\()\s*(&?\b([\w]+))(:)\s*(\w*)'
+    # This had to be slit into one using the &, and other not using the &. Just doing (&)? not worked
+    # anyways. But just &? worked. However we must to add the & to a capture group for scoping it
+    # properly.
+    # Matches: load( & Array: max = Var )
+    # Groups:        1 2    3 4
+    - match: '(?<=\,|\()\s*(&)(\b([\w]+))(:)\s*(\w*)'
       captures:
         1: keyword.operator.bitwise.AmxxPawn
+        3: storage.type.vars.pawn variable.type.AmxxPawn
+        4: keyword.operator.ternary.AmxxPawn
+        5: parameter.definition.AmxxPawn
+
+    # Matches: load( Array: max = Var )
+    # Groups:        1    2 3
+    - match: '(?<=\,|\()\s*(\b([\w]+))(:)\s*(\w*)'
+      captures:
         2: storage.type.vars.pawn variable.type.AmxxPawn
         3: keyword.operator.ternary.AmxxPawn
         4: parameter.definition.AmxxPawn
-
-    # # Matches: load( Array: max = Var )
-    # # Groups:        1    2 3
-    # - match: '(?<=\,|\()\s*(\b[\w]+)(:)\s*(\w*)'
-    #   captures:
-    #     1: storage.type.vars.pawn variable.type.AmxxPawn
-    #     2: keyword.operator.ternary.AmxxPawn
-    #     3: parameter.definition.AmxxPawn
 
     # Matches: Part( player_id = 5, partialNameAttempt[] )
     # Groups:        1              1
@@ -406,19 +409,6 @@ contexts:
       captures:
         1: storage.type.vars.AmxxPawn
         2: parameter.definition.AmxxPawn
-
-    # - match: '((\w*)(:))?(\w+)\s*(=)\s*([a-zA-Z_]+)'
-    #   captures:
-    #     2: storage.type.vars.pawn variable.type.AmxxPawn
-    #     3: keyword.operator.ternary.AmxxPawn
-    #     4: parameter.definition.AmxxPawn
-    #     5: keyword.operator.assignment.AmxxPawn
-
-    # - match: '((\w*)(:))(\w+)'
-    #   captures:
-    #     2: storage.type.vars.pawn variable.type.AmxxPawn
-    #     3: keyword.operator.ternary.AmxxPawn
-    #     4: parameter.definition.AmxxPawn
 
     # Matches everything else as strings " ", chars, numbers, etc.
     - include: pawn_function_parameters_includes
