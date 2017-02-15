@@ -52,17 +52,26 @@ new g_dummy_value = false;
 //                  ^^^^^ keyword.control.AmxxPawn
 //                       ^^ source.AmxxPawn
 
-static formated_message[ MAX_BIG_BOSS_STRING ];
+static formated_message[ ADMIN_LEVEL_H ];
 // <- storage.type.vars.AmxxPawn
  // <- storage.type.vars.AmxxPawn
   // <- storage.type.vars.AmxxPawn
 // ^^^ storage.type.vars.AmxxPawn
 //     ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                     ^ keyword.brackets.AmxxPawn
-//                       ^^^^^^^^^^^^^^^^^^^ source.AmxxPawn
-//                                           ^ keyword.brackets.AmxxPawn
-//                                            ^^ source.AmxxPawn
+//                       ^^^^^^^^^^^^^ constant.vars.pawn
+//                                     ^ keyword.brackets.AmxxPawn
+//                                      ^^ source.AmxxPawn
 
+new formated_message[ ADMIN_LEVEL_H ];
+// <- keyword.control.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                  ^ keyword.brackets.AmxxPawn
+//                    ^^^^^^^^^^^^^ constant.vars.pawn
+//                                  ^ keyword.brackets.AmxxPawn
+//                                   ^^ source.AmxxPawn
 
 const formated_message;
 // <- storage.type.vars.AmxxPawn
@@ -96,6 +105,17 @@ new stock formated_message;
 //  ^^^^^ storage.type.vars.AmxxPawn
 //        ^^^^^^^^^^^^^^^^  variable.definition.AmxxPawn
 //                        ^^ source.AmxxPawn
+
+new stock formated_message[ ADMIN_LEVEL_H ];
+// <- keyword.control.AmxxPawn
+ // <- keyword.control.AmxxPawn
+  // <- keyword.control.AmxxPawn
+//  ^^^^^ storage.type.vars.AmxxPawn
+//        ^^^^^^^^^^^^^^^^  variable.definition.AmxxPawn
+//                        ^ keyword.brackets.AmxxPawn
+//                          ^^^^^^^^^^^^^ constant.vars.pawn
+//                                        ^ keyword.brackets.AmxxPawn
+//                                         ^^ source.AmxxPawn
 
 new stock g_dummy_value = false;
 // <- keyword.control.AmxxPawn
@@ -260,6 +280,17 @@ function()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Functions definition
 ///
+
+stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
+// <- storage.type.function.AmxxPawn
+
+stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
+//    ^^^^^^^^^^^^^^^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
+
+stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
+//                                                                         ^^^^^^^^^^^^ constant.vars.pawn
+//                                   ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                  ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
 
 stock nominationAttemptWithNamePart( player_id )
 //                                   ^^^^^^^^^ parameter.definition.AmxxPawn
@@ -570,20 +601,16 @@ new Array:dummy;
 //                                   ^^^^^^^^^^^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn, string.quoted.double.AmxxPawn
 }
 
-
 new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
-    // <- variable.type.AmxxPawn
-       // <- variable.type.AmxxPawn
-         // <- variable.definition.AmxxPawn
-                       // <- variable.definition.AmxxPawn
-
-stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
-// <- storage.type.function.AmxxPawn
-
-stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, mapName[], bool:isNotToBe = false  )
-//    ^^^^^^^^^^^^^^^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
-
-
+//  ^^^^ variable.type.AmxxPawn
+//      ^ keyword.operator.AmxxPawn
+//       ^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
+//                                  ^ keyword.brackets.AmxxPawn
+//                                                      ^ keyword.brackets.AmxxPawn
+//                                                        ^ keyword.operator.assignment.AmxxPawn
+//                                                          ^ keyword.brackets.AmxxPawn
+//                                                                       ^ keyword.brackets.AmxxPawn
+//                                                                        ^ keyword.semicolon.AmxxPawn
 
 stock mp_fraglimitCvarSupport()
 {
@@ -597,6 +624,7 @@ stock mp_fraglimitCvarSupport()
 
         cvar_mp_fraglimit = register_cvar( "mp_fraglimit", "0", FCVAR_SERVER );
         //                  ^^^^^^^^^^^^^ meta.block.AmxxPawn meta.block.AmxxPawn function.call.AmxxPawn
+        //                                                      ^^^^^^^^^^^^ constant.vars.pawn
     }
     else
     {
@@ -624,13 +652,17 @@ public plugin_init()
 //  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
-
 public plugin_init()
 {
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
     register_plugin(PLUGIN, VERSION, AUTHOR)
 //  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+//                  ^^^^^^ constant.vars.pawn
+//                        ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                          ^^^^^^^ constant.vars.pawn
+//                                 ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                   ^^^^^^ constant.vars.pawn
 
     register_cvar()
 //  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn

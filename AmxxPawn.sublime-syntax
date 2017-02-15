@@ -40,9 +40,6 @@ contexts:
     - include: pawn_functions
     - include: pawn_post_keywords
 
-  # Constants
-    - include: Packages/amxmodx/const.sublime-syntax
-
   ########################################################
 
 
@@ -647,6 +644,8 @@ contexts:
   ########################################################
 
 
+  # This is supposed to be the last matching scope ever. This must only catch what any other scope
+  # before this could have matched and used.
   pawn_post_keywords:
 
     - match: '\(|\)|\[|\]'
@@ -657,6 +656,9 @@ contexts:
 
     - match: (\?|:)
       scope: keyword.operator.ternary.AmxxPawn
+
+  # Constants
+    - include: Packages/amxmodx/const.sublime-syntax
 
   ########################################################
 
