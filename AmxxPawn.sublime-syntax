@@ -354,8 +354,9 @@ contexts:
       push:
         - include: function_definition_parameters
 
-  # Compute the definition function parameters as `( player_id = 5, partialNameAttempt[] )`
+  # Compute the function definition parameters as `( player_id = 5, partialNameAttempt[] )`
   function_definition_parameters:
+    # Do not consume this parenthesis, we need it latter to match the parameters definition.
     - match: '(?=\()'
       scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
     - match: \)
@@ -415,6 +416,13 @@ contexts:
 
     - match: ','
       scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+
+    # As everything else possible is already parsed, tag the parameters default value.
+    # Matches: File( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
+    # Groups:                                                        1
+    - match: '(\w+)(?=:)'
+      captures:
+        1: storage.type.vars.pawn variable.type.AmxxPawn
 
   ########################################################
 
