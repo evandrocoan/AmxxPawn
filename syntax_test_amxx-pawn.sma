@@ -273,18 +273,29 @@ function()
     }
 }
 
-stock loadMapGroupsFeatureFile( const mapFilerFilePath[], const Array:mapFilersPathArray, const Array:maxMapsPerGroupToUse = Var )
+stock nominationAttemptWithNamePart( player_id )
+//                                   ^^^^^^^^^ parameter.definition.AmxxPawn
+
+
+stock loadMapGroupsFeatureFile( const map[], const Array:maxMapsPerGroupToUse = bool:Var )
+/                                                                              ^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+/                                                                                  ^ keyword.operator.ternary.AmxxPawn
+
+stock loadMapGroupsFeatureFile( const mapFilerFilePath[], const Array:maxMapsPerGroupToUse = Var )
 //                              ^^^^^ storage.type.vars.AmxxPawn
 //                                    ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                                        ^^^^^ storage.type.vars.AmxxPawn
+//                                                        ^^^^^ storage.type.vars.AmxxPawn
+//                                                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
+//                                                                   ^ keyword.operator.ternary.AmxxPawn
 
 stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilersPathArray, &Array:maxMapsPerGroupToUse = Var )
 //                              ^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
 //                                                  ^ keyword.operator.bitwise.AmxxPawn
+//                                                   ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                                                        ^ keyword.operator.ternary.AmxxPawn
 //                                                         ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
+//                                                                              ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                                                                                    ^^^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                                                           ^^^ source.AmxxPawn source.sma
 {
 }
 
