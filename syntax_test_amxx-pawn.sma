@@ -37,7 +37,7 @@ new const bool:g_dummy_value = false;
   // <- keyword.control.AmxxPawn
 //  ^^^^^ storage.type.vars.AmxxPawn
 //        ^^^^ variable.type.AmxxPawn
-//            ^ variable.type.AmxxPawn
+//            ^ keyword.operator.AmxxPawn
 //             ^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                           ^ keyword.operator.assignment.AmxxPawn
 //                             ^^^^^ keyword.control.AmxxPawn
@@ -648,7 +648,10 @@ public plugin_init()
 public plugin_init()
 //     ^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
 {
-    plugin_init();
+    const var_const = 5;
+//        ^^^^^^^^^ variable.local.definition.AmxxPawn
+
+    plugin_init( var_const );
 //  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 }
 
