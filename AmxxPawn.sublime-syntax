@@ -162,7 +162,7 @@ contexts:
   # Here are not multiline strings support due we cannot handle strings ending with double quotes "
   # and lines ending with strings will not be highlighted.
   preprocessor_string:
-    - match: '(").*("[^\n])'
+    - match: '(").*?(")(?=[^\n])'
       captures:
         0: string.quoted.double.AmxxPawn
         1: punctuation.definition.string.begin.AmxxPawn
