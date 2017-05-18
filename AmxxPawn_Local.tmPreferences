@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Symbol List Global</string>
+	<string>Symbol List Local</string>
 	<key>scope</key>
 	<string>(source.AmxxPawn | source.sma) &amp; (variable.local.definition | parameter.definition | function.definition | variable.definition)</string>
 	<key>settings</key>
