@@ -764,7 +764,15 @@ public plugin_init()
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
 
-
+g_isTheLastGameRound = bool:roundEndStatus[ SaveRoundEnding_LastRound ];
+//                     ^^^^ source.AmxxPawn source.sma variable.type.AmxxPawn
+//                         ^ source.AmxxPawn source.sma keyword.operator.AmxxPawn
+stock test()
+{
+    g_isTheLastGameRound = bool:roundEndStatus[ SaveRoundEnding_LastRound ];
+//                         ^^^^ source.AmxxPawn source.sma meta.block.AmxxPawn variable.type.AmxxPawn
+//                             ^ source.AmxxPawn source.sma keyword.operator.AmxxPawn
+}
 
 
 

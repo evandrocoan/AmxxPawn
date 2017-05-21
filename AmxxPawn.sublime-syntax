@@ -555,7 +555,7 @@ contexts:
       captures:
         1: keyword.control.AmxxPawn
         2: storage.type.vars.AmxxPawn
-        3: storage.type.vars.pawn
+        3: storage.type.vars.pawn storage.type.vars.AmxxPawn
         5: storage.type.vars.pawn variable.type.AmxxPawn
         6: keyword.operator.AmxxPawn
         7: variable.definition.AmxxPawn
@@ -661,6 +661,11 @@ contexts:
 
     - match: ';'
       scope: keyword.semicolon.AmxxPawn
+
+    - match: '(Float|enum|char|const|static|Array|bool|Trie)(:)'
+      captures:
+        1: variable.type.AmxxPawn
+        2: keyword.operator.AmxxPawn
 
     - match: '(\?|:)'
       scope: keyword.operator.ternary.AmxxPawn
