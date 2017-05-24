@@ -669,6 +669,12 @@ stock func()
 //                   ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
 //                    ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
 
+#define DEBUG_LEVEL2 //
+//                 ^ meta.preprocessor.AmxxPawn - constant.numeric.AmxxPawn
+
+#define DEBUG_LEVEL 2
+//                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+
 
 
 
