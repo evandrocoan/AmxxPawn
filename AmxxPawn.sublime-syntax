@@ -174,11 +174,18 @@ contexts:
           pop: true
 
     # Handle preprocessor declaration ending with double quotes "
-    - match: '^\s*\#(define\s+(\w+)).*(".*")\n'
+    - match: ^\s*\#(define\s+(\w+)).*(".*")\n
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
         3: string.quoted.double.AmxxPawn
+
+    # Handle preprocessor declaration ending with single quotes '
+    - match: ^\s*\#(define\s+(\w+)).*(\'.*\')\n
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        2: support.function.definition.pawn function.definition.AmxxPawn
+        3: string.quoted.single.AmxxPawn
 
   # Here are not multiline strings support due we cannot handle strings ending with double quotes "
   # and lines ending with strings will not be highlighted.
@@ -241,6 +248,7 @@ contexts:
   # "PAWN String"
   pawn_string:
     - include: pawn_cvars
+    - include: pawn_character
     - match: '"'
       scope: punctuation.definition.string.begin.AmxxPawn
       push:

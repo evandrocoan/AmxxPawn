@@ -16,8 +16,6 @@
 
 
 
-
-
 /// Variables
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,8 +174,6 @@ new stock bool:g_dummy_value = false;
 
 
 
-
-
 /// Enumerations
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -294,8 +290,6 @@ function()
         t_NormalPlayers
     }
 }
-
-
 
 
 
@@ -457,8 +451,6 @@ bool:func(){}
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
  // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
   // <- source.AmxxPawn
-
-
 
 
 
@@ -633,7 +625,6 @@ stock func()
 
 #define DEBUG_LEVEL 2+64 // commentary
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
-//                   ^ meta.preprocessor.AmxxPawn
 //                    ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
 //                       ^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
 //                         ^^ meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
@@ -648,19 +639,35 @@ stock func()
 
 #define DEBUG_LEVEL 2+64 /// commentary
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
-//                   ^ meta.preprocessor.AmxxPawn
 //                    ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
 //                       ^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
 //                         ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
 
 #define DEBUG_LEVEL "text" /// commentary
 //                  ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
-//                   ^ meta.preprocessor.AmxxPawn
-//                    ^^^^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn
+//                   ^^^^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn
 //                       ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
 //                         ^^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
 //                            ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
 
+#define DEBUG_LEVEL 'd' // commentary
+//                  ^ source.AmxxPawn source.sma meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                    ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                      ^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+//                        ^^ meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+
+#define DEBUG_LEVEL 'd' /// commentary
+//                  ^ source.AmxxPawn source.sma meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                    ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                      ^^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                         ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
+
+#define DEBUG_LEVEL 'd'
+//                  ^ source.AmxxPawn source.sma meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
+//                    ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
 
 
 
