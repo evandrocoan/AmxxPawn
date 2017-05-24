@@ -631,6 +631,35 @@ stock func()
     is_running( "czero" ) || is_running( "cstrike"
 }
 
+#define DEBUG_LEVEL 2+64 // commentary
+//                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn
+//                    ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+//                       ^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+//                         ^^ meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+
+#define DEBUG_LEVEL "text" // commentary
+//                  ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn
+//                    ^^^^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn
+//                       ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
+//                         ^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+//                           ^^ meta.preprocessor.AmxxPawn comment.line.double-slash.AmxxPawn
+
+#define DEBUG_LEVEL 2+64 /// commentary
+//                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn
+//                    ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+//                       ^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                         ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
+
+#define DEBUG_LEVEL "text" /// commentary
+//                  ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
+//                   ^ meta.preprocessor.AmxxPawn
+//                    ^^^^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn
+//                       ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
+//                         ^^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                            ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
 
 
 
@@ -773,12 +802,6 @@ stock test()
 //                         ^^^^ source.AmxxPawn source.sma meta.block.AmxxPawn variable.type.AmxxPawn
 //                             ^ source.AmxxPawn source.sma keyword.operator.AmxxPawn
 }
-
-
-
-
-
-
 
 
 
