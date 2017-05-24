@@ -229,9 +229,18 @@ contexts:
       scope: constant.numeric.AmxxPawn
       pop: true
 
-    # For the digits anywhere on the line, except its end
-    - match: '\d'
+    - match: '\b\d\b'
       scope: constant.numeric.AmxxPawn
+
+    # For the digits anywhere on the line, except its end
+    - match: (?=\b)\d
+      scope: constant.numeric.AmxxPawn
+      push:
+        - meta_scope: constant.numeric.AmxxPawn
+        - match: \d[^\d]
+          pop: true
+        - match: \n
+          pop: true
 
     # For \ signs on the line's middle
     - match: '\\.+'
