@@ -140,20 +140,38 @@ contexts:
         2: support.function.definition.pawn function.definition.AmxxPawn
 
     # Handle preprocessor declaration ending a triple slash commentary ///
-    - match: '^\s*\#(define\s+(\w+)).*(///)(.*)\n'
+    - match: '(?=^\s*\#(define\s+(\w+)).*(///)(.*)\n)'
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
         3: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
         4: comment.line.triple-slash.AmxxPawn
+      push:
+        - meta_scope: meta.preprocessor.AmxxPawn
+        - include: pawn_string
+        - include: preprocessor_numbers
+        - match: '(///)(.*)\n'
+          captures:
+            1: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
+            2: comment.line.triple-slash.AmxxPawn
+          pop: true
 
     # Handle preprocessor declaration ending a double slash commentary //
-    - match: '^\s*\#(define\s+(\w+)).*(//)(.*)\n'
+    - match: '(?=^\s*\#(define\s+(\w+)).*(//)(.*)\n)'
       captures:
         0: meta.preprocessor.AmxxPawn
         2: support.function.definition.pawn function.definition.AmxxPawn
         3: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
         4: comment.line.double-slash.AmxxPawn
+      push:
+        - meta_scope: meta.preprocessor.AmxxPawn
+        - include: pawn_string
+        - include: preprocessor_numbers
+        - match: '(//)(.*)\n'
+          captures:
+            1: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
+            2: comment.line.double-slash.AmxxPawn
+          pop: true
 
     # Handle preprocessor declaration ending with double quotes "
     - match: '^\s*\#(define\s+(\w+)).*(".*")\n'
