@@ -675,6 +675,11 @@ stock func()
 #define DEBUG_LEVEL 2
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
 
+#define CHAT(%1) %1
+new g_user_msgid
+// <- keyword.control.AmxxPawn
+//  ^ variable.definition.AmxxPawn
+
 
 
 
