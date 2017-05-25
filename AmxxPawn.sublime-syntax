@@ -221,6 +221,10 @@ contexts:
           pop: true
 
   preprocessor_numbers:
+    - match: '%\d\n'
+      scope: constant.numeric.AmxxPawn
+      pop: true
+
     - match: '%\d'
       scope: constant.numeric.AmxxPawn
 
