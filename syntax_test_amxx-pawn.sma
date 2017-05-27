@@ -680,6 +680,16 @@ new g_user_msgid
 // <- keyword.control.AmxxPawn
 //  ^ variable.definition.AmxxPawn
 
+#define LOG(%1) /**/
+public plugin_init()
+// ^ storage.type.function.AmxxPawn - meta.preprocessor.AmxxPawn - comment.pawn doccomment.block.AmxxPawn
+
+#define LOG(%1) /**/
+//                 ^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+
+#define LOG(%1) /* */
+//                  ^ meta.preprocessor.AmxxPawn comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
+
 
 
 
@@ -769,13 +779,13 @@ public plugin_init()
 {
 // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
 
-    register_plugin(PLUGIN, VERSION, AUTHOR)
+    register_plugin(CS_TEAM_T, CS_TEAM_T, CS_TEAM_T)
 //  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//                  ^^^^^^ constant.vars.pawn
-//                        ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
-//                          ^^^^^^^ constant.vars.pawn
-//                                 ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
-//                                   ^^^^^^ constant.vars.pawn
+//                  ^^^^^^^^^ constant.vars.pawn
+//                           ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                             ^^^^^^^^^ constant.vars.pawn
+//                                      ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                        ^^^^^^^^^ constant.vars.pawn
 
     register_cvar()
 //  ^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn

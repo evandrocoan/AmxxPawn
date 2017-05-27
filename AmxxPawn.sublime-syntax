@@ -66,6 +66,10 @@ contexts:
     # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
     # likely need to quote it. Regexes are only ever run against a single line of text at a time.
     # The match key is a regex, using the Ruby syntax.
+    - match: '/\*\*\/'
+      scope: punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+
+    # Handles documentation comments
     - match: '/\*\*'
       # The scope assigned to the matched text.
       scope: punctuation.definition.comment.AmxxPawn
@@ -75,23 +79,29 @@ contexts:
         # This assigns the given scope to all text within this context, including the
         # patterns that push the context onto the stack and pop it off.
         - meta_scope: comment.pawn doccomment.block.AmxxPawn
-        - match: '\*/'
+        - match: '\*\/'
           scope: punctuation.definition.comment.AmxxPawn
           # Pops the current context off the stack. The only accepted value for this key is true.
           pop: true
 
+    # Add comments as `/*/` as errors
+    - match: '/\*\/'
+      scope: invalid.illegal.stray-comment-end.AmxxPawn
+
+    # Handles common comments
     - match: '/\*'
       scope: punctuation.definition.comment.AmxxPawn
-
       push:
         - meta_scope: comment.block.AmxxPawn
-        - match: '\*/'
+        - match: '\*\/'
           scope: punctuation.definition.comment.AmxxPawn
           pop: true
 
-    - match: '\*/'
+    # Handles unclosed comments
+    - match: '\*\/'
       scope: invalid.illegal.stray-comment-end.AmxxPawn
 
+    # Triple slashes
     - match: '\/\/\/'
       scope: punctuation.definition.doccomment.AmxxPawn
       push:
@@ -99,6 +109,7 @@ contexts:
         - match: '\n'
           pop: true
 
+    # Double slashes
     - match: '\/\/'
       scope: punctuation.definition.comment.AmxxPawn
       push:
@@ -128,7 +139,7 @@ contexts:
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: preprocessor_string
-        - include: pawn_comment
+        - include: preprocessor_comment
         - include: preprocessor_numbers
 
   preprocessor_initial:
@@ -196,6 +207,8 @@ contexts:
         1: punctuation.definition.string.begin.AmxxPawn
         2: punctuation.definition.string.end.AmxxPawn
 
+  # These cases should be already processed by the other rules before it as the double and triple
+  # slash
   preprocessor_others:
     - match: '^(\s*\#.*)(///)(.*)'
       captures:
@@ -215,12 +228,14 @@ contexts:
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
         - include: pawn_string
-        - include: pawn_comment
+        - include: preprocessor_comment
         - include: preprocessor_numbers
         - match: '[^\\\n]$'
           pop: true
 
   preprocessor_numbers:
+
+    # For lines ending with argument digits
     - match: '%\d\n'
       scope: constant.numeric.AmxxPawn
       pop: true
@@ -253,6 +268,66 @@ contexts:
     # For lines which does continue using \
     - match: '[^\\]\n'
       pop: true
+
+  preprocessor_comment:
+
+    # The regex used to match against the text. YAML allows many strings to be written without
+    # quotes, which can help make the regex clearer, but it's important to understand when you
+    # need to quote the regex. If your regex includes the characters #, :, -, {, [ or > then you
+    # likely need to quote it. Regexes are only ever run against a single line of text at a time.
+    # The match key is a regex, using the Ruby syntax.
+    - match: '/\*\*\/'
+      scope: punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+      # Pops the current context off the stack. The only accepted value for this key is true.
+      pop: true
+
+    # Handles documentation comments
+    - match: '/\*\*'
+      # The scope assigned to the matched text.
+      scope: punctuation.definition.comment.AmxxPawn
+      # The contexts to push onto the stack. This may be either a single context name, a list
+      # of context names, or an inline, anonymous context.
+      push:
+        # This assigns the given scope to all text within this context, including the
+        # patterns that push the context onto the stack and pop it off.
+        - meta_scope: comment.pawn doccomment.block.AmxxPawn
+
+        # Pops contexts of the stack using do not consuming the actually characters
+        # https://forum.sublimetext.com/t/sublime-syntax-pop-multiple-levels/15608
+        - match: '(?=\*\/)'
+          scope: punctuation.definition.comment.AmxxPawn
+          pop: true
+
+    # Handles common comments
+    - match: '\/\*'
+      scope: punctuation.definition.comment.AmxxPawn
+      push:
+        - meta_scope: comment.block.AmxxPawn
+        - match: '(?=\*\/)'
+          scope: punctuation.definition.comment.AmxxPawn
+          pop: true
+
+    # Pops contexts of the stack using do not consuming the actually characters
+    # https://forum.sublimetext.com/t/sublime-syntax-pop-multiple-levels/15608
+    - match: '\*\/'
+      scope: comment.block.AmxxPawn punctuation.definition.comment.AmxxPawn
+      pop: true
+
+    # Triple slashes
+    - match: '\/\/\/'
+      scope: punctuation.definition.doccomment.AmxxPawn
+      push:
+        - meta_scope: comment.line.triple-slash.AmxxPawn
+        - match: '\n'
+          pop: true
+
+    # Double slashes
+    - match: '\/\/'
+      scope: punctuation.definition.comment.AmxxPawn
+      push:
+        - meta_scope: comment.line.double-slash.AmxxPawn
+        - match: '\n'
+          pop: true
 
   ########################################################
 
