@@ -44,7 +44,7 @@ AMXX_COMPILER_PATH="F:/SteamCMD/steamapps/common/Half-Life/czero/addons/amxmodx/
 # Import the helper functions.
 
 # The time flag file path
-updateFlagFilePath="$(pwd)/.amxx_flag_file.txt"
+updateFlagFilePath="/tmp/.amxx_flag_file.txt"
 
 # Save the current seconds
 if ! [ -f $updateFlagFilePath ]
