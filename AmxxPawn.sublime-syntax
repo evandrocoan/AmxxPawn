@@ -151,14 +151,18 @@ contexts:
         2: support.function.definition.pawn function.definition.AmxxPawn
 
     # Handle preprocessor declaration ending a triple slash commentary ///
-    - match: '(?=^\s*\#(define\s+(\w+)).*(\/\/\/)(.*)\n)'
-      captures:
-        0: meta.preprocessor.AmxxPawn
-        2: support.function.definition.pawn function.definition.AmxxPawn
-        3: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-        4: comment.line.triple-slash.AmxxPawn
+    - match: '(?=^\s*\#(define\s+(\w+))(?:\w+).*(\/\/\/)(.*)\n)'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
+        # Accept capture groups defined inside a look ahead
+        # https://github.com/SublimeTextIssues/Core/issues/1796
+        - match: '(?=^\s*\#(define\s+(\w+)))'
+          push:
+            - match: '(?<=define)\s+(\w+)'
+              captures:
+                1: support.function.definition.pawn function.definition.AmxxPawn
+              pop: true
+
         - include: pawn_string
         - include: preprocessor_numbers
         - match: '(\/\/\/)(.*)\n'
@@ -168,14 +172,18 @@ contexts:
           pop: true
 
     # Handle preprocessor declaration ending a double slash commentary //
-    - match: '(?=^\s*\#(define\s+(\w+)).*(\/\/)(.*)\n)'
-      captures:
-        0: meta.preprocessor.AmxxPawn
-        2: support.function.definition.pawn function.definition.AmxxPawn
-        3: punctuation.definition.comment.AmxxPawn comment.line.double-slash.AmxxPawn
-        4: comment.line.double-slash.AmxxPawn
+    - match: '(?=^\s*\#(define\s+(\w+))(?:\w+).*(\/\/)(.*)\n)'
       push:
         - meta_scope: meta.preprocessor.AmxxPawn
+        # Accept capture groups defined inside a look ahead
+        # https://github.com/SublimeTextIssues/Core/issues/1796
+        - match: '(?=^\s*\#(define\s+(\w+)))'
+          push:
+            - match: '(?<=define)\s+(\w+)'
+              captures:
+                1: support.function.definition.pawn function.definition.AmxxPawn
+              pop: true
+
         - include: pawn_string
         - include: preprocessor_numbers
         - match: '(\/\/)(.*)\n'
