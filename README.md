@@ -34,7 +34,7 @@ git clone https://github.com/evandrocoan/SublimeAmxxPawn "Amxx Pawn"
 
 
 ___
-## Licence
+## License
 All files in this repository are released under GNU General Public License v3.0, unless stated otherwise.
 See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.en.html) file for more information.
 
