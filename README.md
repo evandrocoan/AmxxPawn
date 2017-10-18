@@ -27,7 +27,7 @@ It only works well for the [Sublime Text Notepad++ Theme](https://github.com/eva
 
 1. Go to <i>Preferences > Browse Packages...</i> and clone this package into there.
 <pre><code>
-git clone https://github.com/evandrocoan/SublimeAmxxPawn "Amxx Pawn"
+git clone https://github.com/evandrocoan/SublimeAmxxPawn "AmxxPawn"
 </code></pre>
 1. Restart Sublime
 1. Not clear enough? See the full installation video guide [How To Install Sublime Notepad Theme](https://vid.me/DXOc).

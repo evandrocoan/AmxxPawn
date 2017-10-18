@@ -1,4 +1,4 @@
-// SYNTAX TEST "Packages/Amxx Pawn/AmxxPawn.sublime-syntax"
+// SYNTAX TEST "Packages/AmxxPawn/AmxxPawn.sublime-syntax"
 
 
 
