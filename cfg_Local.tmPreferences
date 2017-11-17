@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List Global</string>
 	<key>scope</key>
-	<string>(text.Config) &amp; (variable.definition)</string>
+	<string>(text.Config, source.genconfig) &amp; (variable.parameter, variable.definition)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
