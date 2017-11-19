@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List Global</string>
 	<key>scope</key>
-	<string>(source.AmxxPawn | source.sma) &amp; (function.definition | variable.definition | cvardefinition)</string>
+	<string>(source.AmxxPawn | source.sma | source.genconfig) &amp; (function.definition | variable.definition | cvardefinition | variable.parameter)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInIndexedSymbolList</key>
