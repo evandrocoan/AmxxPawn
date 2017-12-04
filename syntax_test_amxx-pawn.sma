@@ -645,8 +645,8 @@ debugging
 //      ^^^^^^^^^^^ meta.preprocessor.AmxxPawn support.function.definition.pawn function.definition.AmxxPawn
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
 //                    ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
-//                       ^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-//                         ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                       ^^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.line.documentation.AmxxPawn
+//                          ^^ meta.preprocessor.AmxxPawn comment.line.documentation.AmxxPawn
 debugging
 
 #define DEBUG_LEVEL "text" /// commentary
@@ -654,8 +654,8 @@ debugging
 //                  ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
 //                   ^^^^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn
 //                       ^ meta.preprocessor.AmxxPawn string.quoted.double.AmxxPawn punctuation.definition.string.end.AmxxPawn
-//                         ^^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-//                            ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                         ^^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.line.documentation.AmxxPawn
+//                            ^^ meta.preprocessor.AmxxPawn comment.line.documentation.AmxxPawn
 debugging
 
 #define DEBUG_LEVEL 'd' // commentary
@@ -672,8 +672,8 @@ debugging
 //                  ^ source.AmxxPawn source.sma meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
 //                   ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
 //                    ^ meta.preprocessor.AmxxPawn string.quoted.single.AmxxPawn
-//                      ^^^ meta.preprocessor.AmxxPawn punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-//                         ^^ meta.preprocessor.AmxxPawn comment.line.triple-slash.AmxxPawn
+//                      ^^^ meta.preprocessor.AmxxPawn punctuation.definition.comment.line.documentation.AmxxPawn
+//                         ^^ meta.preprocessor.AmxxPawn comment.line.documentation.AmxxPawn
 debugging
 
 #define DEBUG_LEVEL 'd'
@@ -701,11 +701,11 @@ debugging
 
 #define LOG(%1) /**/
 public plugin_init()
-// ^ storage.type.function.AmxxPawn - meta.preprocessor.AmxxPawn - comment.pawn doccomment.block.AmxxPawn
+// ^ storage.type.function.AmxxPawn - meta.preprocessor.AmxxPawn - comment.pawn comment.block.documentation.AmxxPawn
 debugging
 
 #define LOG(%1) /**/
-//                 ^ meta.preprocessor.AmxxPawn punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+//                 ^ meta.preprocessor.AmxxPawn comment.block.documentation.AmxxPawn
 debugging
 
 #define LOG(%1) /* */

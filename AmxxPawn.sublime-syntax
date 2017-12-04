@@ -67,20 +67,20 @@ contexts:
     # likely need to quote it. Regexes are only ever run against a single line of text at a time.
     # The match key is a regex, using the Ruby syntax.
     - match: '/\*\*\/'
-      scope: punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+      scope: comment.block.documentation.AmxxPawn punctuation.definition.comment.block.documentation.AmxxPawn
 
     # Handles documentation comments
     - match: '/\*\*'
       # The scope assigned to the matched text.
-      scope: punctuation.definition.comment.AmxxPawn
+      scope: punctuation.definition.comment.block.documentation.AmxxPawn
       # The contexts to push onto the stack. This may be either a single context name, a list
       # of context names, or an inline, anonymous context.
       push:
         # This assigns the given scope to all text within this context, including the
         # patterns that push the context onto the stack and pop it off.
-        - meta_scope: comment.pawn doccomment.block.AmxxPawn
+        - meta_scope: comment.block.documentation.AmxxPawn
         - match: '\*\/'
-          scope: punctuation.definition.comment.AmxxPawn
+          scope: punctuation.definition.comment.block.documentation.AmxxPawn
           # Pops the current context off the stack. The only accepted value for this key is true.
           pop: true
 
@@ -103,9 +103,9 @@ contexts:
 
     # Triple slashes
     - match: '\/\/\/'
-      scope: punctuation.definition.doccomment.AmxxPawn
+      scope: punctuation.definition.comment.block.documentation.AmxxPawn
       push:
-        - meta_scope: comment.line.triple-slash.AmxxPawn
+        - meta_scope: comment.line.documentation.AmxxPawn
         - match: '\n'
           pop: true
 
@@ -167,8 +167,9 @@ contexts:
         - include: preprocessor_numbers
         - match: '(\/\/\/)(.*)\n'
           captures:
-            1: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-            2: comment.line.triple-slash.AmxxPawn
+            0: comment.line.documentation.AmxxPawn
+            1: punctuation.definition.comment.line.documentation.AmxxPawn
+            2: comment.line.documentation.AmxxPawn
           pop: true
 
     # Handle preprocessor declaration ending a double slash commentary //
@@ -221,8 +222,8 @@ contexts:
     - match: '^(\s*\#.*)(\/\/\/)(.*)'
       captures:
         1: meta.preprocessor.AmxxPawn
-        2: punctuation.definition.doccomment.AmxxPawn comment.line.triple-slash.AmxxPawn
-        3: comment.line.triple-slash.AmxxPawn
+        2: punctuation.definition.comment.line.documentation.AmxxPawn comment.line.documentation.AmxxPawn
+        3: comment.line.documentation.AmxxPawn
 
     - match: '^(\s*\#.*)(\/\/)(.*)'
       captures:
@@ -278,18 +279,18 @@ contexts:
 
   preprocessor_comment:
     - match: '\/\*\*\/'
-      scope: punctuation.definition.comment.AmxxPawn comment.pawn doccomment.block.AmxxPawn
+      scope: comment.block.documentation.AmxxPawn punctuation.definition.comment.block.documentation.AmxxPawn
       pop: true
 
     # Handles documentation comments
     - match: '\/\*\*'
-      scope: punctuation.definition.comment.AmxxPawn
+      scope: punctuation.definition.comment.block.documentation.AmxxPawn
       push:
-        - meta_scope: comment.pawn doccomment.block.AmxxPawn
+        - meta_scope: comment.block.documentation.AmxxPawn
         # Pops contexts of the stack using do not consuming the actually characters
         # https://forum.sublimetext.com/t/sublime-syntax-pop-multiple-levels/15608
         - match: '(?=\*\/)'
-          scope: punctuation.definition.comment.AmxxPawn
+          scope: punctuation.definition.comment.block.documentation.AmxxPawn
           pop: true
 
     # Handles common comments
@@ -309,9 +310,9 @@ contexts:
 
     # Triple slashes
     - match: '\/\/\/'
-      scope: punctuation.definition.doccomment.AmxxPawn
+      scope: punctuation.definition.comment.line.documentation.AmxxPawn
       push:
-        - meta_scope: comment.line.triple-slash.AmxxPawn
+        - meta_scope: comment.line.documentation.AmxxPawn
         - match: '\n'
           pop: true
 
