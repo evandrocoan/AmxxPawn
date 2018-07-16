@@ -781,7 +781,7 @@ contexts:
       scope: keyword.operator.ternary.AmxxPawn
 
   # Constants
-    - include: Packages/amxmodx/const.sublime-syntax
+    - include: Packages/AmxxEditor/AmxxEditorConsts.sublime-syntax
 
   ########################################################
 
