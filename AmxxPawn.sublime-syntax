@@ -251,6 +251,9 @@ contexts:
       scope: constant.numeric.AmxxPawn
 
     # For lines ending with digits
+    - match: '[^\d ]+[0-9]+\n'
+      pop: true
+
     - match: '\d\n'
       scope: constant.numeric.AmxxPawn
       pop: true

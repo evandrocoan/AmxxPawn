@@ -623,6 +623,11 @@ stock func()
     is_running( "czero" ) || is_running( "cstrike"
 }
 
+#define AUTHOR CSKASKL_3777
+//      ^^^^^^ meta.preprocessor.AmxxPawn support.function.definition.pawn function.definition.AmxxPawn
+//             ^^^^^^^^^^^^ meta.preprocessor.AmxxPawn - constant.numeric.AmxxPawn
+
+
 #define DEBUG_LEVEL 2+64 // commentary
 //      ^^^^^^^^^^^ meta.preprocessor.AmxxPawn support.function.definition.pawn function.definition.AmxxPawn
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
