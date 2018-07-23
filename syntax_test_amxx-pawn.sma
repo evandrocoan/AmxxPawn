@@ -628,6 +628,12 @@ stock func()
 //             ^^^^^^^^^^^^ meta.preprocessor.AmxxPawn - constant.numeric.AmxxPawn
 
 
+#define CC_VERSION 2.1
+//                 ^^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+
+#define CC_MAX_TEA 10
+//                 ^^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
+
 #define DEBUG_LEVEL 2+64 // commentary
 //      ^^^^^^^^^^^ meta.preprocessor.AmxxPawn support.function.definition.pawn function.definition.AmxxPawn
 //                  ^ meta.preprocessor.AmxxPawn constant.numeric.AmxxPawn
