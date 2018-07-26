@@ -12,7 +12,7 @@ Replacement self-contained AmxxPawn syntax definition for Sublime Text. See a im
 ___
 ## Notes
 
-It only works well for the [Sublime Text Notepad++ Theme](https://github.com/evandrocoan/SublimeNotepadPlusPlusTheme).
+It is recommended to use it with the [Sublime Text Notepad++ Theme](https://github.com/evandrocoan/SublimeNotepadPlusPlusTheme).
 
 
 
