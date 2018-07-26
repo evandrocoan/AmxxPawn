@@ -11,7 +11,7 @@
 
 # This defines the name shown for the syntax in the menu. It's optional, and will be
 # derived from the file name if not used.
-name: AmxxPawn
+name: AmxxPawn .sma Syntax
 
 # A list of strings, defining what file extensions this syntax should be used for.
 file_extensions:

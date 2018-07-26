@@ -1,6 +1,6 @@
 %YAML 1.2
 ---
-# "Config Syntax"
+# "Amxx .cfg Config Syntax"
 # Author: Addons zz
 #
 # Note that due to the YAML syntax, tab characters are not allowed within .sublime-syntax files.
@@ -8,14 +8,14 @@
 
 # This defines the name shown for the syntax in the menu. It's optional, and will be
 # derived from the file name if not used.
-name: Config
+name: AmxxPawn .cfg Config
 
 # A list of strings, defining what file extensions this syntax should be used for.
 file_extensions:
   - cfg
 
 # The default scope assigned to all text in the file.
-scope: text.Config
+scope: text.config
 
 # When a file is opened without a recognized extension, the first line of the file
 # contents will be tested against this regex, to see if the syntax should be applied.
@@ -50,25 +50,25 @@ contexts:
     # The match key is a regex, using the Ruby syntax.
     - match: //
       # The scope assigned to the matched text.
-      scope: punctuation.definition.comment.Config
+      scope: punctuation.definition.comment.config
       # The contexts to push onto the stack. This may be either a single context name, a list
       # of context names, or an inline, anonymous context.
       push:
         # This assigns the given scope to all text within this context, including the
         # patterns that push the context onto the stack and pop it off.
-        - meta_scope: comment.line.double-slash.Config
+        - meta_scope: comment.line.double-slash.config
         - match: '(\\)$\n'
           captures:
             # A mapping of numbers to scope, assigning scopes to captured portions of the match regex.
-            1: punctuation.separator.continuation.Config
+            1: punctuation.separator.continuation.config
         - match: \n
           # Pops the current context off the stack. The only accepted value for this key is true.
           pop: true
 
     - match: '//'
-      scope: punctuation.definition.comment.Config
+      scope: punctuation.definition.comment.config
       push:
-        - meta_scope: comment.line.Config
+        - meta_scope: comment.line.config
         - match: $
           pop: true
 
@@ -80,18 +80,18 @@ contexts:
   numbers:
     - match: '(\d+)(\.{2})(\d+)'
       captures:
-        1: constant.numeric.int.Config
-        2: keyword.operator.switch-range.Config
-        3: constant.numeric.int.Config
+        1: constant.numeric.int.config
+        2: keyword.operator.switch-range.config
+        3: constant.numeric.int.config
 
     - match: ([-]?0x[\da-f]+)
-      scope: constant.numeric.hex.Config
+      scope: constant.numeric.hex.config
 
     - match: \b(\d+\.\d+)\b
-      scope: constant.numeric.float.Config
+      scope: constant.numeric.float.config
 
     - match: \b(\d+)\b
-      scope: constant.numeric.int.Config
+      scope: constant.numeric.int.config
 
   ########################################################
 
@@ -101,7 +101,7 @@ contexts:
   variables:
     - match: '^\s*({{words_pawn}})'
       captures:
-        1: variable.definition.Config
+        1: variable.definition.config
 
   ########################################################
 
@@ -111,31 +111,31 @@ contexts:
   keywords:
 
     - match: (\-|\+|\*|\/|%|&|\||\^|<<|>>)?=
-      scope: keyword.operator.assignment.Config
+      scope: keyword.operator.assignment.config
 
     - match: (==|!=|<=|>=|<>|<|>)
-      scope: keyword.operator.comparison.Config
+      scope: keyword.operator.comparison.config
 
     - match: (\-\-|\+\+)
-      scope: keyword.operator.increment-decrement.Config
+      scope: keyword.operator.increment-decrement.config
 
     - match: (\?|:)
-      scope: keyword.operator.ternary.Config
+      scope: keyword.operator.ternary.config
 
     - match: (\-|\+|\*|\/|%)
-      scope: keyword.operator.arithmetic.Config
+      scope: keyword.operator.arithmetic.config
 
     - match: (!|&&|\|\|)
-      scope: keyword.operator.logical.Config
+      scope: keyword.operator.logical.config
 
     - match: (~|&|\||\^|<<|>>)
-      scope: keyword.operator.bitwise.Config
+      scope: keyword.operator.bitwise.config
 
     - match: (\,)
-      scope: keyword.other.Config
+      scope: keyword.other.config
 
     - match: '\(|\)|\[|\]'
-      scope: keyword.brackets.Config
+      scope: keyword.brackets.config
 
   ########################################################
 
