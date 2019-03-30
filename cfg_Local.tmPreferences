@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Symbol List Global</string>
+	<string>Symbol List Local</string>
 	<key>scope</key>
-	<string>(text.Config, source.genconfig) &amp; (variable.parameter, variable.definition)</string>
+	<string>(text.config, source.genconfig) &amp; (variable.parameter, variable.definition)</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
