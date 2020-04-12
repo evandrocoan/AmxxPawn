@@ -76,7 +76,7 @@ See also:
 git clone https://github.com/evandrocoan/SublimeAmxxPawn "AmxxPawn"
 </code></pre>
 1. Restart Sublime
-1. Not clear enough? See the full installation video guide [How To Install Sublime Notepad Theme](https://vid.me/DXOc).
+1. Not clear enough? See the full installation video guide [How To Install Sublime Notepad Theme](https://youtu.be/PDrqdKQIbhk).
 
 
 ___
