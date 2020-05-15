@@ -425,6 +425,17 @@ contexts:
       captures:
         1: support.function.call.pawn function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
+      push:
+        - meta_scope: support.function.call.paren.pawn
+        - match: ','
+          scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+        - include: Packages/AmxxEditor/AmxxEditorConsts.sublime-syntax
+        - include: pawn_string
+        - include: pawn_character
+        - include: pawn_comment
+        - match: \)
+          scope: function.parens.pawn
+          pop: true
 
   private_function_headers:
     # Matches: nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
