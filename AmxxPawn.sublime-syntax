@@ -426,7 +426,7 @@ contexts:
         1: support.function.call.pawn function.call.AmxxPawn
         2: keyword.brackets.AmxxPawn
       push:
-        - meta_scope: support.function.call.paren.pawn
+        - meta_content_scope: support.function.call.paren.pawn
         - match: ','
           scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
         - include: Packages/AmxxEditor/AmxxEditorConsts.sublime-syntax
@@ -434,7 +434,7 @@ contexts:
         - include: pawn_character
         - include: pawn_comment
         - match: \)
-          scope: function.parens.pawn
+          scope: keyword.brackets.AmxxPawn
           pop: true
 
   private_function_headers:
