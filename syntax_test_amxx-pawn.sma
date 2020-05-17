@@ -813,9 +813,9 @@ public plugin_init()
 
     plugin_init( var_const );
 //  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//             ^ keyword.brackets.AmxxPawn - support.function.call.paren.pawn
+//             ^ keyword.brackets.AmxxPawn support.function.call.paren.pawn
 //               ^^^^^^^^^ support.function.call.paren
-//                         ^ keyword.brackets.AmxxPawn - support.function.call.paren.pawn
+//                         ^ keyword.brackets.AmxxPawn support.function.call.paren.pawn
 }
 
 public plugin_init()

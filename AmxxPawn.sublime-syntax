@@ -424,7 +424,7 @@ contexts:
     - match: '(\w+)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
         1: support.function.call.pawn function.call.AmxxPawn
-        2: keyword.brackets.AmxxPawn
+        2: keyword.brackets.AmxxPawn support.function.call.paren.pawn
       push:
         - meta_content_scope: support.function.call.paren.pawn
         - match: ','
@@ -434,7 +434,7 @@ contexts:
         - include: pawn_character
         - include: pawn_comment
         - match: \)
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.AmxxPawn support.function.call.paren.pawn
           pop: true
 
   private_function_headers:
