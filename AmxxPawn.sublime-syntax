@@ -126,6 +126,14 @@ contexts:
   pawn_preprocessor:
     # For lines ending with a pawn word, we need to catch here, otherwise the next regex cannot
     # consume enough to catch '[^\\]\n'
+    - match: ^\s*#(include)\s+((["][\t ]*[\w\-\/]*\.(inc|sma)?[\t ]*["])|([<][\t ]*[\w\-\/]*[\t ]*[>])|([^\s]*))
+      captures:
+        0: meta.preprocessor.AmxxPawn
+        1: preprocessor.include.pawn
+        3: include_path.pawn
+        4: include_path.pawn
+        5: include_path.pawn
+        6: invalid.illegal.invalid-usage-of-preprocessor-directive.pawn
     - include: preprocessor_define
     - include: preprocessor_others
 
