@@ -437,12 +437,28 @@ contexts:
         - meta_content_scope: support.function.call.paren.pawn
         - match: ','
           scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+        - include: parenthesis_pairing
         - include: Packages/AmxxEditor/AmxxEditorConsts.sublime-syntax
         - include: pawn_string
         - include: pawn_character
         - include: pawn_comment
+        - include: pawn_preprocessor
+        - include: pawn_numbers
         - match: \)
           scope: keyword.brackets.AmxxPawn support.function.call.paren.pawn
+          pop: true
+        # The `pawn_local_variables` must to be included before the `pawn_keywords`, otherwise we cannot
+        # recognize the scope `variable.local.definition`.
+        - include: pawn_local_variables
+        - include: pawn_keywords
+        - include: pawn_post_keywords
+
+  parenthesis_pairing:
+    - match: \(
+      scope: keyword.brackets.AmxxPawn
+      push:
+        - match: \)
+          scope: keyword.brackets.AmxxPawn
           pop: true
 
   private_function_headers:

@@ -475,12 +475,19 @@ bool:func(){}
 
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+//                             ^^^^^^^^ support.function.call.paren
+//                                     ^ keyword.brackets.AmxxPawn
+//                                                        ^ keyword.brackets.AmxxPawn
+//                                                           ^^^^^^^ support.function.call.paren
+//                                                                      ^ keyword.brackets.AmxxPawn
 //                                                                       ^ keyword.semicolon.AmxxPawn
 
 #endif
 
-    vformat( formated_message, charsmax( formated_message ), message, 3 );
+    vformat( formated_message, charsmax[ formated_message ], message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
+//                                     ^ keyword.brackets.AmxxPawn
+//                                                        ^ keyword.brackets.AmxxPawn
 }
 
 
