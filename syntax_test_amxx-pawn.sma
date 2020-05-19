@@ -473,12 +473,19 @@ bool:func(){}
 {
 #endif // this else only works for AMXX 183 or superior, due noted bug above.
 
+    vformat( formated_message, charsmas( formated_message ), message, 3 );
+//                             ^^^^^^^^ support.function.call
+//                                                           ^^^^^^^ amxxsupport.function.call.paren
+
+    charsmax( formated_message )
+//  ^^^^^^^^ amxxsupport.function.call
+
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//                             ^^^^^^^^ support.function.call.paren
+//                             ^^^^^^^^ amxxsupport.function.call.paren
 //                                     ^ keyword.brackets.AmxxPawn
 //                                                        ^ keyword.brackets.AmxxPawn
-//                                                           ^^^^^^^ support.function.call.paren
+//                                                           ^^^^^^^ amxxsupport.function.call.paren
 //                                                                      ^ keyword.brackets.AmxxPawn
 //                                                                       ^ keyword.semicolon.AmxxPawn
 
@@ -820,9 +827,9 @@ public plugin_init()
 
     plugin_init( var_const );
 //  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//             ^ keyword.brackets.AmxxPawn support.function.call.paren.pawn
-//               ^^^^^^^^^ support.function.call.paren
-//                         ^ keyword.brackets.AmxxPawn support.function.call.paren.pawn
+//             ^ keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+//               ^^^^^^^^^ amxxsupport.function.call.paren
+//                         ^ keyword.brackets.AmxxPawn amxxsupport.function.call.paren
 }
 
 public plugin_init()
