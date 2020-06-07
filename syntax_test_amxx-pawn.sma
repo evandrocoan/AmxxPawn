@@ -31,7 +31,8 @@ new const PLUGIN_NAME[]      = "Galileo";
   // <- keyword.control.AmxxPawn
 //  ^^^^^ storage.type.vars.AmxxPawn
 //        ^^^^^^^^^^^ variable.definition.AmxxPawn
-//                   ^^ keyword.brackets.AmxxPawn
+//                   ^  keyword.brackets.bracket.begin
+//                    ^ keyword.brackets.bracket.end
 //                           ^ keyword.operator.assignment.AmxxPawn
 //                             ^ string.quoted.double.AmxxPawn punctuation.definition.string.begin.AmxxPawn
 //                              ^^^^^^^ string.quoted.double.AmxxPawn
@@ -65,9 +66,9 @@ static formated_message[ ADMIN_LEVEL_H ];
   // <- storage.type.vars.AmxxPawn
 // ^^^ storage.type.vars.AmxxPawn
 //     ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                     ^ keyword.brackets.AmxxPawn
+//                     ^ keyword.brackets.bracket.begin.AmxxPawn
 //                       ^^^^^^^^^^^^^ constant.vars.pawn
-//                                     ^ keyword.brackets.AmxxPawn
+//                                     ^ keyword.brackets.bracket.end.AmxxPawn
 //                                      ^^ source.AmxxPawn
 
 new formated_message[ ADMIN_LEVEL_H ];
@@ -75,9 +76,9 @@ new formated_message[ ADMIN_LEVEL_H ];
  // <- keyword.control.AmxxPawn
   // <- keyword.control.AmxxPawn
 //  ^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                  ^ keyword.brackets.AmxxPawn
+//                  ^ keyword.brackets.bracket.begin.AmxxPawn
 //                    ^^^^^^^^^^^^^ constant.vars.pawn
-//                                  ^ keyword.brackets.AmxxPawn
+//                                  ^ keyword.brackets.bracket.end.AmxxPawn
 //                                   ^^ source.AmxxPawn
 
 const formated_message;
@@ -119,9 +120,9 @@ new stock formated_message[ ADMIN_LEVEL_H ];
   // <- keyword.control.AmxxPawn
 //  ^^^^^ storage.type.vars.AmxxPawn
 //        ^^^^^^^^^^^^^^^^  variable.definition.AmxxPawn
-//                        ^ keyword.brackets.AmxxPawn
+//                        ^ keyword.brackets.bracket.begin.AmxxPawn
 //                          ^^^^^^^^^^^^^ constant.vars.pawn
-//                                        ^ keyword.brackets.AmxxPawn
+//                                        ^ keyword.brackets.bracket.end.AmxxPawn
 //                                         ^^ source.AmxxPawn
 
 new stock g_dummy_value = false;
@@ -187,10 +188,10 @@ enum (+=100)
  // <- storage.type.vars.AmxxPawn
   // <- storage.type.vars.AmxxPawn
 // ^ storage.type.vars.AmxxPawn
-//   ^ keyword.brackets.AmxxPawn
+//   ^ keyword.brackets.paren.begin.AmxxPawn
 //    ^^ keyword.operator.assignment.AmxxPawn
 //      ^^^ constant.numeric.int.AmxxPawn
-//         ^ keyword.brackets.AmxxPawn
+//         ^ keyword.brackets.paren.end.AmxxPawn
 {
     TASK_FIRST_CMD = 106
 //  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
@@ -202,7 +203,7 @@ enum (+=100)
 {
     PUNISH_BAD_CLIENT2, PUNISH_WRONG_CMO2
 //  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                    ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                    ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 }
 
@@ -218,7 +219,7 @@ enum PunishType3
 //  ^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                  ^ keyword.operator.assignment.AmxxPawn
 //                    ^^^ constant.numeric.int.AmxxPawn
-//                       ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                       ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
     TASK_FIRST_CMD4 = 555
 //  ^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 //                  ^ keyword.operator.assignment.AmxxPawn
@@ -259,7 +260,7 @@ enum _:PunishType6
 {
     PUNISH_BAD_CLIENT5, PUNISH_WRONG_CMO6
 //  ^^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                    ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                    ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                      ^^^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
 }
 
@@ -271,10 +272,10 @@ enum (+= 100000)
  // <- storage.type.vars.AmxxPawn
   // <- storage.type.vars.AmxxPawn
 // ^ storage.type.vars.AmxxPawn
-//   ^ keyword.brackets.AmxxPawn
+//   ^ keyword.brackets.paren.begin.AmxxPawn
 //    ^^ keyword.operator.assignment.AmxxPawn
 //       ^^^^^^ constant.numeric.int.AmxxPawn
-//             ^ keyword.brackets.AmxxPawn
+//             ^ keyword.brackets.paren.end.AmxxPawn
 {
     TASKID_RTV_REMINDER = 100000, // start with 100000
     TASKID_SHOW_LAST_ROUND_HUD,
@@ -310,8 +311,8 @@ stock test_populateListOnSeries( Array:populatedArray, expectedIndexes[]={0}, ma
 
 stock loadMapFileList( Array:mapArray, mapFilePath[], Trie:fillerMapTrie = Invalid_Trie )
 //                                                                         ^^^^^^^^^^^^ constant.vars.pawn
-//                                   ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
-//                                                  ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                   ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
+//                                                  ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 
 stock nominationAttemptWithNamePart( player_id )
 //                                   ^^^^^^^^^ parameter.definition.AmxxPawn
@@ -345,7 +346,7 @@ stock loadMapGroupsFeatureFile( mapFilerFilePath[], &Array:mapFilers, &Array:max
 //                                                   ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                                                        ^ keyword.operator.AmxxPawn
 //                                                         ^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                  ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                                  ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                                                                    ^ keyword.operator.bitwise.AmxxPawn
 //                                                                     ^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                                                                          ^ keyword.operator.AmxxPawn
@@ -369,14 +370,15 @@ stock nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
   // <- storage.type.function.AmxxPawn
 // ^^ storage.type.function.AmxxPawn
 //    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ function.definition.AmxxPawn, entity.name.function.AmxxPawn
-//                                 ^ keyword.brackets.AmxxPawn
+//                                 ^ keyword.brackets.paren.begin.AmxxPawn
 //                                   ^^^^^^^^^ parameter.definition.AmxxPawn
 //                                             ^ keyword.operator.assignment.AmxxPawn
 //                                               ^ constant.numeric.int.AmxxPawn
-//                                                ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                                ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                                                  ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                    ^^ keyword.brackets.AmxxPawn
-//                                                                       ^ keyword.brackets.AmxxPawn
+//                                                                    ^  keyword.brackets.bracket.begin.AmxxPawn
+//                                                                     ^ keyword.brackets.bracket.end.AmxxPawn
+//                                                                       ^ keyword.brackets.paren.end.AmxxPawn
 //                                                                        ^^ source.AmxxPawn
 
 nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
@@ -384,14 +386,15 @@ nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
  // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
   // <- support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-//                           ^ keyword.brackets.AmxxPawn
+//                           ^ keyword.brackets.paren.begin.AmxxPawn
 //                             ^^^^^^^^^ parameter.definition.AmxxPawn
 //                                       ^ keyword.operator.assignment.AmxxPawn
 //                                         ^ constant.numeric.int.AmxxPawn
-//                                          ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                          ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                                            ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                              ^^ keyword.brackets.AmxxPawn
-//                                                                 ^ keyword.brackets.AmxxPawn
+//                                                              ^  keyword.brackets.bracket.begin.AmxxPawn
+//                                                               ^ keyword.brackets.bracket.end.AmxxPawn
+//                                                                 ^ keyword.brackets.paren.end.AmxxPawn
 //                                                                  ^^ source.AmxxPawn
 
 bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
@@ -401,14 +404,15 @@ bool:nominationAttemptWithNamePart( player_id = 5, partialNameAttempt[] )
 // ^ variable.type.AmxxPawn
 //  ^ keyword.operator.AmxxPawn
 //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-//                                ^ keyword.brackets.AmxxPawn
+//                                ^ keyword.brackets.paren.begin.AmxxPawn
 //                                  ^^^^^^^^^ parameter.definition.AmxxPawn
 //                                            ^ keyword.operator.assignment.AmxxPawn
 //                                              ^ constant.numeric.int.AmxxPawn
-//                                               ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                               ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                                                 ^^^^^^^^^^^^^^^^^^ parameter.definition.AmxxPawn
-//                                                                   ^^ keyword.brackets.AmxxPawn
-//                                                                      ^ keyword.brackets.AmxxPawn
+//                                                                   ^  keyword.brackets.bracket.begin.AmxxPawn
+//                                                                    ^ keyword.brackets.bracket.end.AmxxPawn
+//                                                                      ^ keyword.brackets.paren.end.AmxxPawn
 //                                                                       ^^ source.AmxxPawn
 
 punishmet(id, PunishType:type) {}
@@ -416,15 +420,15 @@ punishmet(id, PunishType:type) {}
  // <- function.definition.AmxxPawn
   // <- function.definition.AmxxPawn
 // ^^^^^^ function.definition.AmxxPawn
-//       ^ keyword.brackets.AmxxPawn
+//       ^ keyword.brackets.paren.begin.AmxxPawn
 //        ^^ parameter.definition.AmxxPawn
-//          ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//          ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //            ^^^^^^^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //                      ^ keyword.operator.AmxxPawn
 //                       ^^^^ parameter.definition.AmxxPawn
-//                           ^ keyword.brackets.AmxxPawn
-//                             ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
-//                              ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+//                           ^ keyword.brackets.paren.end.AmxxPawn
+//                             ^ meta.block.AmxxPawn keyword.brackets.brace.begin.AmxxPawn
+//                              ^ meta.block.AmxxPawn keyword.brackets.brace.end.AmxxPawn
 
 public bool:   hi()
 // <- storage.type.function.AmxxPawn
@@ -434,8 +438,8 @@ public bool:   hi()
 //     ^^^^ storage.type.vars.pawn variable.type.AmxxPawn
 //         ^ keyword.operator.AmxxPawn
 //             ^^ support.function.definition.pawn entity.name.function.AmxxPawn function.definition.AmxxPawn
-//               ^ keyword.brackets.AmxxPawn
-//                ^ keyword.brackets.AmxxPawn
+//               ^ keyword.brackets.paren.begin.AmxxPawn
+//                ^ keyword.brackets.paren.end.AmxxPawn
 
 public func(){}
 //     ^^^^ function.definition.AmxxPawn
@@ -448,8 +452,8 @@ bool:func(){}
 //   ^^^^ function.definition.AmxxPawn
 
 {}
-// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
- // <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
+// <- meta.block.AmxxPawn keyword.brackets.brace.begin.AmxxPawn
+ // <- meta.block.AmxxPawn keyword.brackets.brace.end.AmxxPawn
   // <- source.AmxxPawn
 
 
@@ -483,18 +487,18 @@ bool:func(){}
     vformat( formated_message, charsmax( formated_message ), message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 //                             ^^^^^^^^ amxxsupport.function.call.paren
-//                                     ^ keyword.brackets.AmxxPawn
-//                                                        ^ keyword.brackets.AmxxPawn
+//                                     ^ keyword.brackets.paren.begin.AmxxPawn
+//                                                        ^ keyword.brackets.paren.end.AmxxPawn
 //                                                           ^^^^^^^ amxxsupport.function.call.paren
-//                                                                      ^ keyword.brackets.AmxxPawn
+//                                                                      ^ keyword.brackets.paren.end.AmxxPawn
 //                                                                       ^ keyword.semicolon.AmxxPawn
 
 #endif
 
     vformat( formated_message, charsmax[ formated_message ], message, 3 );
 //  ^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//                                     ^ keyword.brackets.AmxxPawn
-//                                                        ^ keyword.brackets.AmxxPawn
+//                                     ^ keyword.brackets.bracket.begin.AmxxPawn
+//                                                        ^ keyword.brackets.bracket.end.AmxxPawn
 }
 
 
@@ -779,11 +783,11 @@ new bool:g_isPlayerVoted            [ MAX_PLAYERS_COUNT ] = { true , ... };
 //  ^^^^ variable.type.AmxxPawn
 //      ^ keyword.operator.AmxxPawn
 //       ^^^^^^^^^^^^^^^ variable.definition.AmxxPawn
-//                                  ^ keyword.brackets.AmxxPawn
-//                                                      ^ keyword.brackets.AmxxPawn
+//                                  ^ keyword.brackets.bracket.begin.AmxxPawn
+//                                                      ^ keyword.brackets.bracket.end.AmxxPawn
 //                                                        ^ keyword.operator.assignment.AmxxPawn
-//                                                          ^ keyword.brackets.AmxxPawn
-//                                                                       ^ keyword.brackets.AmxxPawn
+//                                                          ^ keyword.brackets.brace.begin.AmxxPawn
+//                                                                       ^ keyword.brackets.brace.end.AmxxPawn
 //                                                                        ^ keyword.semicolon.AmxxPawn
 
 stock mp_fraglimitCvarSupport()
@@ -827,21 +831,21 @@ public plugin_init()
 
     plugin_init( var_const );
 //  ^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
-//             ^ keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+//             ^ keyword.brackets.paren.begin.AmxxPawn amxxsupport.function.call.paren
 //               ^^^^^^^^^ amxxsupport.function.call.paren
-//                         ^ keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+//                         ^ keyword.brackets.paren.end.AmxxPawn amxxsupport.function.call.paren
 }
 
 public plugin_init()
 {
-// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
+// <- meta.block.AmxxPawn keyword.brackets.brace.begin.AmxxPawn
 
     register_plugin(CS_TEAM_T, CS_TEAM_T, CS_TEAM_T)
 //  ^^^^^^^^^^^^^^^ meta.block.AmxxPawn function.call.AmxxPawn
 //                  ^^^^^^^^^ constant.vars.pawn
-//                           ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                           ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                             ^^^^^^^^^ constant.vars.pawn
-//                                      ^ keyword.brackets.pawn punctuation.separator.AmxxPawn
+//                                      ^ keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 //                                        ^^^^^^^^^ constant.vars.pawn
 
     register_cvar()
@@ -868,14 +872,14 @@ public plugin_init()
 //                  ^^^^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
 
     register_cvar( "Hi", )
-//               ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+//               ^ meta.block.AmxxPawn keyword.brackets.paren.begin.AmxxPawn
 //                 ^ meta.block.AmxxPawn punctuation.definition.string.begin.AmxxPawn
 //                  ^^ meta.block.AmxxPawn cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
 //                    ^ meta.block.AmxxPawn punctuation.definition.string.end.AmxxPawn
-//                     ^ meta.block.AmxxPawn keyword.brackets.pawn punctuation.separator.AmxxPawn
-//                       ^ meta.block.AmxxPawn keyword.brackets.AmxxPawn
+//                     ^ meta.block.AmxxPawn keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
+//                       ^ meta.block.AmxxPawn keyword.brackets.paren.end.AmxxPawn
 }
-// <- meta.block.AmxxPawn keyword.brackets.AmxxPawn
+// <- meta.block.AmxxPawn keyword.brackets.brace.end.AmxxPawn
 
 
 g_isTheLastGameRound = bool:roundEndStatus[ SaveRoundEnding_LastRound ];

@@ -49,7 +49,7 @@ contexts:
     - match: '((register_cvar)|(create_cvar))\s*(\()\s*((\")(\w+)(\"))?'
       captures:
         2: support.function.call.pawn function.call.AmxxPawn
-        4: keyword.brackets.AmxxPawn
+        4: keyword.brackets.paren.begin.AmxxPawn
         6: punctuation.definition.string.begin.AmxxPawn
         7: cvardefinition.AmxxPawn string.quoted.double.AmxxPawn
         8: punctuation.definition.string.end.AmxxPawn
@@ -417,13 +417,13 @@ contexts:
     - include: pawn_global_variables
     - include: pawn_keywords
     - match: '{'
-      scope: keyword.brackets.AmxxPawn
+      scope: keyword.brackets.brace.begin.AmxxPawn
       push:
         - meta_scope: meta.block.AmxxPawn
         - include: function_call
         - include: pawn_function_includes
         - match: '}'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.end.AmxxPawn
           pop: true
         - include: general_functions
     - include: pawn_function_includes
@@ -432,7 +432,7 @@ contexts:
     - match: '(sizeof|charsmax|assert|break|case|continue|default|do|else|exit|for|goto|if|return|state|switch|while|false|true)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
         1: keyword.control.AmxxPawn amxxsupport.function.call
-        2: keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+        2: keyword.brackets.paren.begin.AmxxPawn amxxsupport.function.call.paren
       push:
         - meta_content_scope: amxxsupport.function.call.paren
         - include: function_call_inside
@@ -440,14 +440,14 @@ contexts:
     - match: '(\w+)\s*(?<!register_cvar|create_cvar)\s*(\()'
       captures:
         1: support.function.call.pawn function.call.AmxxPawn amxxsupport.function.call
-        2: keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+        2: keyword.brackets.paren.begin.AmxxPawn amxxsupport.function.call.paren
       push:
         - meta_content_scope: amxxsupport.function.call.paren
         - include: function_call_inside
 
   function_call_inside:
     - match: ','
-      scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+      scope: keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
     - include: function_call
     - include: Packages/AmxxEditor/AmxxEditorConsts.sublime-syntax
     - include: pawn_string
@@ -456,7 +456,7 @@ contexts:
     - include: pawn_preprocessor
     - include: pawn_numbers
     - match: \)
-      scope: keyword.brackets.AmxxPawn amxxsupport.function.call.paren
+      scope: keyword.brackets.paren.end.AmxxPawn amxxsupport.function.call.paren
       pop: true
     # The `pawn_local_variables` must to be included before the `pawn_keywords`, otherwise we cannot
     # recognize the scope `variable.local.definition`.
@@ -508,9 +508,9 @@ contexts:
   function_definition_parameters:
     # Do not consume this parenthesis, we need it latter to match the parameters definition.
     - match: '(?=\()'
-      scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+      scope: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.paren.begin.AmxxPawn
     - match: '\)'
-      scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
+      scope: punctuation.definition.paren.end.AmxxPawn keyword.brackets.paren.end.AmxxPawn
       pop: true
 
     # Matches: load( const Array: max = Var )
@@ -578,7 +578,7 @@ contexts:
     - include: pawn_function_parameters_includes
 
     - match: ','
-      scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+      scope: keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 
   ########################################################
 
@@ -603,15 +603,15 @@ contexts:
       push:
         - include: pawn_enumeration_includes
         - match: '{'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.begin.AmxxPawn
           push:
             - meta_scope: meta.block.AmxxPawn
             - include: enumeration_body
             - match: '(?=})'
-              scope: keyword.brackets.AmxxPawn
+              scope: keyword.brackets.brace.end.AmxxPawn
               pop: true
         - match: '}'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.end.AmxxPawn
           pop: true
 
     # Matches: enum ( +=100)
@@ -619,22 +619,22 @@ contexts:
     - match: '\b(enum)\b\s*(\()\s*(.=)\s*(\d+)\s*(\))'
       captures:
         1: storage.type.vars.AmxxPawn
-        2: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.AmxxPawn
+        2: punctuation.definition.paren.begin.AmxxPawn keyword.brackets.paren.begin.AmxxPawn
         3: keyword.operator.assignment.AmxxPawn
         4: constant.numeric.int.AmxxPawn
-        5: punctuation.definition.paren.end.AmxxPawn keyword.brackets.AmxxPawn
+        5: punctuation.definition.paren.end.AmxxPawn keyword.brackets.paren.end.AmxxPawn
       push:
         - include: pawn_enumeration_includes
         - match: '{'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.begin.AmxxPawn
           push:
             - meta_scope: meta.block.AmxxPawn
             - include: enumeration_body
             - match: '(?=})'
-              scope: keyword.brackets.AmxxPawn
+              scope: keyword.brackets.brace.end.AmxxPawn
               pop: true
         - match: '}'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.end.AmxxPawn
           pop: true
 
     # Matches: enum PunishType
@@ -646,15 +646,15 @@ contexts:
       push:
         - include: pawn_enumeration_includes
         - match: '{'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.begin.AmxxPawn
           push:
             - meta_scope: meta.block.AmxxPawn
             - include: enumeration_body
             - match: '(?=})'
-              scope: keyword.brackets.AmxxPawn
+              scope: keyword.brackets.brace.end.AmxxPawn
               pop: true
         - match: '}'
-          scope: keyword.brackets.AmxxPawn
+          scope: keyword.brackets.brace.end.AmxxPawn
           pop: true
 
   enumeration_body:
@@ -665,14 +665,14 @@ contexts:
         1: variable.definition.AmxxPawn
         2: keyword.operator.assignment.AmxxPawn
         3: constant.numeric.int.AmxxPawn
-        4: keyword.brackets.pawn punctuation.separator.AmxxPawn
+        4: keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 
     # Matches: TASK_FIRST_CMD3,
     # Groups:  1              2
     - match: '(\w+)\s*(,)?'
       captures:
         1: variable.definition.AmxxPawn
-        2: keyword.brackets.pawn punctuation.separator.AmxxPawn
+        2: keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
     - include: pawn_enumeration_includes
 
   ########################################################
@@ -799,7 +799,7 @@ contexts:
       scope: keyword.operator.bitwise.AmxxPawn
 
     - match: '(\,)'
-      scope: keyword.brackets.pawn punctuation.separator.AmxxPawn
+      scope: keyword.brackets.comma.pawn punctuation.separator.AmxxPawn
 
   ########################################################
 
@@ -807,8 +807,14 @@ contexts:
   # This is supposed to be the last matching scope ever. This must only catch what any other scope
   # before this could have matched and used.
   pawn_post_keywords:
-    - match: '\(|\)|\[|\]'
-      scope: keyword.brackets.AmxxPawn
+    - match: '\('
+      scope: keyword.brackets.paren.begin.AmxxPawn
+    - match: '\)'
+      scope: keyword.brackets.paren.end.AmxxPawn
+    - match: '\['
+      scope: keyword.brackets.bracket.begin.AmxxPawn
+    - match: '\]'
+      scope: keyword.brackets.bracket.end.AmxxPawn
 
     - match: ';'
       scope: keyword.semicolon.AmxxPawn
